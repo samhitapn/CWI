@@ -19,19 +19,22 @@ import itertools
     #print(s.format("fastq"))
 """
 seq = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
-print(seq)
+#print(seq)
 
 """
 for seq1 in seq:
     for seq2 in seq:
         if seq1 != seq2:
 """
+alignment = {}
+pairCount = 1
 for seq1, seq2 in itertools.combinations(seq, 2):
-    if(seq[seq1].seq != seq[seq2].seq):
-        print (seq[seq1].letter_annotations["phred_quality"][1])
-        print (seq[seq2].letter_annotations["phred_quality"][1])
+    if(seq[seq1].ID != seq[seq2].ID):
         al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
-    print("Pair 1 \n")
+        alignment[pairCount] = seq[seq1].ID + "," + seq [seq2].ID + "\n" + pairwise2.format_alignment(*al[0]) + "\n" + seq[seq1].letter_annotations["phred_quality"] + "\n" + seq[seq2].letter_annotations["phred_quality"]
+    pairCount = pairCount + 1
+    
+print(alignment)
     
     
     #print(pairwise2.format_alignment(*al[0]))
