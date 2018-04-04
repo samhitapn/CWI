@@ -29,7 +29,9 @@ for seq1 in seq:
         if seq1 != seq2:
 """
 for seq1, seq2 in itertools.combinations(seq, 2):
-    al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
+    print (seq[seq1])
+    #if(seq[seq1].seq != seq[seq2].seq):
+     #   al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
     #print(al[1])
     #print(pairwise2.format_alignment(*al[0]))
     #print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
