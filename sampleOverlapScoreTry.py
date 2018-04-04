@@ -18,7 +18,7 @@ import itertools
     print(s.letter_annotations["phred_quality"][1])
     #print(s.format("fastq"))
 """
-#sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
+sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
 #print(seq)
 
 
