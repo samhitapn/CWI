@@ -30,8 +30,8 @@ alignment = {}
 pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    #alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "\n" + pairwise2.format_alignment(*al[0]) + "\n" + sequences[seq1].letter_annotations["phred_quality"] + "\n" + sequences[seq2].letter_annotations["phred_quality"]
-    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id
+    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "\n" + pairwise2.format_alignment(*al) + "\n" + sequences[seq1].letter_annotations["phred_quality"] + "\n" + sequences[seq2].letter_annotations["phred_quality"]
+    #alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id
     pairCount = pairCount + 1
     
 print(alignment)
