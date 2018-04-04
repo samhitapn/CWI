@@ -18,7 +18,7 @@ import itertools
     print(s.letter_annotations["phred_quality"][1])
     #print(s.format("fastq"))
 """
-seq = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
+sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
 #print(seq)
 
 """
@@ -28,10 +28,9 @@ for seq1 in seq:
 """
 alignment = {}
 pairCount = 1
-for seq1, seq2 in itertools.combinations(seq, 2):
-    if(seq[seq1].ID != seq[seq2].ID):
-        al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
-        alignment[pairCount] = seq[seq1].ID + "," + seq [seq2].ID + "\n" + pairwise2.format_alignment(*al[0]) + "\n" + seq[seq1].letter_annotations["phred_quality"] + "\n" + seq[seq2].letter_annotations["phred_quality"]
+for seq1, seq2 in itertools.combinations(sequences, 2):
+    al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
+    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "\n" + pairwise2.format_alignment(*al[0]) + "\n" + sequences[seq1].letter_annotations["phred_quality"] + "\n" + sequences[seq2].letter_annotations["phred_quality"]
     pairCount = pairCount + 1
     
 print(alignment)
