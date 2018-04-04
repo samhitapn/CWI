@@ -18,33 +18,38 @@ import itertools
     print(s.letter_annotations["phred_quality"][1])
     #print(s.format("fastq"))
 """
-sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
+#sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
 #print(seq)
 
-"""
-for seq1 in seq:
-    for seq2 in seq:
-        if seq1 != seq2:
-"""
+
 alignment = {}
 pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "\n" + pairwise2.format_alignment(*al) + "\n" + sequences[seq1].letter_annotations["phred_quality"] + "\n" + sequences[seq2].letter_annotations["phred_quality"]
-    #alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id
+    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "\n" + al[0][0] + "\n" + sequences[seq1].letter_annotations["phred_quality"] + "\n" + al[0][1] +  "\n" + sequences[seq2].letter_annotations["phred_quality"]
     pairCount = pairCount + 1
     
-print(alignment)
-    
-    
-    #print(pairwise2.format_alignment(*al[0]))
-    #print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
+    print(alignment)
     
 
-
+"""
+ #TRIALS
+ 
+ 
+#print(pairwise2.format_alignment(*al[0]))
+#print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
+al = pairwise2.align.globalxx("AGTCGCTCGTACGCTACCGAT","AGTCGCTCGCGTATACCGAT")
+#print(al[0])
+#a = pairwise2.format_alignment(*al)
+print(al)
+print("\n +")
+print(al[0][1])
+#result.write(pairwise2.format_alignment(al)) 
+#
+#print(al)
 
 #alignments = pairwise2.align.globalxx("ACCGT", "ACG")
 #print(alignments[1])
 #print(pairwise2.format_alignment(*alignments))
 
-
+"""
