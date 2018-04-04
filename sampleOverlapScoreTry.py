@@ -21,7 +21,7 @@ for s in sio.parse("ONT_Sample1_5Reads.fastq","fastq"):
     print("---------------- \n")
     #print(s.format("fastq"))
 """
-seq = sio.to_dict(sio.parse("ONT_Sample1_5Reads.fastq","fastq"))
+seq = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
 """
 for seq1 in seq:
     for seq2 in seq:
