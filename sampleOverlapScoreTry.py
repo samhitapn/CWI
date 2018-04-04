@@ -15,10 +15,7 @@ import itertools
 
 # Read in the fastq files
 """
-for s in sio.parse("ONT_Sample1_5Reads.fastq","fastq"):
-    print(s.seq[1])
     print(s.letter_annotations["phred_quality"][1])
-    print("---------------- \n")
     #print(s.format("fastq"))
 """
 seq = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
@@ -30,11 +27,13 @@ for seq1 in seq:
         if seq1 != seq2:
 """
 for seq1, seq2 in itertools.combinations(seq, 2):
-    print (seq[seq1])
-    print (seq[seq2])
-    #if(seq[seq1].seq != seq[seq2].seq):
-     #   al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
-    #print(al[1])
+    if(seq[seq1].seq != seq[seq2].seq):
+        print (seq[seq1].letter_annotations["phred_quality"][1])
+        print (seq[seq2].letter_annotations["phred_quality"][1])
+        al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
+    print("Pair 1 \n")
+    
+    
     #print(pairwise2.format_alignment(*al[0]))
     #print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
     
