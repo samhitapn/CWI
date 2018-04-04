@@ -21,17 +21,24 @@ for s in sio.parse("ONT_Sample1_5Reads.fastq","fastq"):
     print("---------------- \n")
     #print(s.format("fastq"))
 """
+<<<<<<< HEAD
 seq = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
+=======
+seq = sio.to_dict(sio.parse("ONT_Sample1_5Reads.fastq","fastq"))
+print(seq)
+>>>>>>> c412cc1238da13d8c717be9a4682a93259b7812b
 """
 for seq1 in seq:
     for seq2 in seq:
         if seq1 != seq2:
 """
 for seq1, seq2 in itertools.combinations(seq, 2):
-    al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
-    print(al[1])
+    print (seq[seq1])
+    #if(seq[seq1].seq != seq[seq2].seq):
+     #   al = pairwise2.align.globalxx(seq[seq1].seq,seq[seq2].seq)
+    #print(al[1])
     #print(pairwise2.format_alignment(*al[0]))
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
+    #print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
     
 
 
