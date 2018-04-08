@@ -24,7 +24,7 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
     alignment[pairCount] = sequences[seq1].id + "," + al[0][0] + "," + str(sequences[seq1].letter_annotations["phred_quality"]) + "," + sequences[seq2].id + "," + al[0][1] +  "," + str(sequences[seq2].letter_annotations["phred_quality"])
     #print(alignment)
     #print("\n ******************************** \n")
-    print(alignment[pairCount].split(",")[1])
+    print(alignment[pairCount].split(",")[1][3])
     print("\n ******************************** \n")
     pairCount = pairCount + 1
 """
