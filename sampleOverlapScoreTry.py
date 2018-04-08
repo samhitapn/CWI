@@ -25,7 +25,7 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
     pairCount = pairCount + 1
     #print(alignment)
     #print("\n ******************************** \n")
-    print(alignment[pairCount].split(","))
+    print(alignment[pairCount])
     print("\n ******************************** \n")
 """
 # Scoring function
