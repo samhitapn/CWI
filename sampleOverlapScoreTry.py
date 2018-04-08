@@ -4,7 +4,7 @@
 Created on Wed Mar 29 14:26:16 2018
 @author: samhitapn
 @purpose: Overlap score trials
-@modified: 29.March.2018
+@modified: 04.April.2018
 """
 
 #import biopython
@@ -13,25 +13,29 @@ from Bio import SeqIO as sio
 import numpy
 import itertools
 
-# Read in the fastq files
-"""
-    print(s.letter_annotations["phred_quality"][1])
-    #print(s.format("fastq"))
-"""
+# Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
-#print(seq)
 
-
+# Get the alignment of all the overlap pairs
 alignment = {}
 pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    alignment[pairCount] = sequences[seq1].id + "," + sequences[seq2].id + "," + al[0][0] + "," + str(sequences[seq1].letter_annotations["phred_quality"]) + "," + al[0][1] +  "," + str(sequences[seq2].letter_annotations["phred_quality"])
+    alignment[pairCount] = sequences[seq1].id + "," + al[0][0] + "," + str(sequences[seq1].letter_annotations["phred_quality"]) + "," + sequences[seq2].id + "," + al[0][1] +  "," + str(sequences[seq2].letter_annotations["phred_quality"])
     pairCount = pairCount + 1
     print(alignment)
     print("\n ******************************** \n")
-    
 
+# Scoring function
+
+
+
+
+
+
+
+
+###########################################################################
 """
  #TRIALS
  
