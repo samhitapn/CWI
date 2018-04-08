@@ -23,11 +23,17 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
     alignment[pairCount] = sequences[seq1].id + "," + al[0][0] + "," + str(sequences[seq1].letter_annotations["phred_quality"]) + "," + sequences[seq2].id + "," + al[0][1] +  "," + str(sequences[seq2].letter_annotations["phred_quality"])
     pairCount = pairCount + 1
-    print(alignment)
+    #print(alignment)
+    #print("\n ******************************** \n")
+    print(alignment[pairCount].split(",")[1])
     print("\n ******************************** \n")
-
+"""
 # Scoring function
-
+for key in alignment:
+    alignment[key]
+    
+def overalpScore(seq1, seq2, i1, i2, L):
+   """ 
 
 
 
