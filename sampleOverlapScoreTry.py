@@ -33,7 +33,7 @@ def probabilityQ (X, b, p):
 """
 def getProbQuality (q):
     print(q)
-    #q = float(q)
+    q = int(q)
     p = 10**(-q/10)
     return p
 
