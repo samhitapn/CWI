@@ -58,8 +58,8 @@ def overalpScoreCalculation(seqDetails, i):
         
             # Gap in first read -> calculation based on read 2
         if seqDetails.split(";")[1][i1] == "-":
-           #print(seqDetails.split(";")[5][i2])
-           probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[5][i2]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[5][i2]))))
+           print(seqDetails.split(";")[5][i2])
+           #probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[5][i2]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[5][i2]))))
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(";")[4][i2] == "-":
            #print(seqDetails.split(";")[2][i1])
