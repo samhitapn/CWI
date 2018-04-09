@@ -76,6 +76,7 @@ def overalpScoreCalculation(seqDetails, i1, i2, L):
  
 # Scoring function
 for key in alignment:
+    print(alignment[key])
     overlapScore = overalpScoreCalculation(alignment[key],20,1,10)
     alignment[key] = alignment[key] + "," + overlapScore
     print(alignment[key].split(",")[0],alignment[key].split(",")[3],alignment[key].split(",")[6])
