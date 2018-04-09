@@ -61,17 +61,20 @@ def overalpScoreCalculation(seqDetails, i):
         if seqDetails.split(";")[1][i1] == "-":
            #print(scoresRead2[i2])
            probabilityBase = (3/13 * getProbQuality(float(scoresRead2[i2]))) + (10/13 * (1 - getProbQuality(float(scoresRead2[i2]))))
+           pl = 1
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(";")[4][i2] == "-":
            print(scoresRead1[i1])
            probabilityBase = (3/13 * getProbQuality(float(scoresRead1[i1]))) + (10/13 * (1 - getProbQuality(float(scoresRead1[i1]))))
+           pl = 2
            # Existing score calculation
         else:
             for n in nt:
                 #print(n)
                 probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(";")[1][i1],getProbQuality(float(scoresRead1[i1]))) * probabilityQ(n,seqDetails.split(";")[4][i2],getProbQuality(float(scoresRead2[i2]))))
+            pl = 3
         probabilityOverall = probabilityOverall * probabilityBase
-        print(i1,i2,probabilityOverall)
+        print(i1,i2,probabilityOverall,pl)
         i1 = i1 + 1
         i2 = i2 + 1
     # Overlap score
