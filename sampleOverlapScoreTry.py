@@ -26,9 +26,18 @@ def probabilityQ (X, b, p):
     return qp
 
 
+"""
+@Definition: For calculating the probaility from the phred quality scores
+@Input parameters: 
+@Output parameters: Probability
+"""
+def getProbQuality (q):
+    q = float(q)
+    p = 10**(-q/10)
+    return p
+
 
 nt = ["A","T","C","G"] # Bases
-
 """
 @Definition: 
 @Input parameters: 
@@ -38,6 +47,7 @@ nt = ["A","T","C","G"] # Bases
 def overalpScoreCalculation(seqDetails, i):
     probabilityOverall = 1
     L = len(seqDetails.split(",")[4]) - i
+    print(len(seqDetails.split(",")[4]),L,i)
     i1 = i
     i2 = 0
     while i1 <= i1 + L and i2 <= i2 + L:
@@ -47,20 +57,20 @@ def overalpScoreCalculation(seqDetails, i):
         
             # Gap in first read -> calculation based on read 2
         if seqDetails.split(",")[1][i1] == "-":
-           probabilityBase = (3/13 * float(seqDetails.split(",")[5][i2])) + (10/13 * (1 - float(seqDetails.split(",")[5][i2])))
+           probabilityBase = (3/13 * getProbQuality(seqDetails.split(",")[5][i2])) + (10/13 * (1 - getProbQuality(seqDetails.split(",")[5][i2])))
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(",")[4][i2] == "-":
-           probabilityBase = (3/13 * float(seqDetails.split(",")[2][i1])) + (10/13 * (1 - float(seqDetails.split(",")[2][i1])))
+           probabilityBase = (3/13 * getProbQuality(seqDetails.split(",")[2][i1])) + (10/13 * (1 - getProbQuality(seqDetails.split(",")[2][i1])))
            # Existing score calculation
         else:
             for n in nt:
-                probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(",")[1][i1],float(seqDetails.split(",")[2][i1])) * probabilityQ(n,seqDetails.split(",")[4][i2],float(seqDetails.split(",")[5][i2])))
+                probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(",")[1][i1],getProbQuality(seqDetails.split(",")[2][i1])) * probabilityQ(n,seqDetails.split(",")[4][i2],getProbQuality(seqDetails.split(",")[5][i2])))
         probabilityOverall = probabilityOverall * probabilityBase
         i1 = i1 + 1
         i2 = i2 + 1
     # Overlap score
     overlapScore = probabilityOverall ** 1/L
-    print(overlapScore)
+    #print(overlapScore)
     return (overlapScore)
  
 # MAIN
@@ -81,7 +91,7 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
 # Getting the scores for each overlap pair
 for key in alignment:
     overlapScore = overalpScoreCalculation(alignment[key],20)
-    alignment[key] = alignment[key] + "," + overlapScore
+    alignment[key] = alignment[key] + "," + str(overlapScore)
     print(alignment[key].split(",")[0],alignment[key].split(",")[3],alignment[key].split(",")[6])
     print("\n ############ \n")
     
