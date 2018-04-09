@@ -55,14 +55,15 @@ def overalpScoreCalculation(seqDetails, i):
         probabilityBase = 0
         
         #New code -> To include indels Option1
-        
+        scoresRead1 = seqDetails.split(";")[2].split(",")
+        scoresRead2 = seqDetails.split(";")[5].split(",")
             # Gap in first read -> calculation based on read 2
         if seqDetails.split(";")[1][i1] == "-":
-           print(seqDetails.split(";")[5][i2])
+           print(scoresRead2[i2])
            #probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[5][i2]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[5][i2]))))
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(";")[4][i2] == "-":
-           print(seqDetails.split(";")[2][i1])
+           print(scoresRead1[i1])
            #probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[2][i1]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[2][i1]))))
            # Existing score calculation
         else:
@@ -86,7 +87,7 @@ alignment = {}
 pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    alignment[pairCount] = sequences[seq1].id + ";" + al[0][0] + ";" + str(sequences[seq1].letter_annotations["phred_quality"]).strip('[] ') + ";" + sequences[seq2].id + ";" + al[0][1] +  ";" + str(sequences[seq2].letter_annotations["phred_quality"]).strip('[] ')
+    alignment[pairCount] = sequences[seq1].id + ";" + al[0][0] + ";" + str(sequences[seq1].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + sequences[seq2].id + ";" + al[0][1] +  ";" + str(sequences[seq2].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
     #print(alignment)
     #print(alignment[pairCount].split(",")[1][3])
     #print("\n ******************************** \n")
