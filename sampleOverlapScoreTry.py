@@ -46,7 +46,7 @@ nt = ["A","T","C","G"] # Bases
 #def overalpScoreCalculation(seqDetails, i1, i2, L):
 def overalpScoreCalculation(seqDetails, i):
     probabilityOverall = 1
-    L = len(seqDetails.split(",")[4]) - i
+    L = abs(len(seqDetails.split(",")[4])) - i
     print(len(seqDetails.split(",")[4]),L,i)
     i1 = i
     i2 = 0
@@ -92,7 +92,7 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
 for key in alignment:
     overlapScore = overalpScoreCalculation(alignment[key],20)
     alignment[key] = alignment[key] + "," + str(overlapScore)
-    print(alignment[key].split(",")[0],alignment[key].split(",")[3],alignment[key].split(",")[6])
+    print(alignment[key].split(",")[0],alignment[key].split(",")[2],alignment[key].split(",")[6])
     print("\n ############ \n")
     
 
