@@ -96,10 +96,10 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
 for key in alignment:
     #print(alignment[key])
     #print(alignment[key].split(",")[0])
-    #print(alignment[key].split(";")[3])
-    overlapScore = overalpScoreCalculation(alignment[key],20)
-    alignment[key] = alignment[key] + ";" + str(overlapScore)
-    print(alignment[key].split(";")[6])
+    print(alignment[key].split(";")[5])
+    #overlapScore = overalpScoreCalculation(alignment[key],20)
+    #alignment[key] = alignment[key] + ";" + str(overlapScore)
+    #print(alignment[key].split(";")[6])
     print("\n ############ \n")
  
 
