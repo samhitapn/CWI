@@ -86,19 +86,20 @@ pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
     alignment[pairCount] = sequences[seq1].id + "," + al[0][0] + "," + str(sequences[seq1].letter_annotations["phred_quality"]) + "," + sequences[seq2].id + "," + al[0][1] +  "," + str(sequences[seq2].letter_annotations["phred_quality"])
-    print(alignment)
+    #print(alignment)
     #print(alignment[pairCount].split(",")[1][3])
-    print("\n ******************************** \n")
+    #print("\n ******************************** \n")
     pairCount = pairCount + 1
 
-"""
+
 # Getting the scores for each overlap pair
 for key in alignment:
-    overlapScore = overalpScoreCalculation(alignment[key],20)
-    alignment[key] = alignment[key] + "," + str(overlapScore)
-    print(alignment[key].split(",")[6])
+    print(key)
+    #overlapScore = overalpScoreCalculation(alignment[key],20)
+    #alignment[key] = alignment[key] + "," + str(overlapScore)
+    #print(alignment[key].split(",")[6])
     print("\n ############ \n")
-""" 
+ 
 
     
         
