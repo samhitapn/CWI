@@ -48,7 +48,7 @@ nt = ["A","T","C","G"] # Bases
 def overalpScoreCalculation(seqDetails, i):
     probabilityOverall = 1
     L = abs(len(seqDetails.split(";")[4]) - i)
-    print(len(seqDetails.split(";")[4]),i,L)
+    print(len(seqDetails.split(";")[4]),len(seqDetails.split(";")[2]),i,L)
     i1 = i
     i2 = 0
     while i1 < i1 + L and i2 < i2 + L:
