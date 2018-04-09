@@ -58,7 +58,6 @@ def overalpScoreCalculation(seqDetails, i1, i2, L):
         
             # Gap in first read -> calculation based on read 2
         if seqDetails.split(",")[1][i1] == "-":
-           print(seqDetails.split(",")[5][i2])
            probabilityBase = (3/13 * float(seqDetails.split(",")[5][i2])) + (10/13 * (1 - float(seqDetails.split(",")[5][i2])))
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(",")[4][i2] == "-":
@@ -77,7 +76,7 @@ def overalpScoreCalculation(seqDetails, i1, i2, L):
  
 # Scoring function
 for key in alignment:
-    overlapScore = overalpScoreCalculation(alignment[key],20,1,100)
+    overlapScore = overalpScoreCalculation(alignment[key],20,1,10)
     alignment[key] = alignment[key] + "," + overlapScore
     print(alignment[key].split(",")[0],alignment[key].split(",")[3],alignment[key].split(",")[6])
     print("\n ############ \n")
