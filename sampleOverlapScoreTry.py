@@ -33,9 +33,9 @@ def probabilityQ (X, b, p):
 """
 def getProbQuality (q):
     print(q)
-    q = int(q)
-    p = 10**(-q/10)
-    return p
+    #q = int(q)
+    #p = 10**(-q/10)
+    return q
 
 
 nt = ["A","T","C","G"] # Bases
