@@ -32,7 +32,7 @@ def probabilityQ (X, b, p):
 @Output parameters: Probability
 """
 def getProbQuality (q):
-    print(q)
+    #print(q)
     q = int(q)
     p = 10**(-q/10)
     return p
@@ -96,9 +96,6 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
 
 # Getting the scores for each overlap pair
 for key in alignment:
-    #print(alignment[key])
-    #print(alignment[key].split(",")[0])
-    #print(alignment[key].split(";")[5])
     overlapScore = overalpScoreCalculation(alignment[key],20)
     alignment[key] = alignment[key] + ";" + str(overlapScore)
     print(alignment[key].split(";")[6])
