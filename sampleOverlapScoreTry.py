@@ -71,6 +71,7 @@ def overalpScoreCalculation(seqDetails, i):
                 #print(n)
                 probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(";")[1][i1],getProbQuality(float(scoresRead1[i1]))) * probabilityQ(n,seqDetails.split(";")[4][i2],getProbQuality(float(scoresRead2[i2]))))
         probabilityOverall = probabilityOverall * probabilityBase
+        print(i1,i2,probabilityOverall)
         i1 = i1 + 1
         i2 = i2 + 1
     # Overlap score
