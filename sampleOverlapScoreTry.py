@@ -62,12 +62,13 @@ def overalpScoreCalculation(seqDetails, i):
            #probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[5][i2]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[5][i2]))))
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(";")[4][i2] == "-":
-           #print(seqDetails.split(";")[2][i1])
-           probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[2][i1]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[2][i1]))))
+           print(seqDetails.split(";")[2][i1])
+           #probabilityBase = (3/13 * getProbQuality(float(seqDetails.split(";")[2][i1]))) + (10/13 * (1 - getProbQuality(float(seqDetails.split(";")[2][i1]))))
            # Existing score calculation
         else:
             for n in nt:
-                probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(";")[1][i1],getProbQuality(float(seqDetails.split(";")[2][i1]))) * probabilityQ(n,seqDetails.split(";")[4][i2],getProbQuality(float(seqDetails.split(";")[5][i2]))))
+                print(n)
+                #probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(";")[1][i1],getProbQuality(float(seqDetails.split(";")[2][i1]))) * probabilityQ(n,seqDetails.split(";")[4][i2],getProbQuality(float(seqDetails.split(";")[5][i2]))))
         probabilityOverall = probabilityOverall * probabilityBase
         i1 = i1 + 1
         i2 = i2 + 1
