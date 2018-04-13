@@ -89,7 +89,7 @@ def overalpScoreCalculation(seqDetails, i):
 # MAIN
 # Get the overlap pairs and details from the PAF files
 overlaps = open("data/Sample_AllReads_Overlaps.paf","r")
-print(overlaps.read(1))
+print(overlaps.readlines(0))
 
 
 """
