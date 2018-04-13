@@ -89,13 +89,12 @@ def overalpScoreCalculation(seqDetails, i):
 # MAIN
 # Get the overlap pairs and details from the PAF files
 overlaps = open("data/Sample_AllReads_Overlaps.paf","r")
-
-c = 1
-for i in overlaps.readlines():
-    #print (i)
-    #print("\n ^^^^^^^^^^ \n")
-    c = c + 1
-print(c)
+overlapCount = 1
+for ovlPair in overlaps.readlines():
+    print(ovlPair.split("\t")[1])
+    print("\n ^^^^^^^^^^ \n")
+    overlapCount = overlapCount + 1
+print(overlapCount)
 
 
 """
