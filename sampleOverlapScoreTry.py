@@ -4,7 +4,7 @@
 Created on Wed Mar 29 14:26:16 2018
 @author: samhitapn
 @purpose: Overlap score trials
-@modified: 04.April.2018
+@modified: 12.April.2018
 """
 
 #import biopython
@@ -12,6 +12,7 @@ from Bio import pairwise2
 from Bio import SeqIO as sio
 import numpy
 import itertools
+from time import time
 
 """
 @Definition: For calculating the probaility of the base at a given position
@@ -47,6 +48,9 @@ nt = ["A","T","C","G"] # Bases
 #def overalpScoreCalculation(seqDetails, i1, i2, L):
 def overalpScoreCalculation(seqDetails, i):
     probabilityOverall = 1
+    scoresRead1 = seqDetails.split(";")[2].split(",")
+    scoresRead2 = seqDetails.split(";")[5].split(",")
+    
     L = abs(len(seqDetails.split(";")[4]) - i)
     print(len(seqDetails.split(";")[4]),len(seqDetails.split(";")[2]),i,L)
     i1 = i
@@ -55,8 +59,8 @@ def overalpScoreCalculation(seqDetails, i):
         probabilityBase = 0
         
         #New code -> To include indels Option1
-        scoresRead1 = seqDetails.split(";")[2].split(",")
-        scoresRead2 = seqDetails.split(";")[5].split(",")
+        #scoresRead1 = seqDetails.split(";")[2].split(",")
+        #scoresRead2 = seqDetails.split(";")[5].split(",")
             # Gap in first read -> calculation based on read 2
         if seqDetails.split(";")[1][i1] == "-":
            #print(scoresRead2[i2])
@@ -83,6 +87,12 @@ def overalpScoreCalculation(seqDetails, i):
     return (overlapScore)
  
 # MAIN
+# Get the overlap pairs and details from the PAF files
+overlaps = open("data/Sample_AllReads_Overlaps.paf","r")
+print(overlaps)
+
+
+"""
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/ONT_Sample1_5Reads.fastq","fastq"))
 
@@ -91,11 +101,11 @@ alignment = {}
 pairCount = 1
 for seq1, seq2 in itertools.combinations(sequences, 2):
     al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    alignment[pairCount] = sequences[seq1].id + ";" + al[0][0] + ";" + str(sequences[seq1].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + sequences[seq2].id + ";" + al[0][1] +  ";" + str(sequences[seq2].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
+    alignment[sequences[seq1].id + '&' + sequences[seq2].id] = sequences[seq1].id + ";" + al[0][0] + ";" + str(sequences[seq1].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + sequences[seq2].id + ";" + al[0][1] +  ";" + str(sequences[seq2].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
     #print(alignment)
     #print(alignment[pairCount].split(",")[1][3])
     #print("\n ******************************** \n")
-    pairCount = pairCount + 1
+    #pairCount = pairCount + 1
 
 
 # Getting the scores for each overlap pair
@@ -103,10 +113,11 @@ for key in alignment:
     print(alignment[key].split(";")[1])
     print(alignment[key].split(";")[4])
     overlapScore = overalpScoreCalculation(alignment[key],20)
+    
     alignment[key] = alignment[key] + ";" + str(overlapScore)
     print(alignment[key].split(";")[6])
     print("\n ############ \n")
- 
+ """
 
     
         
