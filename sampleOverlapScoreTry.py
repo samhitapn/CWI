@@ -91,7 +91,7 @@ def overalpScoreCalculation(seqDetails, i):
 overlaps = open("data/Sample_AllReads_Overlaps.paf","r")
 overlapCount = 1
 for ovlPair in overlaps.readlines():
-    print(ovlPair.split("\t")[0])
+    print(ovlPair)
     print("\n ^^^^^^^^^^ \n")
     overlapCount = overlapCount + 1
 print(overlapCount)
