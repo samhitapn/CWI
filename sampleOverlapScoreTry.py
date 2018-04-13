@@ -87,27 +87,30 @@ def overalpScoreCalculation(seqDetails, i):
     return (overlapScore)
  
 # MAIN
-"""
+
 # Get the overlap pairs and details from the PAF files
 overlapFile = open("data/Sample_AllReads_Overlaps.paf","r")
+# Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
+sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 overlapCount = 1
-overlaps = {}
+alignment = {}
 for ovlPair in overlapFile.readlines():
     ovl = ovlPair.split("\t")
-    overlaps[ovl[0] + ovl[5]] = 
-    print("\n ^^^^^^^^^ \n")
+    al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
+    alignment[ovl[0] + '&' + ovl[5]] = al[0][0] + ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + al[0][1] +  ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
     overlapCount = overlapCount + 1
 print(overlapCount)
+print(alignment)
+
+
 """
-
-
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 for key, value in sequences.items():
     print(key)
     print("\n ^^^^ \n")
 
-"""
+
 # Get the alignment of all the overlap pairs
 alignment = {}
 pairCount = 1
