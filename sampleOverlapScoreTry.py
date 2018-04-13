@@ -103,7 +103,7 @@ print(overlapCount)
 
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
-for key in sequences:
+for key, value in sequences.items():
     print(key)
     print("\n ^^^^ \n")
 
