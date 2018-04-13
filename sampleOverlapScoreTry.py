@@ -92,8 +92,8 @@ overlaps = open("data/Sample_AllReads_Overlaps.paf","r")
 
 c = 1
 for i in overlaps.readlines():
-    print (i)
-    print("\n ^^^^^^^^^^ \n")
+    #print (i)
+    #print("\n ^^^^^^^^^^ \n")
     c = c + 1
 print(c)
 
