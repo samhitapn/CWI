@@ -114,9 +114,12 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
                 print(stop - start)
                 alignment[ovl[0] + ' ' + ovl[5]] = ovl[10] + " " + al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
                 overlapCount = overlapCount + 1
+                print(al[0][0])
+                print(al[0][1])
+                print("$$$$$$$$$$$$$$$$$$")
         else:
             break
-print(alignment)
+#print(alignment)
 
 
 """
