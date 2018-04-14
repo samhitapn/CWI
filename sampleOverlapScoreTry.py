@@ -89,11 +89,14 @@ def overalpScoreCalculation(seqDetails, i):
 # MAIN
 
 # Get the overlap pairs and details from the PAF files
-overlapFile = open("data/Sample_AllReads_Overlaps.paf","r")
+with open("data/Sample_AllReads_Overlaps.paf","r") as f:
+    overlapFile = f
+print(type(overlapFile))
 print("^^^^^OVERLAPS READ^^^^^^^\n")
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
+""""
 overlapCount = 1
 alignment = {}
 for ovlPair in overlapFile.readlines():
@@ -106,7 +109,7 @@ for ovlPair in overlapFile.readlines():
     overlapCount = overlapCount + 1
 print(overlapCount)
 print(alignment)
-
+"""
 
 """
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
