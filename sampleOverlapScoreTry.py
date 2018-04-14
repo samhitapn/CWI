@@ -105,7 +105,10 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
         #print("^^^^^^^^^^^^^^^^^^^^")
         print(overlapCount)
         ovl = ovlPair.split("\t")
+        start = time()
         al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
+        stop = time()
+        print(start - stop)
         #alignment[ovl[0] + '&' + ovl[5]] = al[0][0] + ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + al[0][1] +  ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
         #print("^^^^^Alignment data^^^^^^^^^")
         overlapCount = overlapCount + 1
