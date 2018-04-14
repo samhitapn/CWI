@@ -104,20 +104,21 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
         #if overlapCount <= 30:
         #print(ovlPair)
         #print("^^^^^^^^^^^^^^^^^^^^")
-            print(overlapCount)
+            
             ovl = ovlPair.split("\t")
             if ovl[0] != ovl[5]:
+                print(overlapCount)
                 print(ovl[0])
                 print(ovl[5])
                 print("$$$$$$$$")
-                
+                """
                 start = time()
                 al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
                 stop = time()
                 print(stop - start)
                 alignment[ovl[0] + '&' + ovl[5]] = ovl[2] + "\t" + ovl[3] + "\t" +  al[0][0] + "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + "\t" + ovl[7] + "\t" + ovl[8] + "\t" + al[0][1] +  "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") 
                 #print("^^^^^Alignment data^^^^^^^^^")
-                
+                """
                 overlapCount = overlapCount + 1
         #else:
          #   break
