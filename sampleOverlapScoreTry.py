@@ -91,7 +91,7 @@ def overalpScoreCalculation(seqDetails, i):
 
 #overlapFile = f.readlines()
 #print(type(overlapFile))
-print("^^^^^OVERLAPS READ^^^^^^^\n")
+#print("^^^^^OVERLAPS READ^^^^^^^\n")
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
@@ -110,7 +110,7 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
             al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
             stop = time()
             print(stop - start)
-            alignment[ovl[0] + '&' + ovl[5]] = al[0][0] + ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + al[0][1] +  ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
+            alignment[ovl[0] + '&' + ovl[5]] = ovl[2] + "\t" + ovl[3] + "\t" +  al[0][0] + "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + "\t" + ovl[7] + "\t" + ovl[8] + "\t" + al[0][1] +  "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") 
             #print("^^^^^Alignment data^^^^^^^^^")
             overlapCount = overlapCount + 1
         else:
