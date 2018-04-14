@@ -101,7 +101,7 @@ alignment = {}
 # Get the overlap pairs and details from the PAF files
 with open("data/Sample_AllReads_Overlaps.paf","r") as f:
     for ovlPair in f.readlines():
-        #if overlapCount <= 30:
+        if overlapCount <= 30:
         #print(ovlPair)
         #print("^^^^^^^^^^^^^^^^^^^^")
             
@@ -118,8 +118,8 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
                 alignment[ovl[0] + '&' + ovl[5]] = ovl[2] + "\t" + ovl[3] + "\t" +  al[0][0] + "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + "\t" + ovl[7] + "\t" + ovl[8] + "\t" + al[0][1] +  "\t" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") 
                 #print("^^^^^Alignment data^^^^^^^^^")
                 overlapCount = overlapCount + 1
-        #else:
-         #   break
+        else:
+            break
 print(alignment)
 
 
