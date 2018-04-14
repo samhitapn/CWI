@@ -93,7 +93,7 @@ def overalpScoreCalculation(seqDetails, i):
 #print(type(overlapFile))
 print("^^^^^OVERLAPS READ^^^^^^^\n")
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
-#sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
+sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
 
 overlapCount = 1
