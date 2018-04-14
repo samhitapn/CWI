@@ -102,7 +102,6 @@ alignment = {}
 for ovlPair in overlapFile:
     print(ovlPair)
     print("^^^^^^^^^^^^^^^^^^^^")
-    """"
     ovl = ovlPair.split("\t")
     al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
     alignment[ovl[0] + '&' + ovl[5]] = al[0][0] + ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + al[0][1] +  ";" + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
@@ -110,7 +109,7 @@ for ovlPair in overlapFile:
     overlapCount = overlapCount + 1
 print(overlapCount)
 print(alignment)
-"""
+
 
 """
 # Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
