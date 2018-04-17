@@ -8,11 +8,15 @@ Created on Wed Mar 29 14:26:16 2018
 """
 
 #import biopython
-from Bio import pairwise2 
+from Bio import pairwise2
 from Bio import SeqIO as sio
 import numpy
 import itertools
 from time import time
+
+
+
+nt = ["A","T","C","G"] # Bases
 
 """
 @Definition: For calculating the probaility of the base at a given position
@@ -29,7 +33,7 @@ def probabilityQ (X, b, p):
 
 """
 @Definition: For calculating the probaility from the phred quality scores
-@Input parameters: 
+@Input parameters:
 @Output parameters: Probability
 """
 def getProbQuality (q):
@@ -38,9 +42,10 @@ def getProbQuality (q):
     p = 10**(-q/10)
     return p
 
+
 """
-@Definition: 
-@Input parameters: 
+@Definition:
+@Input parameters:
 @Output parameters: Probability
 """
 def findOverlapRegion (read1, read2):
@@ -54,62 +59,91 @@ def findOverlapRegion (read1, read2):
     return(overlapStart, overlapEnd)
 
 
-nt = ["A","T","C","G"] # Bases
 """
-@Definition: 
-@Input parameters: 
-@Output parameters: 
-"""   
-#def overalpScoreCalculation(seqDetails, i1, i2, L):
-def overalpScoreCalculation(seqDetails):
-    probabilityOverall = 1
-    seqRead1 =  seqDetails.split(" ")[1].split(",")
-    scoreRead1 = seqDetails.split(" ")[2].split(",")
-    seqRead2 = seqDetails.split(" ")[3].split(",")
-    scoreRead2 = seqDetails.split(" ")[4].split(",")
-    
-    overlapRegion = findOverlapRegion(seqRead1, seqRead2)
-    i = overlapRegion[0]
-    endOverlap = overlapRegion[1]
-    
+@Definition:
+@Input parameters:
+@Output parameters: Probability
+"""
+def reorderScores (read, score):
+    i = 0
+    while i < len(read):
+        if read[i] == "-":
+            score.insert(i,"-")
+        i = i + 1
+    return(score)
 
+
+"""
+@Definition:
+@Input parameters:
+@Output parameters:
+"""
+def overalpScoreCalculation(seqDetails):
+    # Initiating required values
+    probabilityOverall = 1
+
+    # Getting the sequence and scores
+    seqRead1 =  seqDetails.split(" ")[0]
+    scoreRead1 = seqDetails.split(" ")[1].split(",")
+    seqRead2 = seqDetails.split(" ")[2]
+    scoreRead2 = seqDetails.split(" ")[3].split(",")
+
+    # reordering the score positions based on alignment
+    scoreRead1 = reorderScores(seqRead1,scoreRead1)
+    scoreRead2 = reorderScores(seqRead2,scoreRead2)
+
+    # Finding the overlap region
+    overlapRegion = findOverlapRegion(seqRead1, seqRead2)
+    startOverlap = overlapRegion[0]
+    endOverlap = overlapRegion[1]
+    L = endOverlap - startOverlap
+
+    outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
         probabilityBase = 0
-        
+
         #New code -> To include indels Option1
-    
-            # Gap in first read -> calculation based on read 2
+
+        # Gap in first read -> calculation based on read 2
         if seqRead1[startOverlap] == "-":
-           #print(scoresRead2[i2])
-           probabilityBase = (3/13 * getProbQuality(float(scoresRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoresRead2[]))))
-           pl = 1
-           # Gap in second read -> calculation based on read 1
-        elif seqDetails.split(";")[4][i2] == "-":
-           print(scoresRead1[i1])
-           probabilityBase = (3/13 * getProbQuality(float(scoresRead1[i1]))) + (10/13 * (1 - getProbQuality(float(scoresRead1[i1]))))
-           pl = 2
-           # Existing score calculation
+            #print(scoreRead2[startOverlap])
+            #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
+            probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
+            pl = 1
+            #print("I am in %f", pl)
+        # Gap in second read -> calculation based on read 1
+        elif seqRead2[startOverlap] == "-":
+            #print(scoreRead1[startOverlap])
+            probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
+            pl = 2
+            #print("I am in %f", pl)
+          # Existing score calculation
         else:
+            #print(scoreRead1[startOverlap])
+            #print(scoreRead2[startOverlap])
             for n in nt:
-                #print(n)
-                probabilityBase = probabilityBase + (probabilityQ(n,seqDetails.split(";")[1][i1],getProbQuality(float(scoresRead1[i1]))) * probabilityQ(n,seqDetails.split(";")[4][i2],getProbQuality(float(scoresRead2[i2]))))
+               #print(n)
+               #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
+               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             pl = 3
-        probabilityOverall = probabilityOverall * probabilityBase
-        print(i1,i2,probabilityOverall,pl)
-        i1 = i1 + 1
-        i2 = i2 + 1
-    # Overlap score
+            #print("I am in %f", pl)
+        #print(probabilityBase)
+        if probabilityBase != 0:
+            #print(probabilityOverall)
+            probabilityOverall = probabilityOverall * probabilityBase
+            #print(probabilityOverall)
+            #print("***********")
+
+        print(startOverlap , scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
+        startOverlap = startOverlap + 1
+
+      # Overlap score
     overlapScore = probabilityOverall ** 1/L
     #print(overlapScore)
+    outFile.close()
     return (overlapScore)
- 
+
 # MAIN
-
-
-#overlapFile = f.readlines()
-#print(type(overlapFile))
-#print("^^^^^OVERLAPS READ^^^^^^^\n")
-# Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
 
@@ -118,86 +152,29 @@ alignment = {}
 # Get the overlap pairs and details from the PAF files
 with open("data/Sample_AllReads_Overlaps.paf","r") as f:
     for ovlPair in f.readlines():
-        if overlapCount <= 30:
+        if overlapCount <= 1:
         #print(ovlPair)
         #print("^^^^^^^^^^^^^^^^^^^^")
-            
+
             ovl = ovlPair.split("\t")
             if ovl[0] != ovl[5]:
-                print(overlapCount)
+                #print(overlapCount)
                 start = time()
                 al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
                 stop = time()
                 print(stop - start)
-                alignment[ovl[0] + ' ' + ovl[5]] = ovl[10] + " " + al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
+                alignment[ovl[0] + ' ' + ovl[5]] = al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
                 overlapCount = overlapCount + 1
-                print(al[0][0])
-                print(al[0][1])
-                print("$$$$$$$$$$$$$$$$$$")
+                #print(al[0][0])
+                #print(al[0][1])
+                #print("$$$$$$$$$$$$$$$$$$")
         else:
             break
 #print(alignment)
 
-
-"""
-# Read in the fastq files -> Usually the overalp pairs; here only the test 5 reads
-sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
-for key, value in sequences.items():
-    print(key)
-    print("\n ^^^^ \n")
-
-
-# Get the alignment of all the overlap pairs
-alignment = {}
-pairCount = 1
-for seq1, seq2 in itertools.combinations(sequences, 2):
-    al = pairwise2.align.globalxx(sequences[seq1].seq,sequences[seq2].seq)
-    alignment[sequences[seq1].id + '&' + sequences[seq2].id] = sequences[seq1].id + ";" + al[0][0] + ";" + str(sequences[seq1].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + ";" + sequences[seq2].id + ";" + al[0][1] +  ";" + str(sequences[seq2].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
-    #print(alignment)
-    #print(alignment[pairCount].split(",")[1][3])
-    #print("\n ******************************** \n")
-    #pairCount = pairCount + 1
-"""
-
 # Getting the scores for each overlap pair
 for key in alignment:
-    print(alignment[key].split(" ")[1])
-    print(alignment[key].split(" ")[4])
-    overlapScore = overalpScoreCalculation(alignment[key])
-    
-    alignment[key] = alignment[key] + ";" + str(overlapScore)
-    print(alignment[key].split(";")[6])
-    print("\n ############ \n")
- 
-
-    
-        
-
-
-
-     
-
-
-
-###########################################################################
-"""
- #TRIALS
- 
- 
-#print(pairwise2.format_alignment(*al[0]))
-#print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n")
-al = pairwise2.align.globalxx("AGTCGCTCGTACGCTACCGAT","AGTCGCTCGCGTATACCGAT")
-#print(al[0])
-#a = pairwise2.format_alignment(*al)
-print(al)
-print("\n +")
-print(al[0][1])
-#result.write(pairwise2.format_alignment(al)) 
-#
-#print(al)
-
-#alignments = pairwise2.align.globalxx("ACCGT", "ACG")
-#print(alignments[1])
-#print(pairwise2.format_alignment(*alignments))
-
-"""
+        overlapScore = overalpScoreCalculation(alignment[key])
+        alignment[key] = alignment[key] + ";" + str(overlapScore)
+        print(alignment[key].split(";")[4])
+        print("\n ############ \n")
