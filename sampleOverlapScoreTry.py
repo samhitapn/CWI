@@ -38,6 +38,21 @@ def getProbQuality (q):
     p = 10**(-q/10)
     return p
 
+"""
+@Definition: 
+@Input parameters: 
+@Output parameters: Probability
+"""
+def findOverlapRegion (read1, read2):
+    read1_start = min(read1.find("A"),read1.find("T"),read1.find("G"),read1.find("C"))
+    read2_start = min(read2.find("A"),read2.find("T"),read2.find("G"),read2.find("C"))
+    read1_end = max(read1.rfind("A"),read1.rfind("T"),read1.rfind("G"),read1.rfind("C"))
+    read2_end = max(read2.rfind("A"),read2.rfind("T"),read2.rfind("G"),read2.rfind("C"))
+    print(read1_start, read1_end, read2_start, read2_end)
+    overlapStart = max(read1_start, read2_start)
+    overlapEnd = min(read1_end, read2_end)
+    return(overlapStart, overlapEnd)
+
 
 nt = ["A","T","C","G"] # Bases
 """
@@ -46,25 +61,27 @@ nt = ["A","T","C","G"] # Bases
 @Output parameters: 
 """   
 #def overalpScoreCalculation(seqDetails, i1, i2, L):
-def overalpScoreCalculation(seqDetails, i):
+def overalpScoreCalculation(seqDetails):
     probabilityOverall = 1
-    scoresRead1 = seqDetails.split(";")[2].split(",")
-    scoresRead2 = seqDetails.split(";")[5].split(",")
+    seqRead1 =  seqDetails.split(" ")[1].split(",")
+    scoreRead1 = seqDetails.split(" ")[2].split(",")
+    seqRead2 = seqDetails.split(" ")[3].split(",")
+    scoreRead2 = seqDetails.split(" ")[4].split(",")
     
-    L = abs(len(seqDetails.split(";")[4]) - i)
-    print(len(seqDetails.split(";")[4]),len(seqDetails.split(";")[2]),i,L)
-    i1 = i
-    i2 = 0
-    while i1 < i1 + L and i2 < i2 + L:
+    overlapRegion = findOverlapRegion(seqRead1, seqRead2)
+    i = overlapRegion[0]
+    endOverlap = overlapRegion[1]
+    
+
+    while startOverlap <= endOverlap:
         probabilityBase = 0
         
         #New code -> To include indels Option1
-        #scoresRead1 = seqDetails.split(";")[2].split(",")
-        #scoresRead2 = seqDetails.split(";")[5].split(",")
+    
             # Gap in first read -> calculation based on read 2
-        if seqDetails.split(";")[1][i1] == "-":
+        if seqRead1[startOverlap] == "-":
            #print(scoresRead2[i2])
-           probabilityBase = (3/13 * getProbQuality(float(scoresRead2[i2]))) + (10/13 * (1 - getProbQuality(float(scoresRead2[i2]))))
+           probabilityBase = (3/13 * getProbQuality(float(scoresRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoresRead2[]))))
            pl = 1
            # Gap in second read -> calculation based on read 1
         elif seqDetails.split(";")[4][i2] == "-":
@@ -140,18 +157,18 @@ for seq1, seq2 in itertools.combinations(sequences, 2):
     #print(alignment[pairCount].split(",")[1][3])
     #print("\n ******************************** \n")
     #pairCount = pairCount + 1
-
+"""
 
 # Getting the scores for each overlap pair
 for key in alignment:
-    print(alignment[key].split(";")[1])
-    print(alignment[key].split(";")[4])
-    overlapScore = overalpScoreCalculation(alignment[key],20)
+    print(alignment[key].split(" ")[1])
+    print(alignment[key].split(" ")[4])
+    overlapScore = overalpScoreCalculation(alignment[key])
     
     alignment[key] = alignment[key] + ";" + str(overlapScore)
     print(alignment[key].split(";")[6])
     print("\n ############ \n")
- """
+ 
 
     
         
