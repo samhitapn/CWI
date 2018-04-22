@@ -167,7 +167,7 @@ def overalpScoreCalculation(seqDetails):
         #print(probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
 
-        print(startOverlap, seqRead1[startOverlap], seqRead2[startOverlap], scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
+        print(startOverlap-1, seqRead1[startOverlap-1], seqRead2[startOverlap-1], scoreRead1[startOverlap-1] , scoreRead2[startOverlap-1] , probabilityBase , probabilityOverall , pl)
 
       # Overlap score
     overlapScore = probabilityOverall ** 1/L
