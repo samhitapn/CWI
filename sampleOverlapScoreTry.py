@@ -84,6 +84,7 @@ def getGapRegionScore (read, score, pos):
     end = ntPattern.search(read,pos).start()
     start = pos
     lenGap = end - start
+    print(start, end, lenGap)
     if lenGap > 1:
         probSum = 0
         while start < end:
@@ -125,11 +126,12 @@ def overalpScoreCalculation(seqDetails):
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
         probabilityBase = 0
-        print(startOverlap)
+
         #New code -> To include indels Option1
 
         # Gap in first read -> calculation based on read 2
         if seqRead1[startOverlap] == "-":
+            print(startOverlap)
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
@@ -141,6 +143,7 @@ def overalpScoreCalculation(seqDetails):
 
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
+            print(startOverlap)
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
             gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
@@ -152,6 +155,7 @@ def overalpScoreCalculation(seqDetails):
 
         # Existing score calculation
         else:
+            print(startOverlap)
             for n in nt:
                #print(n)
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
@@ -163,7 +167,7 @@ def overalpScoreCalculation(seqDetails):
         #print(probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
 
-        print(startOverlap , scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
+        #print(startOverlap , seqRead1[startOverlap], scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
 
       # Overlap score
     overlapScore = probabilityOverall ** 1/L
