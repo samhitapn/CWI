@@ -132,16 +132,18 @@ def overalpScoreCalculation(seqDetails):
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
-            probabilityBase = gapRegion(seqRead2,scoreRead2,startOverlap)[0]
-            startOverlap = gapRegion[1]
+            gapDetails = gapRegion(seqRead2,scoreRead2,startOverlap)
+            probabilityBase = gapDetails[0]
+            startOverlap = gapDetails[1]
             pl = 1
             #print("I am in %f", pl)
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
-            probabilityBase = gapRegion(seqRead1,scoreRead1,startOverlap)[0]
-            startOverlap = gapRegion[1]
+            gapDetails = gapRegion(seqRead1,scoreRead1,startOverlap)
+            probabilityBase = gapDetails[0]
+            startOverlap = gapDetails[1]
             pl = 2
             #print("I am in %f", pl)
           # Existing score calculation
