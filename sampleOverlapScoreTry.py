@@ -146,7 +146,7 @@ def overalpScoreCalculation(seqDetails):
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 2
-            continue
+
 
         # Existing score calculation
         else:
@@ -156,7 +156,7 @@ def overalpScoreCalculation(seqDetails):
                probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             pl = 3
             startOverlap = startOverlap + 1
-            continue
+
             #print("I am in %f", pl)
         #print(probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
