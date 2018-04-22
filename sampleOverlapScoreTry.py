@@ -81,6 +81,7 @@ def reorderScores (read, score):
 @Output parameters: Probability
 """
 def getGapRegionScore (read, score, pos):
+    print(pos)
     end = ntPattern.search(read,pos).start()
     start = pos
     lenGap = end - start
@@ -162,7 +163,7 @@ def overalpScoreCalculation(seqDetails):
 
         # Existing score calculation
         else:
-            pl = 2
+            pl = 3
             print("BEFORE")
             print(pl,startOverlap)
             for n in nt:
