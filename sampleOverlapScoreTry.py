@@ -81,7 +81,7 @@ def reorderScores (read, score):
 @Output parameters: Probability
 """
 def gapRegion (read, pos):
-    end = ntPattern.search(read1,pos).start()
+    end = ntPattern.search(read,pos).start()
     start = pos
     lenGap = end - start
     if lenGap > 1:
