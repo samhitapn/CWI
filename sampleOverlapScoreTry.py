@@ -125,7 +125,7 @@ def overalpScoreCalculation(seqDetails):
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
         probabilityBase = 0
-
+        print(startOverlap)
         #New code -> To include indels Option1
 
         # Gap in first read -> calculation based on read 2
@@ -137,7 +137,6 @@ def overalpScoreCalculation(seqDetails):
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 1
-            continue
 
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
