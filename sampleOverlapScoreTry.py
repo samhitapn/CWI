@@ -120,6 +120,7 @@ def overalpScoreCalculation(seqDetails):
     startOverlap = overlapRegion[0]
     endOverlap = overlapRegion[1]
     L = endOverlap - startOverlap
+    print(startOverlap, endOverlap, L)
 
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
@@ -136,7 +137,8 @@ def overalpScoreCalculation(seqDetails):
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 1
-            #print("I am in %f", pl)
+            continue
+
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
             #print(scoreRead1[startOverlap])
@@ -145,22 +147,20 @@ def overalpScoreCalculation(seqDetails):
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 2
-            #print("I am in %f", pl)
-          # Existing score calculation
+            continue
+
+        # Existing score calculation
         else:
-            #print(scoreRead1[startOverlap])
-            #print(scoreRead2[startOverlap])
             for n in nt:
                #print(n)
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
                probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             pl = 3
             startOverlap = startOverlap + 1
+            continue
             #print("I am in %f", pl)
         #print(probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
-        #print(probabilityOverall)
-        #print("***********")
 
         print(startOverlap , scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
 
@@ -201,6 +201,8 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
 
 # Getting the scores for each overlap pair
 for key in alignment:
+        print(alignment[key].split(";")[0])
+        print(alignment[key].split(";")[2])
         overlapScore = overalpScoreCalculation(alignment[key])
         alignment[key] = alignment[key] + ";" + str(overlapScore)
         print(alignment[key].split(";")[4])
