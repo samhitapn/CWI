@@ -13,10 +13,13 @@ from Bio import SeqIO as sio
 import numpy
 import itertools
 from time import time
+import re
 
 
 
 nt = ["A","T","C","G"] # Bases
+ntPattern = re.compile("[ATGC]")
+gapPattern = re.compile("[-]")
 
 """
 @Definition: For calculating the probaility of the base at a given position
@@ -72,6 +75,26 @@ def reorderScores (read, score):
         i = i + 1
     return(score)
 
+"""
+@Definition:
+@Input parameters:
+@Output parameters: Probability
+"""
+def gapRegion (read, pos):
+    end = ntPattern.search(read1,pos).start()
+    start = pos
+    lenGap = end - start
+    if lenGap > 1:
+        probSum = 0
+        while start < end:
+            probSum = probSum + (10/13 * getProbQuality(float(read[start]))) + (3/13 * (1 - getProbQuality(float(read[start]))))
+            start = start + 1
+        probGap = probSum/lenGap
+    else:
+        probGap = (10/13 * getProbQuality(float(read[start]))) + (3/13 * (1 - getProbQuality(float(read[start]))))
+    return(probGap,end)
+
+
 
 """
 @Definition:
@@ -98,7 +121,7 @@ def overalpScoreCalculation(seqDetails):
     endOverlap = overlapRegion[1]
     L = endOverlap - startOverlap
 
-    outFile = open("scoreData.txt","w+")
+    #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
         probabilityBase = 0
 
@@ -108,13 +131,17 @@ def overalpScoreCalculation(seqDetails):
         if seqRead1[startOverlap] == "-":
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
-            probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
+            #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
+            probabilityBase = gapRegion(seqRead2,startOverlap)[0]
+            startOverlap = gapRegion[1]
             pl = 1
             #print("I am in %f", pl)
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
             #print(scoreRead1[startOverlap])
-            probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
+            #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
+            probabilityBase = gapRegion(seqRead1,startOverlap)[0]
+            startOverlap = gapRegion[1]
             pl = 2
             #print("I am in %f", pl)
           # Existing score calculation
@@ -126,21 +153,19 @@ def overalpScoreCalculation(seqDetails):
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
                probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             pl = 3
+            startOverlap = startOverlap + 1
             #print("I am in %f", pl)
         #print(probabilityBase)
-        if probabilityBase != 0:
-            #print(probabilityOverall)
-            probabilityOverall = probabilityOverall * probabilityBase
-            #print(probabilityOverall)
-            #print("***********")
+        probabilityOverall = probabilityOverall * probabilityBase
+        #print(probabilityOverall)
+        #print("***********")
 
         print(startOverlap , scoreRead1[startOverlap] , scoreRead2[startOverlap] , probabilityBase , probabilityOverall , pl)
-        startOverlap = startOverlap + 1
 
       # Overlap score
     overlapScore = probabilityOverall ** 1/L
     #print(overlapScore)
-    outFile.close()
+    #outFile.close()
     return (overlapScore)
 
 # MAIN
