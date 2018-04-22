@@ -80,7 +80,7 @@ def reorderScores (read, score):
 @Input parameters:
 @Output parameters: Probability
 """
-def gapRegion (read, score, pos):
+def getGapRegionScore (read, score, pos):
     end = ntPattern.search(read,pos).start()
     start = pos
     lenGap = end - start
@@ -133,7 +133,8 @@ def overalpScoreCalculation(seqDetails):
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
-            gapDetails = gapRegion(seqRead2,scoreRead2,startOverlap)
+            gapDetails = getGapRegionScore(seqRead2,scoreRead2,startOverlap)
+            print(gapDetails)
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 1
@@ -142,7 +143,8 @@ def overalpScoreCalculation(seqDetails):
         elif seqRead2[startOverlap] == "-":
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
-            gapDetails = gapRegion(seqRead1,scoreRead1,startOverlap)
+            gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
+            print(gapDetails)
             probabilityBase = gapDetails[0]
             startOverlap = gapDetails[1]
             pl = 2
@@ -154,8 +156,8 @@ def overalpScoreCalculation(seqDetails):
                #print(n)
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
                probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
-            pl = 3
             startOverlap = startOverlap + 1
+            pl = 3
 
             #print("I am in %f", pl)
         #print(probabilityBase)
