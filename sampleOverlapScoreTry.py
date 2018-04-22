@@ -201,9 +201,9 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
 
 # Getting the scores for each overlap pair
 for key in alignment:
-        print(alignment[key].split(";")[0])
-        print(alignment[key].split(";")[2])
+        print(alignment[key].split(" ")[0])
+        print(alignment[key].split(" ")[2])
         overlapScore = overalpScoreCalculation(alignment[key])
-        alignment[key] = alignment[key] + ";" + str(overlapScore)
+        alignment[key] = alignment[key] + " " + str(overlapScore)
         print(alignment[key].split(";")[4])
         print("\n ############ \n")
