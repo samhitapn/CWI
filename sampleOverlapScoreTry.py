@@ -80,18 +80,18 @@ def reorderScores (read, score):
 @Input parameters:
 @Output parameters: Probability
 """
-def gapRegion (read, pos):
+def gapRegion (read, score, pos):
     end = ntPattern.search(read,pos).start()
     start = pos
     lenGap = end - start
     if lenGap > 1:
         probSum = 0
         while start < end:
-            probSum = probSum + (10/13 * getProbQuality(float(read[start]))) + (3/13 * (1 - getProbQuality(float(read[start]))))
+            probSum = probSum + (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
             start = start + 1
         probGap = probSum/lenGap
     else:
-        probGap = (10/13 * getProbQuality(float(read[start]))) + (3/13 * (1 - getProbQuality(float(read[start]))))
+        probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
     return(probGap,end)
 
 
@@ -132,7 +132,7 @@ def overalpScoreCalculation(seqDetails):
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
-            probabilityBase = gapRegion(seqRead2,startOverlap)[0]
+            probabilityBase = gapRegion(seqRead2,scoreRead2,startOverlap)[0]
             startOverlap = gapRegion[1]
             pl = 1
             #print("I am in %f", pl)
@@ -140,7 +140,7 @@ def overalpScoreCalculation(seqDetails):
         elif seqRead2[startOverlap] == "-":
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
-            probabilityBase = gapRegion(seqRead1,startOverlap)[0]
+            probabilityBase = gapRegion(seqRead1,scoreRead1,startOverlap)[0]
             startOverlap = gapRegion[1]
             pl = 2
             #print("I am in %f", pl)
