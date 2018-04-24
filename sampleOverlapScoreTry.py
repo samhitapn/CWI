@@ -130,7 +130,10 @@ def overalpScoreCalculation(seqDetails):
     # reordering the score positions based on alignment
     scoreRead1 = reorderScores(seqRead1,scoreRead1)
     scoreRead2 = reorderScores(seqRead2,scoreRead2)
+    print(seqRead1, scoreRead1)
+    print(seqRead2, scoreRead2)
 
+"""
     # Finding the overlap region
     overlapRegion = findOverlapRegion(seqRead1, seqRead2)
     startOverlap = overlapRegion[0]
@@ -143,19 +146,8 @@ def overalpScoreCalculation(seqDetails):
         probabilityBaseSum = 0
         #probabilityBaseProd = 0
         #New code -> To include indels Option1
-        """
-        if seqRead1[startOverlap] == "-":
-            print(startOverlap, seqRead1[startOverlap])
-            end = ntPattern.search(seqRead1,startOverlap).start()
-            print(end)
-            startOverlap = end
-            print(startOverlap)
-            print("&&&&&&&")
-        else:
-            print(startOverlap, seqRead1[startOverlap])
-            print("&&&&&&&")
-            startOverlap = startOverlap + 1
-        """
+
+
         # Gap in first read -> calculation based on read 2
         print(seqRead1[startOverlap],scoreRead1[startOverlap],seqRead2[startOverlap],scoreRead2[startOverlap])
         if seqRead1[startOverlap] == "-":
@@ -216,7 +208,7 @@ def overalpScoreCalculation(seqDetails):
     #print(overlapScore)
     #outFile.close()
     return (overlapScoreSum)
-
+"""
 # MAIN
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
@@ -226,7 +218,7 @@ alignment = {}
 # Get the overlap pairs and details from the PAF files
 with open("data/Sample_AllReads_Overlaps.paf","r") as f:
     for ovlPair in f.readlines():
-        if overlapCount <= 15:
+        if overlapCount <= 5:
         #print(ovlPair)
         #print("^^^^^^^^^^^^^^^^^^^^")
 
@@ -252,13 +244,13 @@ for key in alignment:
         #print(alignment[key].split(" ")[2])
         print(key)
         if alignment[key].split(" ")[4] == str(4):
-            print(alignment[key].split(" ")[0])
-            print(alignment[key].split(" ")[1])
-            print(alignment[key].split(" ")[2])
-            print(alignment[key].split(" ")[3])
+            #print(alignment[key].split(" ")[0])
+            #print(alignment[key].split(" ")[1])
+            #print(alignment[key].split(" ")[2])
+            #print(alignment[key].split(" ")[3])
             #print(alignment[key])
 
-            #overlapScore = overalpScoreCalculation(alignment[key])
+            overlapScore = overalpScoreCalculation(alignment[key])
         #alignment[key] = alignment[key] + " " + str(overlapScore[0]) + " " + str(overlapScore[1])
             #alignment[key] = alignment[key] + " " + str(overlapScore)
         #print(key)
