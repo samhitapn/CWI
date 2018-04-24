@@ -142,6 +142,7 @@ def overalpScoreCalculation(seqDetails):
         else:
             print(startOverlap, seqRead1[startOverlap])
             print("&&&&&&&")
+            startOverlap = startOverlap + 1
         """
         # Gap in first read -> calculation based on read 2
         if seqRead1[startOverlap] == "-":
