@@ -80,24 +80,24 @@ def reorderScores (read, score):
 @Input parameters:
 @Output parameters: Probability
 """
-def getGapRegionScore (read, score, pos):
-    start = pos
-    end = ntPattern.search(read,start).start()
+def getGapRegionScore (score, start, end):
+    #start = pos
+    #end = ntPattern.search(read,start).start()
     #print(start,end)
     lenGap = end - start
     #print(start, end, lenGap)
     if lenGap > 1:
         probSum = 0
         while start < end:
-            print(start,end,lenGap)
+            #print(start,end,lenGap)
             probSum = probSum + (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
             start = start + 1
         probGap = probSum/lenGap
     else:
-        print("ELSE")
-        print(start,end,lenGap)
+        #print("ELSE")
+        #print(start,end,lenGap)
         probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
-    return(probGap,end)
+    return(probGap)
 
 
 
@@ -141,10 +141,12 @@ def overalpScoreCalculation(seqDetails):
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
-            gapDetails = getGapRegionScore(seqRead2,scoreRead2,startOverlap)
+            end = ntPattern.search(seqRead2,startOverlap).start()
+            print(end)
+            #gapDetails = getGapRegionScore(scoreRead2,startOverlap,end)
             #print(gapDetails)
-            probabilityBase = gapDetails[0]
-            startOverlap = gapDetails[1]
+            probabilityBase = getGapRegionScore(scoreRead2,startOverlap,end)
+            startOverlap = end
             print("AFTER")
             print(pl, startOverlap)
 
@@ -155,10 +157,13 @@ def overalpScoreCalculation(seqDetails):
             print(pl,startOverlap)
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
-            gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
+            end = ntPattern.search(seqRead1,startOverlap).start()
+            print(end)
+            #gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
+            #gapDetails = getGapRegionScore(scoreRead1,startOverlap,end)
             #print(gapDetails)
-            probabilityBase = gapDetails[0]
-            startOverlap = gapDetails[1]
+            probabilityBase = getGapRegionScore(scoreRead1,startOverlap,end)
+            startOverlap = end
             print("AFTER")
             print(pl, startOverlap)
 
