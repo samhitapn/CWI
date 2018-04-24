@@ -190,7 +190,7 @@ def overalpScoreCalculation(seqDetails):
         #print("$$$$$$$$$$$$$$$$$$$$$$$$$$")
             #print("I am in %f", pl)
         #print(probabilityBase)
-        probabilityOverall = probabilityOverall * probabilityBase
+        probabilityOverall = probabilityOverall * log(probabilityBase)
 
         print(startOverlap-1, seqRead1[startOverlap-1], seqRead2[startOverlap-1], scoreRead1[startOverlap-1] , scoreRead2[startOverlap-1] , probabilityBase , probabilityOverall , pl)
 
