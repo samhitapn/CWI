@@ -233,7 +233,7 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
                 al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
                 stop = time()
                 print(stop - start)
-                alignment[ovl[0] + ' ' + ovl[5]] = al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + overlapCount
+                alignment[ovl[0] + ' ' + ovl[5]] = al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + str(overlapCount)
                 overlapCount = overlapCount + 1
                 #print(al[0][0])
                 #print(al[0][1])
