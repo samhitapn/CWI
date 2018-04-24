@@ -81,11 +81,14 @@ def reorderScores (read, score):
 @Output parameters: Probability
 """
 def getGapRegionScore (read, score, pos):
+    print("POS:")
     print(pos)
     end = ntPattern.search(read,pos).start()
+    print("END:")
+    print(end)
     start = pos
     lenGap = end - start
-    print(start, end, lenGap)
+    #print(start, end, lenGap)
     if lenGap > 1:
         probSum = 0
         while start < end:
