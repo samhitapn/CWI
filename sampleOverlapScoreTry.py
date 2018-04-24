@@ -81,24 +81,22 @@ def reorderScores (read, score):
 @Output parameters: Probability
 """
 def getGapRegionScore (read, score, pos):
-    print("POS:")
-    print(pos,type(pos))
-    end = ntPattern.search(read,pos).start()
-    print("END:")
-    print(end)
     start = pos
+    end = ntPattern.search(read,start).start()
+    #print(start,end)
     lenGap = end - start
     #print(start, end, lenGap)
     if lenGap > 1:
         probSum = 0
         while start < end:
+            print(start,end,lenGap)
             probSum = probSum + (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
             start = start + 1
         probGap = probSum/lenGap
     else:
+        print("ELSE")
+        print(start,end,lenGap)
         probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
-    print(end,type(end))
-    print("*&*%^*%$&&%*^%")
     return(probGap,end)
 
 
