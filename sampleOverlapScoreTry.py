@@ -134,7 +134,7 @@ def overalpScoreCalculation(seqDetails):
         #New code -> To include indels Option1
         if seqRead1[startOverlap] == "-":
             print(startOverlap, seqRead1[startOverlap])
-            end = ntPattern.search(seqRead2,startOverlap).start()
+            end = ntPattern.search(seqRead1,startOverlap).start()
             print(end)
             startOverlap = end
             print(startOverlap)
