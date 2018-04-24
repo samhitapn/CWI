@@ -129,10 +129,14 @@ def overalpScoreCalculation(seqDetails):
 
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
-        probabilityBase = 0
+        #probabilityBase = 0
 
         #New code -> To include indels Option1
-
+        if seqRead1[startOverlap] == "-":
+            end = ntPattern.search(seqRead2,startOverlap).start()
+            print(end)
+            startOverlap = end
+        """
         # Gap in first read -> calculation based on read 2
         if seqRead1[startOverlap] == "-":
             pl = 1
@@ -193,7 +197,7 @@ def overalpScoreCalculation(seqDetails):
     #print(overlapScore)
     #outFile.close()
     return (overlapScore)
-
+"""
 # MAIN
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
