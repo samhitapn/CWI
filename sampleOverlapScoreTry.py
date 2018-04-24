@@ -83,7 +83,7 @@ def reorderScores (read, score):
 def getGapRegionScore (read, score, pos):
     print("POS:")
     print(pos)
-    end = ntPattern.search(read,pos).start()
+    end = ntPattern.search(read,read[pos:]).start()
     print("END:")
     print(end)
     start = pos
