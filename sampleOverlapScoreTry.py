@@ -130,8 +130,17 @@ def overalpScoreCalculation(seqDetails):
     # reordering the score positions based on alignment
     scoreRead1 = reorderScores(seqRead1,scoreRead1)
     scoreRead2 = reorderScores(seqRead2,scoreRead2)
-    print(seqRead1, scoreRead1)
-    print(seqRead2, scoreRead2)
+
+    # Finding the overlap region
+    overlapRegion = findOverlapRegion(seqRead1, seqRead2)
+    startOverlap = overlapRegion[0]
+    endOverlap = overlapRegion[1]
+    L = endOverlap - startOverlap
+    print(startOverlap, endOverlap, L)
+    for i in range(startOverlap, endOverlap):
+        print(seqRead1[i], scoreRead1[i])
+        print(seqRead2[i], scoreRead2[i])
+        i = i + 1
 
 """
     # Finding the overlap region
