@@ -129,7 +129,7 @@ def overalpScoreCalculation(seqDetails):
 
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
-        #probabilityBase = 0
+        probabilityBase = 0
 
         #New code -> To include indels Option1
         """
