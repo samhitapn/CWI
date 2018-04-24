@@ -113,7 +113,7 @@ def getGapRegionScore (read, score, pos):
 """
 def overalpScoreCalculation(seqDetails):
     # Initiating required values
-    probabilityOverall = 1
+    probabilityOverallSum = 1
     probabilityOverallProd = 1
 
     # Getting the sequence and scores
@@ -175,7 +175,7 @@ def overalpScoreCalculation(seqDetails):
             #print(end)
             #gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
             gapDetails = getGapRegionScore(seqRead2,scoreRead1,startOverlap)
-            probabilityBase = gapDetails[0]
+            probabilityBaseSum = gapDetails[0]
             probabilityBaseProd = gapDetails[1]
             startOverlap = gapDetails[2]
             #print("AFTER")
