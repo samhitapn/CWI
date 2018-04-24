@@ -97,7 +97,7 @@ def getGapRegionScore (read, score, pos):
         #print("ELSE")
         #print(start,end,lenGap)
         probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
-    return(probGap)
+    return(probGap, end)
 
 
 
