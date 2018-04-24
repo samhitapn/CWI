@@ -233,6 +233,7 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
 for key in alignment:
         #print(alignment[key].split(" ")[0])
         #print(alignment[key].split(" ")[2])
+        print(key)
         overlapScore = overalpScoreCalculation(alignment[key])
         alignment[key] = alignment[key] + " " + str(overlapScore)
         print(alignment[key].split(" ")[4])
