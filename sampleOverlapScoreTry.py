@@ -153,6 +153,7 @@ def overalpScoreCalculation(seqDetails):
             startOverlap = startOverlap + 1
         """
         # Gap in first read -> calculation based on read 2
+        print(seqRead1[startOverlap],scoreRead1[startOverlap],seqRead2[startOverlap],scoreRead2[startOverlap])
         if seqRead1[startOverlap] == "-":
             pl = 1
             #print("BEFORE")
@@ -203,7 +204,7 @@ def overalpScoreCalculation(seqDetails):
         probabilityOverallSum = probabilityOverallSum * probabilityBaseSum
         #probabilityOverallProd = probabilityOverallProd * probabilityBaseProd
 
-        print(startOverlap-1, probabilityOverallSum, pl)
+        #print(startOverlap-1, probabilityOverallSum, pl)
 
       # Overlap score
     overlapScoreSum = probabilityOverallSum ** 1/L
@@ -245,9 +246,10 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
 for key in alignment:
         #print(alignment[key].split(" ")[0])
         #print(alignment[key].split(" ")[2])
+        print(key)
         overlapScore = overalpScoreCalculation(alignment[key])
         #alignment[key] = alignment[key] + " " + str(overlapScore[0]) + " " + str(overlapScore[1])
         alignment[key] = alignment[key] + " " + str(overlapScore)
-        print(key)
+        #print(key)
         print(alignment[key].split(" ")[4])
         print("############")
