@@ -10,7 +10,8 @@ Created on Wed Mar 29 14:26:16 2018
 #import biopython
 from Bio import pairwise2
 from Bio import SeqIO as sio
-import numpy
+import numpy as np
+import math as mt
 import itertools
 from time import time
 import re
@@ -90,13 +91,13 @@ def getGapRegionScore (read, score, pos):
         probSum = 0
         while start < end:
             #print(start,end,lenGap)
-            probSum = probSum + (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
+            probSum = probSum + (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
             start = start + 1
         probGap = probSum/lenGap
     else:
         #print("ELSE")
         #print(start,end,lenGap)
-        probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
+        probGap = (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
     return(probGap, end)
 
 
@@ -182,7 +183,7 @@ def overalpScoreCalculation(seqDetails):
             #print(pl,startOverlap)
             for n in nt:
                #print(n)
-               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
+               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(np.float128(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(np.float128(scoreRead2[startOverlap]))))
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             startOverlap = startOverlap + 1
             #print("AFTER")
@@ -190,7 +191,7 @@ def overalpScoreCalculation(seqDetails):
         #print("$$$$$$$$$$$$$$$$$$$$$$$$$$")
             #print("I am in %f", pl)
         #print(probabilityBase)
-        probabilityOverall = probabilityOverall * log(probabilityBase)
+        probabilityOverall = probabilityOverall * probabilityBase
 
         print(startOverlap-1, seqRead1[startOverlap-1], seqRead2[startOverlap-1], scoreRead1[startOverlap-1] , scoreRead2[startOverlap-1] , probabilityBase , probabilityOverall , pl)
 
