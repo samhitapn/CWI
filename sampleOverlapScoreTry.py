@@ -256,7 +256,7 @@ for key in alignment:
             print(alignment[key].split(" ")[2])
             overlapScore = overalpScoreCalculation(alignment[key])
         #alignment[key] = alignment[key] + " " + str(overlapScore[0]) + " " + str(overlapScore[1])
-        alignment[key] = alignment[key] + " " + str(overlapScore)
+            alignment[key] = alignment[key] + " " + str(overlapScore)
         #print(key)
         print(alignment[key].split(" ")[5])
         print("############")
