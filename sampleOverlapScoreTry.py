@@ -92,15 +92,19 @@ def getGapRegionScore (read, score, pos):
         #probProd = 0
         while start < end:
             #print(start,end,lenGap)
-            probSum = probSum + (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+            if score[start] != "-":
+                probSum = probSum + (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
             #probProd = probProd + (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
-            start = start + 1
+                start = start + 1
+            else:
+                start = start + 1
         probGapSum = probSum/lenGap
         #probGapProd = probProd/lenGap
     else:
         #print("ELSE")
         #print(start,end,lenGap)
-        probGapSum = (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+        if score[start] != "-":
+            probGapSum = (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
         #probGapProd = (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
     #return(probGapSum, probGapProd, end)
     return(probGapSum, end)
