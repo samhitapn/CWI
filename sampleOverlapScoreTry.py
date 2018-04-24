@@ -138,8 +138,8 @@ def overalpScoreCalculation(seqDetails):
     L = endOverlap - startOverlap
     print(startOverlap, endOverlap, L)
     for i in range(startOverlap, endOverlap):
-        print(seqRead1[i], scoreRead1[i])
-        print(seqRead2[i], scoreRead2[i])
+        print(1, i, seqRead1[i], scoreRead1[i])
+        print(2, i, seqRead2[i], scoreRead2[i])
         i = i + 1
 
 """
