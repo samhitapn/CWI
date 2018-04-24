@@ -204,7 +204,7 @@ def overalpScoreCalculation(seqDetails):
         probabilityOverallSum = probabilityOverallSum * probabilityBaseSum
         #probabilityOverallProd = probabilityOverallProd * probabilityBaseProd
 
-        #print(startOverlap-1, probabilityOverallSum, pl)
+        print(seqDetails.split(" ")[4], startOverlap-1, probabilityOverallSum, pl)
 
       # Overlap score
     overlapScoreSum = probabilityOverallSum ** 1/L
@@ -233,7 +233,7 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
                 al = pairwise2.align.globalxx(sequences[ovl[0]].seq,sequences[ovl[5]].seq)
                 stop = time()
                 print(stop - start)
-                alignment[ovl[0] + ' ' + ovl[5]] = al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")
+                alignment[ovl[0] + ' ' + ovl[5]] = al[0][0] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + al[0][1] + " " + str(sequences[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","") + " " + overlapCount
                 overlapCount = overlapCount + 1
                 #print(al[0][0])
                 #print(al[0][1])
@@ -251,5 +251,5 @@ for key in alignment:
         #alignment[key] = alignment[key] + " " + str(overlapScore[0]) + " " + str(overlapScore[1])
         alignment[key] = alignment[key] + " " + str(overlapScore)
         #print(key)
-        print(alignment[key].split(" ")[4])
+        print(alignment[key].split(" ")[5])
         print("############")
