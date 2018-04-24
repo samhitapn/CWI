@@ -89,16 +89,20 @@ def getGapRegionScore (read, score, pos):
     #print(start, end, lenGap)
     if lenGap > 1:
         probSum = 0
+        probProd = 0
         while start < end:
             #print(start,end,lenGap)
             probSum = probSum + (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+            probProd = probProd + (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
             start = start + 1
-        probGap = probSum/lenGap
+        probGapSum = probSum/lenGap
+        probGapProd = probProd/lenGap
     else:
         #print("ELSE")
         #print(start,end,lenGap)
-        probGap = (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
-    return(probGap, end)
+        probGapSum = (10/13 * getProbQuality(np.float128(score[start]))) + (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+        probGapProd = (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+    return(probGapSum, probGapProd, end)
 
 
 
@@ -110,6 +114,7 @@ def getGapRegionScore (read, score, pos):
 def overalpScoreCalculation(seqDetails):
     # Initiating required values
     probabilityOverall = 1
+    probabilityOverallProd = 1
 
     # Getting the sequence and scores
     seqRead1 =  seqDetails.split(" ")[0]
@@ -130,8 +135,8 @@ def overalpScoreCalculation(seqDetails):
 
     #outFile = open("scoreData.txt","w+")
     while startOverlap <= endOverlap:
-        probabilityBase = 0
-
+        probabilityBaseSum = 0
+        probabilityBaseProd = 0
         #New code -> To include indels Option1
         """
         if seqRead1[startOverlap] == "-":
@@ -155,8 +160,9 @@ def overalpScoreCalculation(seqDetails):
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
             gapDetails = getGapRegionScore(seqRead1,scoreRead2,startOverlap)
-            probabilityBase = gapDetails[0]
-            startOverlap = gapDetails[1]
+            probabilityBaseSum = gapDetails[0]
+            probabilityBaseProd = gapDetails[1]
+            startOverlap = gapDetails[2]
 
         # Gap in second read -> calculation based on read 1
         elif seqRead2[startOverlap] == "-":
@@ -170,7 +176,8 @@ def overalpScoreCalculation(seqDetails):
             #gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
             gapDetails = getGapRegionScore(seqRead2,scoreRead1,startOverlap)
             probabilityBase = gapDetails[0]
-            startOverlap = gapDetails[1]
+            probabilityBaseProd = gapDetails[1]
+            startOverlap = gapDetails[2]
             #print("AFTER")
             #print(pl, startOverlap)
 
@@ -183,7 +190,7 @@ def overalpScoreCalculation(seqDetails):
             #print(pl,startOverlap)
             for n in nt:
                #print(n)
-               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(np.float128(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(np.float128(scoreRead2[startOverlap]))))
+               probabilityBaseSum = probabilityBaseSum + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(np.float128(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(np.float128(scoreRead2[startOverlap]))))
                #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             startOverlap = startOverlap + 1
             #print("AFTER")
@@ -191,15 +198,17 @@ def overalpScoreCalculation(seqDetails):
         #print("$$$$$$$$$$$$$$$$$$$$$$$$$$")
             #print("I am in %f", pl)
         #print(probabilityBase)
-        probabilityOverall = probabilityOverall * probabilityBase
+        probabilityOverallSum = probabilityOverallSum * probabilityBaseSum
+        probabilityOverallProd = probabilityOverallProd * probabilityBaseProd
 
-        print(startOverlap-1, seqRead1[startOverlap-1], seqRead2[startOverlap-1], scoreRead1[startOverlap-1] , scoreRead2[startOverlap-1] , probabilityBase , probabilityOverall , pl)
+        print(startOverlap-1, probabilityOverallSum, probabilityOverallProd, pl)
 
       # Overlap score
-    overlapScore = probabilityOverall ** 1/L
+    overlapScoreSum = probabilityOverallSum ** 1/L
+    overlapScoreProd = probabilityOverallProd ** 1/L
     #print(overlapScore)
     #outFile.close()
-    return (overlapScore)
+    return (overlapScoreSum,overlapScoreProd)
 
 # MAIN
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
@@ -234,8 +243,8 @@ with open("data/Sample_AllReads_Overlaps.paf","r") as f:
 for key in alignment:
         #print(alignment[key].split(" ")[0])
         #print(alignment[key].split(" ")[2])
-        print(key)
         overlapScore = overalpScoreCalculation(alignment[key])
-        alignment[key] = alignment[key] + " " + str(overlapScore)
-        print(alignment[key].split(" ")[4])
+        alignment[key] = alignment[key] + " " + str(overlapScore[0] + " " + str(overlapScore[1])
+        print(key)
+        print(alignment[key].split(" ")[4], alignment[key].split(" ")[5])
         print("\n ############ \n")
