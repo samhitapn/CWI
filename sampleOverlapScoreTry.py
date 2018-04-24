@@ -80,7 +80,7 @@ def reorderScores (read, score):
 @Input parameters:
 @Output parameters: Probability
 """
-def getGapRegionScore (seq, score, pos):
+def getGapRegionScore (read, score, pos):
     start = pos
     end = ntPattern.search(read,start).start()
     #print(start,end)
