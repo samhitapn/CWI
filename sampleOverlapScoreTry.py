@@ -182,8 +182,8 @@ def overalpScoreCalculation(seqDetails):
             #print(pl,startOverlap)
             for n in nt:
                #print(n)
-               #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
-               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
+               probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],getProbQuality(float(scoreRead1[startOverlap]))) * probabilityQ(n,seqRead2[startOverlap],getProbQuality(float(scoreRead2[startOverlap]))))
+               #probabilityBase = probabilityBase + (probabilityQ(n,seqRead1[startOverlap],float(scoreRead1[startOverlap])) * probabilityQ(n,seqRead2[startOverlap],float(scoreRead2[startOverlap])))
             startOverlap = startOverlap + 1
             #print("AFTER")
             #print(pl, startOverlap)
