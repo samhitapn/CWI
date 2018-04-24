@@ -132,6 +132,7 @@ def overalpScoreCalculation(seqDetails):
         #probabilityBase = 0
 
         #New code -> To include indels Option1
+        """
         if seqRead1[startOverlap] == "-":
             print(startOverlap, seqRead1[startOverlap])
             end = ntPattern.search(seqRead1,startOverlap).start()
@@ -152,7 +153,7 @@ def overalpScoreCalculation(seqDetails):
             #print(scoreRead2[startOverlap])
             #probabilityBase = (3/13 * getProbQuality(float(scoreRead2[startOverlap]))) + (10/13 * (1 - getProbQuality(float(scoreRead2[startOverlap]))))
             #probabilityBase = (10/13 * float(scoreRead2[startOverlap])) + (3/13 * (1 - float(scoreRead2[startOverlap])))
-            end = ntPattern.search(seqRead2,startOverlap).start()
+            end = ntPattern.search(seqRead1,startOverlap).start()
             print(end)
             #gapDetails = getGapRegionScore(scoreRead2,startOverlap,end)
             #print(gapDetails)
@@ -168,7 +169,7 @@ def overalpScoreCalculation(seqDetails):
             print(pl,startOverlap)
             #print(scoreRead1[startOverlap])
             #probabilityBase = (10/13 * float(scoreRead1[startOverlap])) + (3/13 * (1 - float(scoreRead1[startOverlap])))
-            end = ntPattern.search(seqRead1,startOverlap).start()
+            end = ntPattern.search(seqRead2,startOverlap).start()
             print(end)
             #gapDetails = getGapRegionScore(seqRead1,scoreRead1,startOverlap)
             #gapDetails = getGapRegionScore(scoreRead1,startOverlap,end)
@@ -204,7 +205,7 @@ def overalpScoreCalculation(seqDetails):
     #print(overlapScore)
     #outFile.close()
     return (overlapScore)
-"""
+
 # MAIN
 sequences = sio.to_dict(sio.parse("data/Sample_AllReads.fastq","fastq"))
 print("^^^^^^SEQUENCES READ^^^^^^\n")
