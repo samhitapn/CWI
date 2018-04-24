@@ -82,7 +82,7 @@ def reorderScores (read, score):
 """
 def getGapRegionScore (read, score, pos):
     print("POS:")
-    print(pos)
+    print(pos,type(pos))
     end = ntPattern.search(read,pos).start()
     print("END:")
     print(end)
@@ -97,6 +97,8 @@ def getGapRegionScore (read, score, pos):
         probGap = probSum/lenGap
     else:
         probGap = (10/13 * getProbQuality(float(score[start]))) + (3/13 * (1 - getProbQuality(float(score[start]))))
+    print(end,type(end))
+    print("*&*%^*%$&&%*^%")
     return(probGap,end)
 
 
