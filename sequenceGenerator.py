@@ -33,7 +33,7 @@ stopOrigWrite = time()
 print(stopOrigWrite - startOrigWrite)
 print("Written")
 
-for i in tqdm(range(1,11)):
+for i in tqdm(range(1,2)):
     seq = originalSequence
     print(i)
     mutationPercent = i/100 * 10000000
