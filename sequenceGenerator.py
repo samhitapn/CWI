@@ -25,12 +25,13 @@ with open("data/origSeq.fasta","w") as origFile:
     #origFile.write(originalSequence)
 
 for i in range(1,11):
+    seq = originalSequence
     print(i)
     mutationPercent = i/100 * 10000000
     pos = random.sample(range(0,999999),int(mutationPercent))
     for n in pos:
         nReplace = [j for j in nt if j != originalSequence[n]]
-        seq = originalSequence.replace(originalSequence[n],random.choice(nReplace))
+        seq = seq.replace(seq[n],random.choice(nReplace))
         fileName = "seq" + str(i)
         with open("data/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
