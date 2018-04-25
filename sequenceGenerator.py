@@ -31,7 +31,7 @@ for i in tqdm(range(1,11)):
     seq = originalSequence
     print(i)
     mutationPercent = i/100 * 10000000
-    pos = random.sample(range(0,999999),int(mutationPercent))
+    pos = random.sample(range(0,10000000),int(mutationPercent))
     for n in pos:
         nReplace = [j for j in nt if j != originalSequence[n]]
         seq = seq.replace(seq[n],random.choice(nReplace))
