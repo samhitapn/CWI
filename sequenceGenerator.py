@@ -44,6 +44,7 @@ for i in tqdm(range(1,11)):
         nReplace = [j for j in nt if j != originalSequence[n]]
         seqList[n] = random.choice(nReplace)
     seq = "".join(seqList)
+    print(len(seq))
     #print(seq)
     fileName = "seq" + str(i)
     with open("data/" + fileName + ".fasta", "w") as file:
