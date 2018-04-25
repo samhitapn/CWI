@@ -37,7 +37,7 @@ for i in tqdm(range(1,11)):
     seqList = re.findall("[ATGC]",originalSequence)
     print(i)
     mutationPercent = i/100 * 10000000
-    seed = 123
+    #seed = 123
     print(mutationPercent)
     pos = random.sample(range(0,10000000),int(mutationPercent))
     for n in tqdm(pos):
