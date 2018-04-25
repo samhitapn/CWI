@@ -20,11 +20,17 @@ from tqdm import tqdm
 
 nt = ["A","T","G","C"]
 
+startGenerationOrig = time()
 originalSequence = rstr.rstr('ATGC', 10000000)
+stopGenerationOrig = time()
+print(stopGenerationOrig - startGenerationOrig)
 print("Reference Done")
+startOrigWrite = time()
 with open("data/origSeq.fasta","w") as origFile:
     origFile.write(">OriginalSequenceReference\n" + originalSequence)
     #origFile.write(originalSequence)
+stopOrigWrite = time()
+print(stopOrigWrite - startOrigWrite)
 print("Written")
 
 for i in tqdm(range(1,11)):
@@ -32,9 +38,12 @@ for i in tqdm(range(1,11)):
     print(i)
     mutationPercent = i/100 * 10000000
     pos = random.sample(range(0,10000000),int(mutationPercent))
+    startReplace = time()
     for n in pos:
         nReplace = [j for j in nt if j != originalSequence[n]]
         seq = seq.replace(seq[n],random.choice(nReplace))
+    stopReplace = time()
+    print(stopReplace - startReplace)
     print(seq)
     #fileName = "seq" + str(i)
     #with open("data/" + fileName + ".fasta", "w") as file:
