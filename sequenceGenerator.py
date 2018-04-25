@@ -33,7 +33,7 @@ stopOrigWrite = time()
 print(stopOrigWrite - startOrigWrite)
 print("Written")
 
-for i in tqdm(range(1,2)):
+for i in tqdm(range(1,11)):
     seqList = re.findall("[ATGC]",originalSequence)
     print(i)
     mutationPercent = i/100 * 10000000
@@ -42,9 +42,9 @@ for i in tqdm(range(1,2)):
     pos = random.sample(range(0,10000000),int(mutationPercent))
     for n in tqdm(pos):
         nReplace = [j for j in nt if j != originalSequence[n]]
-        seqList = random.choice(nReplace)
-    #print(seq)
+        seqList[n] = random.choice(nReplace)
     seq = "".join(seqList)
+    #print(seq)
     fileName = "seq" + str(i)
     with open("data/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
