@@ -26,7 +26,7 @@ with open("data/origSeq.fasta","w") as origFile:
     #origFile.write(originalSequence)
 print("Written")
 
-for i in range(1,11):
+for i in tqdm(range(1,11)):
     seq = originalSequence
     print(i)
     mutationPercent = i/100 * 10000000
