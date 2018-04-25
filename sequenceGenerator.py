@@ -35,7 +35,8 @@ for i in tqdm(range(1,11)):
     for n in pos:
         nReplace = [j for j in nt if j != originalSequence[n]]
         seq = seq.replace(seq[n],random.choice(nReplace))
-    fileName = "seq" + str(i)
-    with open("data/" + fileName + ".fasta", "w") as file:
-            file.write(">" + fileName + "\n" + seq)
+    print(seq)
+    #fileName = "seq" + str(i)
+    #with open("data/" + fileName + ".fasta", "w") as file:
+    #        file.write(">" + fileName + "\n" + seq)
     print("Written")
