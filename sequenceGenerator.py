@@ -31,5 +31,5 @@ for i in range(1,11):
         nReplace = [j for j in nt if j != originalSequence[n]]
         seq = originalSequence.replace(originalSequence[n],random.choice(nReplace))
         fileName = "seq" + str(i)
-        with open("data/" + fileName + ".fasta") as file:
+        with open("data/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
