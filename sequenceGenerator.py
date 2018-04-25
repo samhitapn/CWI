@@ -40,12 +40,9 @@ for i in tqdm(range(1,11)):
     seed = 123
     print(mutationPercent)
     pos = random.sample(range(0,10000000),int(mutationPercent))
-    startReplace = time()
-    for n in pos:
+    for n in tqdm(pos):
         nReplace = [j for j in nt if j != originalSequence[n]]
         seq = seq.replace(seq[n],random.choice(nReplace))
-    stopReplace = time()
-    print(stopReplace - startReplace)
     print(seq)
     #fileName = "seq" + str(i)
     #with open("data/" + fileName + ".fasta", "w") as file:
