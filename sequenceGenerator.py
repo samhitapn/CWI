@@ -16,6 +16,7 @@ from time import time
 import re
 import random
 import rstr
+from tqdm import tqdm
 
 nt = ["A","T","G","C"]
 
