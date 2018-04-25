@@ -37,6 +37,8 @@ for i in tqdm(range(1,11)):
     seq = originalSequence
     print(i)
     mutationPercent = i/100 * 10000000
+    seed = 123
+    print(mutationPercent)
     pos = random.sample(range(0,10000000),int(mutationPercent))
     startReplace = time()
     for n in pos:
