@@ -20,9 +20,11 @@ import rstr
 nt = ["A","T","G","C"]
 
 originalSequence = rstr.rstr('ATGC', 10000000)
+print("Reference Done")
 with open("data/origSeq.fasta","w") as origFile:
     origFile.write(">OriginalSequenceReference\n" + originalSequence)
     #origFile.write(originalSequence)
+print("Written")
 
 for i in range(1,11):
     seq = originalSequence
