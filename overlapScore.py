@@ -47,13 +47,12 @@ def getSeqFromCigar(cigar):
 #signal(SIGPIPE, SIG_DFL)
 def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
-    #print(cigarSeq)
-    #print("&&&&&&&")
+    print(cigarSeq)
+    print("&&&&&&&")
     newSeq1 = []
     newSeq2 = []
-    for i in range(readData[2],readData[3] + 1):
+    #for i in range(readData[2],readData[3] + 1):
         #print(i,readData[0][i])
-        sys.stdout.write(readData[0][i])
 
 
 # MAIN
