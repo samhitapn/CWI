@@ -47,7 +47,7 @@ def getFinalAlignment(readData):
     newSeq1 = []
     newSeq2 = []
     for i in range(readData[2],readData[3] + 1):
-        print(readData[0][i],readData[4][i])
+        print(i,readData[0][i])
         print("&&&&&&&&")
 
 # MAIN
