@@ -16,6 +16,7 @@ import itertools
 from time import time
 import re
 import os
+import sys
 
 # GLOBAL VARIABLES REQUIRED
 cigarPattern = re.compile('([0-9]*)([IDM])')
@@ -44,10 +45,13 @@ def getSeqFromCigar(cigar):
 """
 def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
+    #print(cigarSeq)
+    #print("&&&&&&&")
     newSeq1 = []
     newSeq2 = []
     for i in range(readData[2],readData[3] + 1):
-        print(i,readData[0][i])
+        #print(i,readData[0][i])
+        sys.stdout.write(i,readData[0][i])
 
 
 # MAIN
