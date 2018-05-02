@@ -34,7 +34,7 @@ def getSeqFromCigar(cigar):
         else:
             num = 1
         cigarSeq.append("".join(char * num))
-    cigarSeq = "".join(spans)
+    cigarSeq = "".join(cigarSeq)
     return(cigarSeq)
 
 """
