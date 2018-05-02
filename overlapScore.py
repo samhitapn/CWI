@@ -46,7 +46,7 @@ def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
     newSeq1 = []
     newSeq2 = []
-    print(type(readData[2]))
+    #print(type(readData[2]))
     for i in range(readData[2],readData[3] + 1):
         print(i,readData[0][i])
         print("&&&&&&&&")
@@ -62,7 +62,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]), ovl[2], ovl[3], fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]), ovl[7], ovl[8],ovl[20]]
+    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]), int(ovl[2]), int(ovl[3]), fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]), int(ovl[7]), int(ovl[8]),ovl[20]]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
