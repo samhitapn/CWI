@@ -56,8 +56,7 @@ readPairData = dict()
 with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
     pafData = paf.readlines()
 
-#fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
-with
+fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
 
 for overlapPair in pafData:
     ovl = overlapPair.split("\t")
