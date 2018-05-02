@@ -50,6 +50,7 @@ def getFinalAlignment(readData):
         newSeq2 = []
         for i in range(readData[2],readData[3] + 1):
             print(readData[0][i],readData[4][i])
+            print("&&&&&&&&")
 
 # MAIN
 readPairData = dict()
@@ -68,7 +69,7 @@ for overlapPair in pafData:
 
 for key in readPairData:
     #print(key)
-    print(readPairData[key][0])
-    print("&&&&&&&&")
-    break
-    #finalAlignment = getFinalAlignment(readPairData[key])
+    #print(readPairData[key][0])
+    #print("&&&&&&&&")
+    #break
+    finalAlignment = getFinalAlignment(readPairData[key])
