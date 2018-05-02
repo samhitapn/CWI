@@ -59,15 +59,16 @@ with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as
 fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
 
 for overlapPair in pafData:
+    tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    readPairData[ovl[0] + "-" + ovl[5]] = {fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]), ovl[2], ovl[3], fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]), ovl[7], ovl[8],ovl[20]}
-print(readPairData)
-"""
+    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]), ovl[2], ovl[3], fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]), ovl[7], ovl[8],ovl[20]]
+    readPairData[ovl[0] + "-" + ovl[5]] = tempData
+#print(readPairData)
+
 for key in readPairData:
     #print(key)
-    print(readPairData[key].split(",")[0])
+    print(readPairData[key][0])
     print("&&&&&&&&")
     break
     #finalAlignment = getFinalAlignment(readPairData[key])
-"""
