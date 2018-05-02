@@ -50,3 +50,27 @@ for i in tqdm(range(1,11)):
     with open("data/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
     print("Written")
+
+
+
+
+
+for oldFile in os.listdir():
+    print(oldFile)
+    with open(oldFile, "r") as f:
+        data = f.readlines()
+        number = 1
+        newFile = "../fastq_100Reads_NewNames/" + oldFile
+        print(newFile)
+        with open(newFile, "w") as f:
+            for oldLine in data:
+                readName = "@" + oldFile.split(".")[0] + "_" + str(number)
+                if oldLine.startswith("@"):
+                    newLine = oldLine.split(" ")
+                    newLine[0] = readName
+                    newLine = " ".join(newLine)
+                    #print(newLine)
+                    f.writelines(newLine)
+                    number = number + 1
+                else:
+                    f.writelines(oldLine)
