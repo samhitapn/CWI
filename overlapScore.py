@@ -43,14 +43,12 @@ def getSeqFromCigar(cigar):
 @Output parameters:
 """
 def getFinalAlignment(readData):
-    for key in readData:
-        data = readData.split(",")
-        cigarSeq = getSeqFromCigar(data[8])
-        newSeq1 = []
-        newSeq2 = []
-        for i in range(readData[2],readData[3] + 1):
-            print(readData[0][i],readData[4][i])
-            print("&&&&&&&&")
+    cigarSeq = getSeqFromCigar(readData[8])
+    newSeq1 = []
+    newSeq2 = []
+    for i in range(readData[2],readData[3] + 1):
+        print(readData[0][i],readData[4][i])
+        print("&&&&&&&&")
 
 # MAIN
 readPairData = dict()
