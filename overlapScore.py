@@ -17,6 +17,7 @@ from time import time
 import re
 import os
 import sys
+from Bio.Seq import MutableSeq
 
 # GLOBAL VARIABLES REQUIRED
 cigarPattern = re.compile('([0-9]*)([IDM])')
@@ -56,14 +57,15 @@ def getFinalAlignment(readData):
     for i in range(0,len(cigarSeq)):
         print(cigarSeq[i])
         if cigarSeq[i] == "I":
-            readData[0].insert(start1,"-")
-            readData[1].insert(start1,"-")
+            readData[0][start1] = "-"
+            readData[1][start1] = "-"
         elif cigarSeq[i] == "D":
-            readData[4].insert(start2,"-")
-            readData[5].insert(start2,"-")
+            readData[4][start2] = "-"
+            readData[5][start2] = "-"
         start1 = start1 + 1
         start2 = start2 + 1
     return(readData)
+
 
 # MAIN
 readPairData = dict()
@@ -76,7 +78,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[2]), int(ovl[3]), fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[7]), int(ovl[8]),ovl[20]]
+    tempData = [list(fastq[ovl[0]].seq), str(fastq[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq), str(fastq[ovl[5]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[7]), int(ovl[8]),ovl[20]]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
