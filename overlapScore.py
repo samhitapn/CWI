@@ -54,9 +54,9 @@ def getFinalAlignment(readData):
     #newScore2 = readData[5]
     start1 = readData[2]
     start2 = readData[6]
-    print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
+    #print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
     for i in range(0,len(cigarSeq)):
-        print(cigarSeq[i])
+        #print(cigarSeq[i])
         print(i,start1,start2)
         if cigarSeq[i] == "I":
             readData[0][start1] = "-"
