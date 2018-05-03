@@ -54,7 +54,7 @@ def getFinalAlignment(readData):
     score2 = readData[5][readData[6]:readData[7]]
     #start1 = readData[2]
     #start2 = readData[6]
-    newSeq1,newSeq2,newScore1,newScore2 = list()
+    newSeq1,newSeq2,newScore1,newScore2 = ([] for i in range(4))
 
     #print(readData[0])
     #print(len(cigarSeq),len(readData[0]),len(readData[1]),len(readData[4]),len(readData[5]))
