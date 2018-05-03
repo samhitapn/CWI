@@ -63,7 +63,7 @@ def getFinalAlignment(readData):
     #print(readData[4])
     #print(readData[5])
     #print(type(newScore1))
-    print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
+    #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
     for i in range(0,len(cigarSeq)):
         #pos = 0
         #print(i)
@@ -74,13 +74,10 @@ def getFinalAlignment(readData):
             score1.insert(i,"-")
             #start1 = start1 + 1
         elif cigarSeq[i] == "D":
-            newSeq2.append("-")
-            newScore2.append("-")
-        else:
-            newSeq1.append(seq1[i])
-            newSeq2.append(seq2[i])
-            newScore1.append(score1[i])
-            newScore2.append(score2[i])
+            #newSeq2.append("-")
+            #newScore2.append("-")
+            seq2.insert(i,"-")
+            score2.insert(i,"-")
             #start2 = start2 + 1
         #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
         #else:
@@ -88,10 +85,10 @@ def getFinalAlignment(readData):
             #start2 = start2 + 1
         #pos = pos + 1
 
-    readData[0] = newSeq1
-    readData[1] = newScore1
-    readData[4] = newSeq1
-    readData[5] = newSeq2
+    readData[0] = seq1
+    readData[1] = score1
+    readData[4] = seq2
+    readData[5] = score2
     return(readData)
 
 
@@ -116,5 +113,5 @@ for key in readPairData:
     #print("&&&&&&&&")
     #break
     readPairData[key] = getFinalAlignment(readPairData[key])
-    #print(readPairData[key])
+    print(readPairData[key])
     break
