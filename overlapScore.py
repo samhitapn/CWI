@@ -61,6 +61,7 @@ def getFinalAlignment(readData):
     #print(readData[1])
     #print(readData[4])
     #print(readData[5])
+    print(newScore1)
     for i in range(0,20):
         #pos = 0
         if cigarSeq[i] == "I":
@@ -103,5 +104,5 @@ for key in readPairData:
     #print("&&&&&&&&")
     #break
     readPairData[key] = getFinalAlignment(readPairData[key])
-    print(readPairData[key])
+    #print(readPairData[key])
     break
