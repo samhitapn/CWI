@@ -64,17 +64,21 @@ def getFinalAlignment(readData):
     for i in range(0,20):
         #pos = 0
         if cigarSeq[i] == "I":
-            readData[0][i] = "-"
-            readData[1][i] = "-"
+            newSeq1[i] = "-"
+            newScore1[i] = "-"
             #start1 = start1 + 1
         elif cigarSeq[i] == "D":
-            readData[4][i] = "-"
-            readData[5][i] = "-"
+            newSeq2[i] = "-"
+            newScore2[i] = "-"
             #start2 = start2 + 1
         #else:
             #start1 = start1 + 1
             #start2 = start2 + 1
         #pos = pos + 1
+    readData[0] = newSeq1
+    readData[1] = newScore1
+    readData[4] = newSeq1
+    readData[5] = newSeq2
     return(readData)
 
 
@@ -89,7 +93,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20]]
+    tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
