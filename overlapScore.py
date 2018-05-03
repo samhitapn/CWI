@@ -57,7 +57,7 @@ def getFinalAlignment(readData):
     #print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
     for i in range(0,len(cigarSeq)):
         #print(cigarSeq[i])
-        #print(i,start1,start2)
+        print(i)
         if cigarSeq[i] == "I":
             readData[0][start1] = "-"
             readData[1][start1] = "-"
