@@ -89,7 +89,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20]]i
+    tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20]]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
