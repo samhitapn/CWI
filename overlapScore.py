@@ -65,6 +65,7 @@ def getFinalAlignment(readData):
     print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
     for i in range(0,len(cigarSeq)):
         #pos = 0
+        print(i)
         if cigarSeq[i] == "I":
             newSeq1[i] = "-"
             newScore1[i] = "-"
