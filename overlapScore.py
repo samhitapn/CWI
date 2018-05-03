@@ -58,10 +58,10 @@ def getFinalAlignment(readData):
         print(cigarSeq[i])
         if cigarSeq[i] == "I":
             readData[0][start1] = "-"
-            readData[1][start1] = "-"
+            readData[1].insert(start1,"-")
         elif cigarSeq[i] == "D":
             readData[4][start2] = "-"
-            readData[5][start2] = "-"
+            readData[5].insert(start2,"-")
         start1 = start1 + 1
         start2 = start2 + 1
     return(readData)
