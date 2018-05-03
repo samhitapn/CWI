@@ -57,7 +57,10 @@ def getFinalAlignment(readData):
     #print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
     for i in range(0,len(cigarSeq)):
         #print(cigarSeq[i])
-        print(i,start1)
+        #print(i,start1)
+        print(start1, readData[start1])
+        start1 = start1 + 1
+        """
         if cigarSeq[i] == "I":
             readData[0][start1] = "-"
             readData[1][start1] = "-"
@@ -67,7 +70,7 @@ def getFinalAlignment(readData):
         start1 = start1 + 1
         start2 = start2 + 1
     return(readData)
-
+"""
 
 # MAIN
 readPairData = dict()
