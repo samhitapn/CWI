@@ -88,3 +88,5 @@ for key in readPairData:
     #print("&&&&&&&&")
     #break
     finalAlignment = getFinalAlignment(readPairData[key])
+    print(readPairData[key])
+    break
