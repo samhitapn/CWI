@@ -61,7 +61,7 @@ def getFinalAlignment(readData):
     #print(readData[1])
     #print(readData[4])
     #print(readData[5])
-    print(newScore1)
+    print(type(newScore1))
     for i in range(0,20):
         #pos = 0
         if cigarSeq[i] == "I":
