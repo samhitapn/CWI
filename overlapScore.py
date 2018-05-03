@@ -48,37 +48,35 @@ def getSeqFromCigar(cigar):
 #signal(SIGPIPE, SIG_DFL)
 def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
-    #newSeq1 = readData[0]
-    #newSeq2 = readData[4]
-    #newScore1 = readData[1]
-    #newScore2 = readData[5]
-    start1 = readData[2]
-    start2 = readData[6]
+    newSeq1 = readData[0][readData[2]:readData[3]]
+    newSeq2 = readData[4][readData[6]:readData[7]]
+    newScore1 = readData[1][readData[2]:readData[3]]
+    newScore2 = readData[5][readData[6]:readData[7]]
+    #start1 = readData[2]
+    #start2 = readData[6]
 
-    
-    print(readData[0])
-    print(len(cigarSeq),len(readData[0]),len(readData[1]),len(readData[4]),len(readData[5]))
-    print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
+    #print(readData[0])
+    #print(len(cigarSeq),len(readData[0]),len(readData[1]),len(readData[4]),len(readData[5]))
+    #print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
     #print(readData[1])
     #print(readData[4])
     #print(readData[5])
-"""
     for i in range(0,20):
-        #print(cigarSeq[i])
-        #print(i,start1)
-        print(i,start1,readData[0][start1])
-        start1 = start1 + 1
-
+        #pos = 0
         if cigarSeq[i] == "I":
-            readData[0][start1] = "-"
-            readData[1][start1] = "-"
+            readData[0][i] = "-"
+            readData[1][i] = "-"
+            #start1 = start1 + 1
         elif cigarSeq[i] == "D":
-            readData[4][start2] = "-"
-            readData[5][start2] = "-"
-        start1 = start1 + 1
-        start2 = start2 + 1
+            readData[4][i] = "-"
+            readData[5][i] = "-"
+            #start2 = start2 + 1
+        #else:
+            #start1 = start1 + 1
+            #start2 = start2 + 1
+        #pos = pos + 1
     return(readData)
-"""
+
 
 # MAIN
 readPairData = dict()
@@ -91,7 +89,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [list(fastq[ovl[0]].seq), list(str(fastq[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")), int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq), list(str(fastq[ovl[5]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")), int(ovl[7]), int(ovl[8]),ovl[20]]
+    tempData = [list(fastq[ovl[0]].seq), str(fastq[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ","")), int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq), str(fastq[ovl[5]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[7]), int(ovl[8]),ovl[20]]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
