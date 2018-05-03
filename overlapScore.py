@@ -80,7 +80,7 @@ def getFinalAlignment(readData):
             newScore1.append(score1[i])
             newScore2.append(score2[i])
             #start2 = start2 + 1
-        #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
+        print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
         #else:
             #start1 = start1 + 1
             #start2 = start2 + 1
