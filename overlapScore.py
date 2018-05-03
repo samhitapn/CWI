@@ -101,9 +101,9 @@ for overlapPair in pafData:
 #print(readPairData)
 
 for key in readPairData:
-    #print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
+    print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
     readPairData[key] = getFinalAlignment(readPairData[key])
-    #print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
+    print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
 
-    print(readPairData[key][0],readPairData[key][4])
-    #print("^^^^^^^^^^^")
+    #print(readPairData[key][0],readPairData[key][4])
+    print("^^^^^^^^^^^")
