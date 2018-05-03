@@ -48,12 +48,13 @@ def getSeqFromCigar(cigar):
 #signal(SIGPIPE, SIG_DFL)
 def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
-    newSeq1 = readData[0][readData[2]:readData[3]]
-    newSeq2 = readData[4][readData[6]:readData[7]]
-    newScore1 = readData[1][readData[2]:readData[3]]
-    newScore2 = readData[5][readData[6]:readData[7]]
+    seq1 = readData[0][readData[2]:readData[3]]
+    seq2 = readData[4][readData[6]:readData[7]]
+    score1 = readData[1][readData[2]:readData[3]]
+    score2 = readData[5][readData[6]:readData[7]]
     #start1 = readData[2]
     #start2 = readData[6]
+    newSeq1,newSeq2,newScore1,newScore2 = []
 
     #print(readData[0])
     #print(len(cigarSeq),len(readData[0]),len(readData[1]),len(readData[4]),len(readData[5]))
@@ -67,14 +68,19 @@ def getFinalAlignment(readData):
         #pos = 0
         #print(i)
         if cigarSeq[i] == "I":
-            newSeq1[i] = "-"
-            newScore1[i] = "-"
+            newSeq1.append("-")
+            newScore1.append("-")
             #start1 = start1 + 1
         elif cigarSeq[i] == "D":
-            newSeq2[i] = "-"
-            newScore2[i] = "-"
+            newSeq2.append("-")
+            newScore2.append("-")
+        else:
+            newSeq1.append(seq1[i])
+            newSeq2.append(seq2[i])
+            newScore1.append(score1[i])
+            newScore2.append(score[i])
             #start2 = start2 + 1
-        print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
+        #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
         #else:
             #start1 = start1 + 1
             #start2 = start2 + 1
