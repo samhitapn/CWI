@@ -85,10 +85,10 @@ def getFinalAlignment(readData):
             #start2 = start2 + 1
         #pos = pos + 1
 
-    readData[0] = seq1
-    readData[1] = score1
-    readData[4] = seq2
-    readData[5] = score2
+    readData[0] = ",".join(seq1)
+    readData[1] = ",".join(score1)
+    readData[4] = ",".join(seq2)
+    readData[5] = ",".join(score2)
     return(readData)
 
 
@@ -113,5 +113,5 @@ for key in readPairData:
     #print("&&&&&&&&")
     #break
     readPairData[key] = getFinalAlignment(readPairData[key])
-    print(readPairData[key])
-    break
+    #print(readPairData[key])
+    
