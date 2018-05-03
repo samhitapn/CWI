@@ -52,44 +52,37 @@ def getFinalAlignment(readData):
     seq2 = readData[4][readData[6]:readData[7]]
     score1 = readData[1][readData[2]:readData[3]]
     score2 = readData[5][readData[6]:readData[7]]
-    #start1 = readData[2]
-    #start2 = readData[6]
-    newSeq1,newSeq2,newScore1,newScore2 = ([] for i in range(4))
 
-    #print(readData[0])
-    #print(len(cigarSeq),len(readData[0]),len(readData[1]),len(readData[4]),len(readData[5]))
-    #print(readData[2],readData[3],readData[6],readData[7],cigarSeq.count("M"),cigarSeq.count("I"),cigarSeq.count("D"))
-    #print(readData[1])
-    #print(readData[4])
-    #print(readData[5])
-    #print(type(newScore1))
-    #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
     for i in range(0,len(cigarSeq)):
-        #pos = 0
-        #print(i)
         if cigarSeq[i] == "I":
-            #newSeq1.append("-")
-            #newScore1.append("-")
             seq1.insert(i,"-")
             score1.insert(i,"-")
-            #start1 = start1 + 1
         elif cigarSeq[i] == "D":
-            #newSeq2.append("-")
-            #newScore2.append("-")
             seq2.insert(i,"-")
             score2.insert(i,"-")
-            #start2 = start2 + 1
-        #print(len(newSeq1),len(newSeq2),len(newScore1),len(newScore2))
-        #else:
-            #start1 = start1 + 1
-            #start2 = start2 + 1
-        #pos = pos + 1
-
     readData[0] = seq1
     readData[1] = score1
     readData[4] = seq2
     readData[5] = score2
     return(readData)
+
+"""
+@Definition:
+@Input parameters:
+@Output parameters:
+"""
+def overalpScoreCalculation(seqDetails):
+    # Initiating required values
+    probabilityOverallSum = 1
+
+    # Getting the sequence and scores
+    seqRead1 =  seqDetails[0]
+    scoreRead1 = seqDetails[1]
+    seqRead2 = seqDetails[4]
+    scoreRead2 = seqDetails[5]
+
+    # Gap in first read -> calculation based on read 2
+
 
 
 # MAIN
@@ -108,9 +101,6 @@ for overlapPair in pafData:
 #print(readPairData)
 
 for key in readPairData:
-    #print(key)
-    #print(readPairData[key][0])
-    #print("&&&&&&&&")
-    #break
     readPairData[key] = getFinalAlignment(readPairData[key])
+    print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
     #print(readPairData[key])
