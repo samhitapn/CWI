@@ -75,10 +75,10 @@ def getFinalAlignment(readData):
             #start1 = start1 + 1
             #start2 = start2 + 1
         #pos = pos + 1
-    readData[0] = newSeq1
-    readData[1] = newScore1
-    readData[4] = newSeq1
-    readData[5] = newSeq2
+    readData[0] = ",".join(newSeq1)
+    readData[1] = ",".join(newScore1)
+    readData[4] = ",".join(newSeq1)
+    readData[5] = ",".join(newSeq2)
     return(readData)
 
 
