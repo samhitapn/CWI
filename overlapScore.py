@@ -47,13 +47,23 @@ def getSeqFromCigar(cigar):
 #signal(SIGPIPE, SIG_DFL)
 def getFinalAlignment(readData):
     cigarSeq = getSeqFromCigar(readData[8])
-    print(cigarSeq)
-    print("&&&&&&&")
-    newSeq1 = []
-    newSeq2 = []
-    #for i in range(readData[2],readData[3] + 1):
-        #print(i,readData[0][i])
-
+    #newSeq1 = readData[0]
+    #newSeq2 = readData[4]
+    #newScore1 = readData[1]
+    #newScore2 = readData[5]
+    start1 = readData[2]
+    start2 = readData[6]
+    for i in range(0,len(cigarSeq)):
+        print(cigarSeq[i])
+        if cigarSeq[i] == "I":
+            readData[0].insert(start1,"-")
+            readData[1].insert(start1,"-")
+        elif cigarSeq[i] == "D":
+            readData[4].insert(start2,"-")
+            readData[5].insert(start2,"-")
+        start1 = start1 + 1
+        start2 = start2 + 1
+    return(readData)
 
 # MAIN
 readPairData = dict()
@@ -66,7 +76,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(fastq[ovl[0]].seq)
-    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]), int(ovl[2]), int(ovl[3]), fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]), int(ovl[7]), int(ovl[8]),ovl[20]]
+    tempData = [fastq[ovl[0]].seq, str(fastq[ovl[0]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[2]), int(ovl[3]), fastq[ovl[5]].seq, str(fastq[ovl[5]].letter_annotations["phred_quality"]).strip('[]').replace(" ",""), int(ovl[7]), int(ovl[8]),ovl[20]]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 #print(readPairData)
 
