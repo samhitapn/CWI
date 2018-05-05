@@ -78,7 +78,7 @@ def getGapRegionScore (score, lenGap):
             #start = start + 1
     probGapSum = probSum/lenGap
         #probGapProd = probProd/lenGap
-    return(probGapSum, end)
+    return(probGapSum)
 
 """
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
