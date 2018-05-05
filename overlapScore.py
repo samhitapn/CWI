@@ -88,10 +88,10 @@ def getOverlapScore(readData):
     probabilityBase = 0
     probabilityOverall = 1
     #cigarSeq = getSeqFromCigar(readData[8])
-    seq1 = readData[0][readData[2]:readData[3]]
-    seq2 = readData[4][readData[6]:readData[7]]
-    score1 = readData[1][readData[2]:readData[3]]
-    score2 = readData[5][readData[6]:readData[7]]
+    seq1 = readData[0][readData[2]:]
+    seq2 = readData[4][readData[6]:]
+    score1 = readData[1][readData[2]:]
+    score2 = readData[5][readData[6]:]
     print(readData[2],readData[3],readData[6],readData[7])
     pos = 0
     L = 0
