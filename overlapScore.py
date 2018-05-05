@@ -98,7 +98,7 @@ def getOverlapScore(readData):
 
     pos = 0
     L = 0
-    for num, char in cigarPattern.findall(cigar):
+    for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
         if num:
             num = int(num)
