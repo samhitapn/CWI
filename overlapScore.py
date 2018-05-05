@@ -73,7 +73,7 @@ def getGapRegionScore (score, lenGap):
     probSum = 0
     #if lenGap > 1:
     for i in range(0, len(score)):
-            probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
+            probSum = probSum + (10/13 * getProbQuality(score[i])) + (3/13 * (1 - getProbQuality(score[i])))
     probGapSum = probSum/lenGap
     return(probGapSum)
 
@@ -97,6 +97,7 @@ def getOverlapScore(readData):
     L = 0
     for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
+        #print(num,pos)
         if num:
             num = int(num)
         else:
@@ -113,9 +114,9 @@ def getOverlapScore(readData):
         if char == "M":
             for i in range(pos, pos + num):
                 for n in nt:
-                    probabilityBase = probabilityBase + (probabilityQ(n,seq1[i],getProbQuality(np.float128(score1[i]))) * probabilityQ(n,seq2[i],getProbQuality(np.float128(score2[i]))))
+                    probabilityBase = probabilityBase + (probabilityQ(n,seq1[i],getProbQuality(score1[i])) * probabilityQ(n,seq2[i],getProbQuality(score2[i])))
             pos = pos + num
-            print(pos,char,probabilityBase)
+        print(num,pos,char,probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
