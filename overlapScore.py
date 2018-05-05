@@ -72,7 +72,7 @@ def getProbQuality (q):
 def getGapRegionScore (score, lenGap):
     probSum = 0
     #if lenGap > 1:
-    for i in range(0, len(read)):
+    for i in range(0, len(score)):
             probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
             #probProd = probProd + (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
             #start = start + 1
