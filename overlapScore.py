@@ -21,6 +21,7 @@ from Bio.Seq import MutableSeq
 
 # GLOBAL VARIABLES REQUIRED
 cigarPattern = re.compile('([0-9]*)([IDM])')
+nt = ["A","T","C","G"] # Bases
 
 # FUNCTIONS
 """
@@ -40,23 +41,92 @@ def getSeqFromCigar(cigar):
     return(cigarSeq)
 
 """
+@Definition: For calculating the probaility of the base at a given position
+@Input parameters: X -> base A/C/T/G; b -> base in the particular position; q -> quality score at the position
+@Output parameters: Probability
+"""
+def probabilityQ (X, b, p):
+    if X == b:
+        qp = 1 - p
+    else:
+        qp = p/3
+    return qp
+
+
+"""
+@Definition: For calculating the probaility from the phred quality scores
+@Input parameters:
+@Output parameters: Probability
+"""
+def getProbQuality (q):
+    #print(q)
+    #q = int(q)
+    p = 10**(-q/10)
+    return p
+
+"""
+@Definition:
+@Input parameters:
+@Output parameters: Probability
+"""
+def getGapRegionScore (score, lenGap):
+    probSum = 0
+    #if lenGap > 1:
+    for i in range(0, len(read)):
+            probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
+            #probProd = probProd + (10/13 * getProbQuality(np.float128(score[start]))) * (3/13 * (1 - getProbQuality(np.float128(score[start]))))
+            #start = start + 1
+    probGapSum = probSum/lenGap
+        #probGapProd = probProd/lenGap
+    return(probGapSum, end)
+
+"""
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
 @Input parameters:
 @Output parameters:
 """
 #from signal import signal, SIGPIPE, SIG_DFL
 #signal(SIGPIPE, SIG_DFL)
-def getFinalAlignment(readData):
-    cigarSeq = getSeqFromCigar(readData[8])
+def getOverlapScore(readData):
+    probabilityBase = 0
+    probabilityOverall = 1
+    #cigarSeq = getSeqFromCigar(readData[8])
     seq1 = readData[0][readData[2]:readData[3]]
     seq2 = readData[4][readData[6]:readData[7]]
     score1 = readData[1][readData[2]:readData[3]]
     score2 = readData[5][readData[6]:readData[7]]
 
+    pos = 0
+    L = 0
+    for num, char in cigarPattern.findall(cigar):
+        #pos = 0
+        if num:
+            num = int(num)
+        else:
+            num = 1
+        L = L + num
+        if char == "I":
+            probabilityBase = probabilityBase + getGapRegionScore(score2[pos:pos+num], num)
+            pos = pos + num
+        if char == "D":
+            probabilityBase = probabilityBase + getGapRegionScore(score1[pos:pos+num], num)
+            pos = pos + num
+        if char == "M":
+            for i in range(pos, pos + num):
+                for n in nt:
+                    probabilityBase = probabilityBase + (probabilityQ(n,seq1[i],getProbQuality(np.float128(score1[i]))) * probabilityQ(n,seq2[i],getProbQuality(np.float128(score2[i]))))
+            pos = pos = num
+        probabilityOverall = probabilityOverall * probabilityBase
+    overlapScore = probabilityOverall ** 1/L
+    return(overlapScore)
+
+
+"""
     for i in range(0,len(cigarSeq)):
         if cigarSeq[i] == "I":
-            seq1.insert(i,"-")
-            score1.insert(i,"-")
+            #seq1.insert(i,"-")
+            #score1.insert(i,"-")
+
         elif cigarSeq[i] == "D":
             seq2.insert(i,"-")
             score2.insert(i,"-")
@@ -65,26 +135,7 @@ def getFinalAlignment(readData):
     readData[4] = seq2
     readData[5] = score2
     return(readData)
-
 """
-@Definition:
-@Input parameters:
-@Output parameters:
-"""
-def overalpScoreCalculation(seqDetails):
-    # Initiating required values
-    probabilityOverallSum = 1
-
-    # Getting the sequence and scores
-    seqRead1 =  seqDetails[0]
-    scoreRead1 = seqDetails[1]
-    seqRead2 = seqDetails[4]
-    scoreRead2 = seqDetails[5]
-
-    # Gap in first read -> calculation based on read 2
-    
-
-
 
 # MAIN
 readPairData = dict()
@@ -102,10 +153,5 @@ for overlapPair in pafData:
 #print(readPairData)
 
 for key in readPairData:
-    print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
-    readPairData[key] = getFinalAlignment(readPairData[key])
-    print(len(readPairData[key][0]),len(readPairData[key][1]),len(readPairData[key][4]),len(readPairData[key][5]))
-
-    print(readPairData[key][0],readPairData[key][4])
-    print("^^^^^^^^^^^")
+    print(getOverlapScore(readPairData[key]))
     break
