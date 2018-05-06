@@ -102,7 +102,7 @@ def getOverlapScore(key, readData):
     errorList = list()
     for num, char in cigarPattern.findall(readData[8]):
             #pos = 0
-            #print(num,char)
+        print(errorList)    #print(num,char)
         try:
             if num:
                 num = int(num)
