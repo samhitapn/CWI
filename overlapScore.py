@@ -187,7 +187,7 @@ for key in readPairData:
     else:
         score = ["No error",results]
     #readPairData[key].append(score)
-    outputFile.writelines("\t".join([key,score,ovlType]) + "\n")
+    outputFile.write("\t".join([key,score,ovlType]) + "\n")
 outputFile.close()
 
     #print(c, key, readPairData[key][9])
