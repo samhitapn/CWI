@@ -87,8 +87,8 @@ def getGapRegionScore (score, lenGap):
 def getOverlapScore(readData):
     probabilityBase = 0
     probabilityOverall = 1
-    cigarSeq = getSeqFromCigar(readData[8])
-    print(len(cigarSeq))
+    #cigarSeq = getSeqFromCigar(readData[8])
+    #print(len(cigarSeq))
     seq1 = readData[0][readData[2]:]
     seq2 = readData[4][readData[6]:]
     score1 = readData[1][readData[2]:]
@@ -161,8 +161,9 @@ for overlapPair in pafData:
     #print(overlapPair)
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
-
+print(len(readPairData))
 #print(readPairData)
-
+c = 0
 for key in readPairData:
-    print(key, getOverlapScore(readPairData[key]))
+    c = c + 1
+    print(c, key, getOverlapScore(readPairData[key]))
