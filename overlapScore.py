@@ -95,12 +95,19 @@ def getOverlapScore(readData):
     score2 = readData[5][readData[6]:]
     print(readData[2],readData[3],readData[6],readData[7])
     print(len(seq1),len(seq2),len(score1),len(score2))
+    print(seq1)
+    print("&&&&&&&&&&&&&&&")
+    print(seq2)
+    print("&&&&&&&&&&&&&&&")
+    print(score1)
+    print("&&&&&&&&&&&&&&&")
+    print(score2)
     pos = 0
     L = 0
     for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
-        print(num,char)
-
+        #print(num,char)
+        """
         if num:
             num = int(num)
         else:
@@ -123,7 +130,7 @@ def getOverlapScore(readData):
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
-
+"""
 
 
 """
