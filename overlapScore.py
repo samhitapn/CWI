@@ -102,7 +102,7 @@ def getOverlapScore(key, readData):
     errorList = list()
     for num, char in cigarPattern.findall(readData[8]):
             #pos = 0
-        print(errorList)    #print(num,char)
+           #print(num,char)
         try:
             if num:
                 num = int(num)
@@ -172,4 +172,10 @@ print(len(readPairData))
 c = 0
 for key in readPairData:
     c = c + 1
-    print(c, key, getOverlapScore(key, readPairData[key]))
+    results = getOverlapScore(key, readPairData[key])
+    if not results[0]:
+        readPairData[key] = {readPairData[key],"No error",results[1]}
+    else:
+        readPairData[key] = {readPairData[key],"Index Error",results[1]}
+
+    print(c, key, readPairData[key][10])
