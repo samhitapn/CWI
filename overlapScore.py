@@ -87,7 +87,8 @@ def getGapRegionScore (score, lenGap):
 def getOverlapScore(readData):
     probabilityBase = 0
     probabilityOverall = 1
-    #cigarSeq = getSeqFromCigar(readData[8])
+    cigarSeq = getSeqFromCigar(readData[8])
+    print(cigarSeq)
     seq1 = readData[0][readData[2]:]
     seq2 = readData[4][readData[6]:]
     score1 = readData[1][readData[2]:]
