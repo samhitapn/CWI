@@ -93,7 +93,7 @@ def getOverlapScore(readData):
     score1 = readData[1][readData[2]:]
     score2 = readData[5][readData[6]:]
     print(readData[2],readData[3],readData[6],readData[7])
-    print(len(seq1),len(seq2),len(score1),len(scre2))
+    print(len(seq1),len(seq2),len(score1),len(sore2))
     pos = 0
     L = 0
     for num, char in cigarPattern.findall(readData[8]):
