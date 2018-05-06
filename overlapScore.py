@@ -73,7 +73,7 @@ def getGapRegionScore (score, lenGap):
     probSum = 0
     #if lenGap > 1:
     for i in range(0, len(score)):
-            probSum = probSum + (10/13 * getProbQuality(score[i])) + (3/13 * (1 - getProbQuality(score[i])))
+            probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
     probGapSum = probSum/lenGap
     return(probGapSum)
 
@@ -122,7 +122,7 @@ def getOverlapScore(readData):
             tempScore2 = score2[pos2:pos2 + num]
             for i in range(0, len(tempSeq1)):
                 for n in nt:
-                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempSeq2[i],getProbQuality(tempScore2[i])))
+                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(np.float128(tempScore1[i]))) * probabilityQ(n,tempSeq2[i],getProbQuality(np.float128(tempScore2[i]))))
             pos1 = pos1 + num
             pos2 = pos2 + num
         print(num,pos1,pos2,char,probabilityBase)
