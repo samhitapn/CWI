@@ -95,19 +95,12 @@ def getOverlapScore(readData):
     score2 = readData[5][readData[6]:]
     print(readData[2],readData[3],readData[6],readData[7])
     print(len(seq1),len(seq2),len(score1),len(score2))
-    print(seq1)
-    print("&&&&&&&&&&&&&&&")
-    print(seq2)
-    print("&&&&&&&&&&&&&&&")
-    print(score1)
-    print("&&&&&&&&&&&&&&&")
-    print(score2)
     pos = 0
     L = 0
     for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
         #print(num,char)
-        """
+
         if num:
             num = int(num)
         else:
@@ -130,7 +123,7 @@ def getOverlapScore(readData):
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
-"""
+
 
 
 """
@@ -159,6 +152,9 @@ fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merg
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
+    print(list(fastq[ovl[0]].seq))
+    print("******")
+    print(list(fastq[ovl[5]].seq))
     #print(fastq[ovl[0]].seq)
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
