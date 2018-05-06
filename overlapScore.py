@@ -134,7 +134,7 @@ def getOverlapScore(key, readData):
             errorList.append(key)
             continue
     overlapScore = probabilityOverall ** 1/L
-    return(overlapScore)
+    return(errorList, overlapScore)
 
 
 
