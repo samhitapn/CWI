@@ -173,7 +173,7 @@ c = 0
 for key in readPairData:
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
-    if not results[0]:
+    if results[0] == None:
         readPairData[key] = {readPairData[key],"No error",results[1]}
     else:
         readPairData[key] = {readPairData[key],"Index Error",results[1]}
