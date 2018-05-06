@@ -99,7 +99,7 @@ def getOverlapScore(key, readData):
     pos1 = 0
     pos2 = 0
     L = 0
-    errorList = list()
+    errorDet = list()
     for num, char in cigarPattern.findall(readData[8]):
             #pos = 0
            #print(num,char)
@@ -131,10 +131,12 @@ def getOverlapScore(key, readData):
             #print(num,pos1,pos2,char,probabilityBase)
             probabilityOverall = probabilityOverall * probabilityBase
         except IndexError:
-            errorList.append([key, pos1, pos2])
+            result = [pos1, pos2, 0]
             continue
-        overlapScore = probabilityOverall ** 1/L
-    return(errorList, overlapScore)
+        else:
+            overlapScore = probabilityOverall ** 1/L
+            result = [pos1, pos2, overlapScore]
+    return(result)
 
 
 
