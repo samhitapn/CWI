@@ -116,10 +116,10 @@ def getOverlapScore(readData):
             pos1 = pos1 + num
             print(pos,char,probabilityBase)
         if char == "M":
-            tempSeq1 = seq1[pos1,pos1 + num]
-            tempScore1 = score1[pos1,pos1 + num]
-            tempSeq2 = seq2[pos2,pos2 + num]
-            tempScore2 = score2[pos2,pos2 + num]
+            tempSeq1 = seq1[pos1:pos1 + num]
+            tempScore1 = score1[pos1:pos1 + num]
+            tempSeq2 = seq2[pos2:pos2 + num]
+            tempScore2 = score2[pos2:pos2 + num]
             for i in range(0, len(tempSeq1)):
                 for n in nt:
                     probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempeq2[i],getProbQuality(tempScore2[i])))
