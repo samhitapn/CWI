@@ -73,7 +73,8 @@ def getGapRegionScore (score, lenGap):
     probSum = 0
     #if lenGap > 1:
     for i in range(0, len(score)):
-            probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
+            #probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
+            probSum = probSum + (10/13 * np.float128(score[i])) + (3/13 * (1 - np.float128(score[i])))
     probGapSum = probSum/lenGap
     return(probGapSum)
 
@@ -98,40 +99,38 @@ def getOverlapScore(key, readData):
     pos1 = 0
     pos2 = 0
     L = 0
-    try:
-        for num, char in cigarPattern.findall(readData[8]):
-            #pos = 0
-            #print(num,char)
 
-            if num:
-                num = int(num)
-            else:
-                num = 1
-            L = L + num
-            if char == "I":
-                probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
-                pos2 = pos2 + num
-                #print(num,pos1,pos2,char,probabilityBase)
-            if char == "D":
-                probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
-                pos1 = pos1 + num
-                #print(num,pos1,pos2,char,probabilityBase)
-            if char == "M":
-                tempSeq1 = seq1[pos1:pos1 + num]
-                tempScore1 = score1[pos1:pos1 + num]
-                tempSeq2 = seq2[pos2:pos2 + num]
-                tempScore2 = score2[pos2:pos2 + num]
-                for i in range(0, len(tempSeq1)):
-                    for n in nt:
-                        probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(np.float128(tempScore1[i]))) * probabilityQ(n,tempSeq2[i],getProbQuality(np.float128(tempScore2[i]))))
-                pos1 = pos1 + num
-                pos2 = pos2 + num
+    for num, char in cigarPattern.findall(readData[8]):
+        #pos = 0
+        #print(num,char)
+
+        if num:
+            num = int(num)
+        else:
+            num = 1
+        L = L + num
+        if char == "I":
+            probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
+            pos2 = pos2 + num
             #print(num,pos1,pos2,char,probabilityBase)
-            probabilityOverall = probabilityOverall * probabilityBase
-        overlapScore = probabilityOverall ** 1/L
-        continue
-    except IndexError:
-        print(key, pos)
+        if char == "D":
+            probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
+            pos1 = pos1 + num
+            #print(num,pos1,pos2,char,probabilityBase)
+        if char == "M":
+            tempSeq1 = seq1[pos1:pos1 + num]
+            tempScore1 = score1[pos1:pos1 + num]
+            tempSeq2 = seq2[pos2:pos2 + num]
+            tempScore2 = score2[pos2:pos2 + num]
+            for i in range(0, len(tempSeq1)):
+                for n in nt:
+                    #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(np.float128(tempScore1[i]))) * probabilityQ(n,tempSeq2[i],getProbQuality(np.float128(tempScore2[i]))))
+                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
+            pos1 = pos1 + num
+            pos2 = pos2 + num
+        #print(num,pos1,pos2,char,probabilityBase)
+        probabilityOverall = probabilityOverall * probabilityBase
+    overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
 
 
