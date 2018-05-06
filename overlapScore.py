@@ -179,4 +179,4 @@ for key in readPairData:
         score = ["IndexError",results[1]]
     readPairData[key].append(score)
 
-    print(c, key, readPairData[key][10])
+    print(c, key, readPairData[key][9])
