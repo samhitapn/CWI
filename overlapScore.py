@@ -132,7 +132,7 @@ def getOverlapScore(key, readData):
         except IndexError:
             print(key)
             continue
-            overlapScore = probabilityOverall ** 1/L
+    overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
 
 
