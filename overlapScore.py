@@ -129,7 +129,7 @@ def getOverlapScore(readData):
             #print(num,pos1,pos2,char,probabilityBase)
             probabilityOverall = probabilityOverall * probabilityBase
         overlapScore = probabilityOverall ** 1/L
-    except Exception:
+    except IndexError:
         continue
     return(overlapScore)
 
