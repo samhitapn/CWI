@@ -179,9 +179,10 @@ for key in readPairData:
     #print(results)
     keyElements = key.split("-")
     if keyElements.split("_")[0] == keyElements.split("_")[1]:
-            ovlType = "Good Overlap"
-        else:
-            ovlType = "Bad Overlap"
+        ovlType = "Good Overlap"
+    else:
+        ovlType = "Bad Overlap"
+
     if results[2] == 0:
         score = ["IndexError",results]
     else:
