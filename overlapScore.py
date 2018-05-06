@@ -177,7 +177,7 @@ for key in readPairData:
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     #print(results)
-    keyElements = key.split("-").split("_"):
+    keyElements = key.split("-").split("_")
     if keyElements[0] == keyElements[2]:
         ovlType = "Good Overlap"
     else:
