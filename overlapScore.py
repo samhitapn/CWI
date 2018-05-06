@@ -122,7 +122,7 @@ def getOverlapScore(readData):
             tempScore2 = score2[pos2:pos2 + num]
             for i in range(0, len(tempSeq1)):
                 for n in nt:
-                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempeq2[i],getProbQuality(tempScore2[i])))
+                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempSeq2[i],getProbQuality(tempScore2[i])))
             pos1 = pos1 + num
             pos2 = pos2 + num
         #print(num,pos,char,probabilityBase)
