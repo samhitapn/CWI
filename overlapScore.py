@@ -152,10 +152,7 @@ fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merg
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
-    print(list(fastq[ovl[0]].seq))
-    print("******")
-    print(list(fastq[ovl[5]].seq))
-    #print(fastq[ovl[0]].seq)
+    print(overlapPair)
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
     break
