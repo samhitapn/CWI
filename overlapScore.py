@@ -99,11 +99,10 @@ def getOverlapScore(key, readData):
     pos1 = 0
     pos2 = 0
     L = 0
-    try:
-        for num, char in cigarPattern.findall(readData[8]):
+    for num, char in cigarPattern.findall(readData[8]):
             #pos = 0
             #print(num,char)
-
+        try:
             if num:
                 num = int(num)
             else:
