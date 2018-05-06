@@ -174,8 +174,8 @@ for key in readPairData:
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     if results[0] == None:
-        readPairData[key] = {readPairData[key],"No error",results[1]}
+        readPairData[key].append(readPairData[key],"No error",results[1])
     else:
-        readPairData[key] = {readPairData[key],"Index Error",results[1]}
+        readPairData[key].append(readPairData[key],"Index Error",results[1])
 
     print(c, key, readPairData[key][10])
