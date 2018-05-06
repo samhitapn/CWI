@@ -108,17 +108,21 @@ def getOverlapScore(readData):
             num = 1
         L = L + num
         if char == "I":
-            probabilityBase = probabilityBase + getGapRegionScore(score2[pos:pos+num], num)
+            probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
             pos2 = pos2 + num
             print(pos,char,probabilityBase)
         if char == "D":
-            probabilityBase = probabilityBase + getGapRegionScore(score1[pos:pos+num], num)
+            probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
             pos1 = pos1 + num
             print(pos,char,probabilityBase)
         if char == "M":
-            for i in range(pos, pos + num):
+            tempSeq1 = seq1[pos1,pos1 + num]
+            tempScore1 = score1[pos1,pos1 + num]
+            tempSeq2 = seq2[pos2,pos2 + num]
+            tempScore2 = score2[pos2,pos2 + num]
+            for i in range(0, len(tempSeq1)):
                 for n in nt:
-                    probabilityBase = probabilityBase + (probabilityQ(n,seq1[i],getProbQuality(score1[i])) * probabilityQ(n,seq2[i],getProbQuality(score2[i])))
+                    probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempeq2[i],getProbQuality(tempScore2[i])))
             pos1 = pos1 + num
             pos2 = pos2 + num
         #print(num,pos,char,probabilityBase)
