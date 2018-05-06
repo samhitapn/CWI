@@ -88,7 +88,7 @@ def getOverlapScore(readData):
     probabilityBase = 0
     probabilityOverall = 1
     cigarSeq = getSeqFromCigar(readData[8])
-    print(cigarSeq)
+    print(len(cigarSeq))
     seq1 = readData[0][readData[2]:]
     seq2 = readData[4][readData[6]:]
     score1 = readData[1][readData[2]:]
@@ -100,7 +100,7 @@ def getOverlapScore(readData):
     for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
         print(num,char)
-        """
+
         if num:
             num = int(num)
         else:
@@ -123,7 +123,7 @@ def getOverlapScore(readData):
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
-    """
+
 
 
 """
