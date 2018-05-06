@@ -110,11 +110,11 @@ def getOverlapScore(readData):
         if char == "I":
             probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
             pos2 = pos2 + num
-            print(num,pos1,pos2,char,probabilityBase)
+            #print(num,pos1,pos2,char,probabilityBase)
         if char == "D":
             probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
             pos1 = pos1 + num
-            print(num,pos1,pos2,char,probabilityBase)
+            #print(num,pos1,pos2,char,probabilityBase)
         if char == "M":
             tempSeq1 = seq1[pos1:pos1 + num]
             tempScore1 = score1[pos1:pos1 + num]
@@ -125,7 +125,7 @@ def getOverlapScore(readData):
                     probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(np.float128(tempScore1[i]))) * probabilityQ(n,tempSeq2[i],getProbQuality(np.float128(tempScore2[i]))))
             pos1 = pos1 + num
             pos2 = pos2 + num
-        print(num,pos1,pos2,char,probabilityBase)
+        #print(num,pos1,pos2,char,probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
     return(overlapScore)
@@ -158,12 +158,11 @@ fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merg
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
-    print(overlapPair)
+    #print(overlapPair)
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
-    break
+
 #print(readPairData)
 
 for key in readPairData:
-    print(getOverlapScore(readPairData[key]))
-    break
+    print(key, getOverlapScore(readPairData[key]))
