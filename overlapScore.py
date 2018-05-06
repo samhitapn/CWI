@@ -84,7 +84,7 @@ def getGapRegionScore (score, lenGap):
 """
 #from signal import signal, SIGPIPE, SIG_DFL
 #signal(SIGPIPE, SIG_DFL)
-def getOverlapScore(readData):
+def getOverlapScore(key, readData):
     probabilityBase = 0
     probabilityOverall = 1
     cigarSeq = getSeqFromCigar(readData[8])
@@ -129,8 +129,9 @@ def getOverlapScore(readData):
             #print(num,pos1,pos2,char,probabilityBase)
             probabilityOverall = probabilityOverall * probabilityBase
         overlapScore = probabilityOverall ** 1/L
-    except IndexError:
         continue
+    except IndexError:
+        print(key, pos)
     return(overlapScore)
 
 
@@ -169,4 +170,4 @@ print(len(readPairData))
 c = 0
 for key in readPairData:
     c = c + 1
-    print(c, key, getOverlapScore(readPairData[key]))
+    print(c, key, getOverlapScore(key, readPairData[key]))
