@@ -175,7 +175,7 @@ c = 0
 for key in readPairData:
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
-    print(results)
+    #print(results)
     if results[2] == 0:
         score = ["IndexError",results]
     else:
