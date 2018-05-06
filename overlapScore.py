@@ -172,14 +172,22 @@ for overlapPair in pafData:
 print(len(readPairData))
 #print(readPairData)
 c = 0
+outputFile = open("100ReadsOutput.txt","w+")
 for key in readPairData:
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     #print(results)
+    keyElements = key.split("-").split("_"):
+    if keyElements[0] == keyElements[2]:
+        ovlType = "Good Overlap"
+    else:
+        ovlType = "Bad Overlap"
     if results[2] == 0:
         score = ["IndexError",results]
     else:
         score = ["No error",results]
-    readPairData[key].append(score)
+    #readPairData[key].append(score)
+    outputFile.writelines("\t".join([key,score,ovlType]) + "\n")
+outputFile.close()
 
-    print(c, key, readPairData[key][9])
+    #print(c, key, readPairData[key][9])
