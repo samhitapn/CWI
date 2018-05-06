@@ -95,7 +95,8 @@ def getOverlapScore(readData):
     score2 = readData[5][readData[6]:]
     print(readData[2],readData[3],readData[6],readData[7])
     print(len(seq1),len(seq2),len(score1),len(score2))
-    pos = 0
+    pos1 = 0
+    pos2 = 0
     L = 0
     for num, char in cigarPattern.findall(readData[8]):
         #pos = 0
@@ -108,17 +109,18 @@ def getOverlapScore(readData):
         L = L + num
         if char == "I":
             probabilityBase = probabilityBase + getGapRegionScore(score2[pos:pos+num], num)
-            pos = pos + num
+            pos2 = pos2 + num
             print(pos,char,probabilityBase)
         if char == "D":
             probabilityBase = probabilityBase + getGapRegionScore(score1[pos:pos+num], num)
-            pos = pos + num
+            pos1 = pos1 + num
             print(pos,char,probabilityBase)
         if char == "M":
             for i in range(pos, pos + num):
                 for n in nt:
                     probabilityBase = probabilityBase + (probabilityQ(n,seq1[i],getProbQuality(score1[i])) * probabilityQ(n,seq2[i],getProbQuality(score2[i])))
-            pos = pos + num
+            pos1 = pos1 + num
+            pos2 = pos2 + num
         #print(num,pos,char,probabilityBase)
         probabilityOverall = probabilityOverall * probabilityBase
     overlapScore = probabilityOverall ** 1/L
