@@ -61,7 +61,9 @@ def probabilityQ (X, b, p):
 def getProbQuality (q):
     #print(q)
     #q = int(q)
-    p = 10**(-np.float128(q)/10)
+    q = ord(q)
+    #p = 10**(-np.float128(q)/10)
+    p = 10 ** (-q/10)
     #print(p)
     return p
 
@@ -184,16 +186,24 @@ def getOverlapScore(key, readData):
 
 # MAIN
 readPairData = dict()
+fastqTemp = {}
 with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
     pafData = paf.readlines()
 
-fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
+#fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
+with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
+    fastqData = fastq.readlines()
+
+for i in range(0,len(fastqData)):
+    if fastqData[i].startswith("@"):
+         fastqTemp[fastqData[i].split(" ")[0].strip("@")] = [fastqData[i+1].rstrip("\n"),fastqData[i+3].rstrip("\n")]
+    i = i + 1
 
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(overlapPair)
-
+    """
     if str(ovl[0] + "-" + ovl[5])  == "seq5_16-seq8_86":
         print(overlapPair)
         print("".join(list(fastq[ovl[0]].seq)))
@@ -201,9 +211,11 @@ for overlapPair in pafData:
         print("****")
         print("".join(list(fastq[ovl[5]].seq)))
         print("".join(str(fastq[ovl[5]].letter_annotations["phred_quality"])))
-    
-    tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
-    readPairData[ovl[0] + "-" + ovl[5]] = tempData
+    """
+    readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1],int(ovl[2]), int(ovl[3]),fastqTemp[ovl[5]][0],fastqTemp[ovl[5]][1],int(ovl[7]),int(ovl[8]),ovl[20].split(":")[2].strip("\n")]
+    #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
+    #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
+
 print(len(readPairData))
 #print(readPairData)
 c = 0
