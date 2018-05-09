@@ -59,7 +59,7 @@ def probabilityQ (X, b, p):
 @Output parameters: Probability
 """
 def getProbQuality (q):
-    print(q,ord(q))
+    #print(q,ord(q))
     #q = int(q)
     q = ord(q)
     #p = 10**(-np.float128(q)/10)
