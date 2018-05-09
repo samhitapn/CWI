@@ -61,7 +61,8 @@ def probabilityQ (X, b, p):
 def getProbQuality (q):
     #print(q)
     #q = int(q)
-    p = 10**(-q/10)
+    p = 10**(-np.float128(q)/10)
+    #print(p)
     return p
 
 """
@@ -70,13 +71,15 @@ def getProbQuality (q):
 @Output parameters: Probability
 """
 def getGapRegionScore (score, lenGap):
-    probSum = 0
+    ovlScore = 0
     #if lenGap > 1:
-    for i in range(0, len(score)):
-            probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
+    for i in range(0, lenGap):
+            ovlScore = ovlScore + score[i]
+            #probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
             #probSum = probSum + (10/13 * np.float128(score[i])) + (3/13 * (1 - np.float128(score[i])))
-    probGapSum = probSum/lenGap
-    return(probGapSum)
+    ovlScore = ovlScore/lenGap
+    prob = (10/13 * getProbQuality(ovlScore)) + (3/13 * (1 - getProbQuality(ovlScore)))
+    return(prob)
 
 """
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
@@ -86,18 +89,22 @@ def getGapRegionScore (score, lenGap):
 #from signal import signal, SIGPIPE, SIG_DFL
 #signal(SIGPIPE, SIG_DFL)
 def getOverlapScore(key, readData):
-    probabilityBase = 0
+    #probabilityBase = 0
     probabilityOverall = 1
-    cigarSeq = getSeqFromCigar(readData[8])
-    print(len(cigarSeq))
-    seq1 = readData[0][readData[2]:]
-    seq2 = readData[4][readData[6]:]
-    score1 = readData[1][readData[2]:]
-    score2 = readData[5][readData[6]:]
-    print(readData[2],readData[3],readData[6],readData[7])
-    print(len(seq1),len(seq2),len(score1),len(score2))
-    pos1 = 0
-    pos2 = 0
+    #cigarSeq = getSeqFromCigar(readData[8])
+    #print(len(cigarSeq))
+    #seq1 = readData[0][readData[2]:]
+    #seq2 = readData[4][readData[6]:]
+    #score1 = readData[1][readData[2]:]
+    #score2 = readData[5][readData[6]:]
+    seq1 = readData[0]
+    seq2 = readData[4]
+    score1 = readData[1]
+    score2 = readData[5]
+    #print(readData[2],readData[3],readData[6],readData[7])
+    #print(len(seq1),len(seq2),len(score1),len(score2))
+    pos1 = readData[2]
+    pos2 = readData[6]
     L = 0
     errorDet = list()
     for num, char in cigarPattern.findall(readData[8]):
@@ -108,34 +115,53 @@ def getOverlapScore(key, readData):
                 num = int(num)
             else:
                 num = 1
-            L = L + num
+            #L = L + num
+            print(key, num, char, pos1, pos1 + num, pos2, pos2 + num,len(seq1),len(seq2))
+            tempSeq1 = seq1[pos1:pos1 + num]
+            tempScore1 = score1[pos1:pos1 + num]
+            tempSeq2 = seq2[pos2:pos2 + num]
+            tempScore2 = score2[pos2:pos2 + num]
+
             if char == "I":
-                probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
+                #probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
+                #print(probabilityOverall)
+                probabilityOverall = probabilityOverall * getGapRegionScore(tempScore2, num)
+                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
+                L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
-            if char == "D":
-                probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
+            elif char == "D":
+                #probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
+                #print(probabilityOverall)
+                probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
+                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
+                L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
-            if char == "M":
-                tempSeq1 = seq1[pos1:pos1 + num]
-                tempScore1 = score1[pos1:pos1 + num]
-                tempSeq2 = seq2[pos2:pos2 + num]
-                tempScore2 = score2[pos2:pos2 + num]
-                for i in range(0, len(tempSeq1)):
+            elif char == "M":
+                for i in range(0, num):
+                    probabilityBase = 0
                     for n in nt:
-                        probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(np.float128(tempScore1[i]))) * probabilityQ(n,tempSeq2[i],getProbQuality(np.float128(tempScore2[i]))))
+                        probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempSeq2[i],getProbQuality(tempScore2[i])))
+                        assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
+                    #assert 0 < probabilityOverall < 1, print(char, pos1,pos2,probabilityOverall)
+                    #print(probabilityBase,probabilityOverall)
+                    probabilityOverall = probabilityOverall * probabilityBase
+                    assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                    L = L + 1
                 pos1 = pos1 + num
                 pos2 = pos2 + num
-            #print(num,pos1,pos2,char,probabilityBase)
-            probabilityOverall = probabilityOverall * probabilityBase
+                #print(num,pos1,pos2,char,probabilityBase)
+            #probabilityOverall = probabilityOverall * probabilityBase
+
         except IndexError:
             result = [pos1, pos2, 0]
             continue
         else:
-            overlapScore = probabilityOverall ** 1/L
+            overlapScore = probabilityOverall ** (1/L)
             result = [pos1, pos2, overlapScore]
+        #break
     return(result)
 
 
@@ -167,6 +193,15 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(overlapPair)
+    """
+    if str(ovl[0] + "-" + ovl[5])  == "seq5_16-seq8_86":
+        print(overlapPair)
+        print("".join(list(fastq[ovl[0]].seq)))
+        print("".join(str(fastq[ovl[0]].letter_annotations["phred_quality"])))
+        print("****")
+        print("".join(list(fastq[ovl[5]].seq)))
+        print("".join(str(fastq[ovl[5]].letter_annotations["phred_quality"])))
+    """
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 print(len(readPairData))
@@ -174,6 +209,7 @@ print(len(readPairData))
 c = 0
 outputFile = open("100ReadsOutput.txt","w+")
 for key in readPairData:
+    #if key == "seq5_16-seq8_86":
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     #print(results)
@@ -189,6 +225,7 @@ for key in readPairData:
         error = "No error"
     #readPairData[key].append(score)
     outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+    #break
 outputFile.close()
 
     #print(c, key, readPairData[key][9])
