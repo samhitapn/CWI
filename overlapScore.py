@@ -117,7 +117,7 @@ def getOverlapScore(key, readData):
             else:
                 num = 1
             #L = L + num
-            print(key, num, char, pos1, pos1 + num, pos2, pos2 + num,len(seq1),len(seq2))
+            #print(key, num, char, pos1, pos1 + num, pos2, pos2 + num,len(seq1),len(seq2))
             tempSeq1 = seq1[pos1:pos1 + num]
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
@@ -218,6 +218,7 @@ for key in readPairData:
         else:
             error = "No error"
         #readPairData[key].append(score)
+        print(key,str(results[2]))
         outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     #break
 outputFile.close()
