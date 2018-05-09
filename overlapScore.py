@@ -59,7 +59,7 @@ def probabilityQ (X, b, p):
 @Output parameters: Probability
 """
 def getProbQuality (q):
-    #print(q)
+    print(q)
     #q = int(q)
     q = ord(q)
     #p = 10**(-np.float128(q)/10)
@@ -75,12 +75,13 @@ def getProbQuality (q):
 def getGapRegionScore (score, lenGap):
     ovlScore = 0
     #if lenGap > 1:
+    score[i] = getProbQuality(score[i])
     for i in range(0, lenGap):
             ovlScore = ovlScore + score[i]
             #probSum = probSum + (10/13 * getProbQuality(np.float128(score[i]))) + (3/13 * (1 - getProbQuality(np.float128(score[i]))))
             #probSum = probSum + (10/13 * np.float128(score[i])) + (3/13 * (1 - np.float128(score[i])))
     ovlScore = ovlScore/lenGap
-    prob = (10/13 * getProbQuality(ovlScore)) + (3/13 * (1 - getProbQuality(ovlScore)))
+    prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
     return(prob)
 
 """
@@ -166,23 +167,6 @@ def getOverlapScore(key, readData):
         #break
     return(result)
 
-
-
-"""
-    for i in range(0,len(cigarSeq)):
-        if cigarSeq[i] == "I":
-            #seq1.insert(i,"-")
-            #score1.insert(i,"-")
-
-        elif cigarSeq[i] == "D":
-            seq2.insert(i,"-")
-            score2.insert(i,"-")
-    readData[0] = seq1
-    readData[1] = score1
-    readData[4] = seq2
-    readData[5] = score2
-    return(readData)
-"""
 
 # MAIN
 readPairData = dict()
