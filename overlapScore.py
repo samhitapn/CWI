@@ -193,7 +193,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
     #print(overlapPair)
-    """
+
     if str(ovl[0] + "-" + ovl[5])  == "seq5_16-seq8_86":
         print(overlapPair)
         print("".join(list(fastq[ovl[0]].seq)))
@@ -201,7 +201,7 @@ for overlapPair in pafData:
         print("****")
         print("".join(list(fastq[ovl[5]].seq)))
         print("".join(str(fastq[ovl[5]].letter_annotations["phred_quality"])))
-    """
+    
     tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     readPairData[ovl[0] + "-" + ovl[5]] = tempData
 print(len(readPairData))
