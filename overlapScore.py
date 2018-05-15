@@ -64,7 +64,7 @@ def getProbQuality (q):
     qNew = ord(q)
     #print(q,qNew)
     #p = 10**(-np.float128(q)/10)
-    p = 10 ** (-qNew/10)
+    p = 10 ** (-np.float128(qNew)/10)
     #print(p)
     return p
 
