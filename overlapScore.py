@@ -127,20 +127,21 @@ def getOverlapScore(key, readData):
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
-                print(char,num,probabilityOverall, L)
+                #print(char,num,probabilityOverall, L)
             elif char == "D":
                 sc = getGapRegionScore(tempScore2, num, scoreList)
                 probabilityOverall = probabilityOverall * sc[0]
+                print(sc[1])
                 scoreList = sc[1]
                 #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
-                print(char,num,probabilityOverall, L)
+                #print(char,num,probabilityOverall, L)
             elif char == "M":
                 for i in range(0, num):
                     probabilityBase = 0
-                    print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
+                    #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
                         probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
                         assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
@@ -148,7 +149,7 @@ def getOverlapScore(key, readData):
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                     L = L + 1
-                    print(char,num,probabilityBase,probabilityOverall, L)
+                    #print(char,num,probabilityBase,probabilityOverall, L)
                 pos1 = pos1 + num
                 pos2 = pos2 + num
         except IndexError:
