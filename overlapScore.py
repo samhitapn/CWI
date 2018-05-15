@@ -213,8 +213,8 @@ test = open("test.txt","w+")
 for key in readPairData:
     #if key == "seq5_16-seq8_86":
     print(readPairData[key])
-    for i in readPairData[key]:
-        test.write(readPairData[key][i])
+    #for i in readPairData[key]:
+    #    test.write(readPairData[key][i])
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     #print(results)
