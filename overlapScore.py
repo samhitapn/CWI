@@ -46,10 +46,11 @@ def getSeqFromCigar(cigar):
 @Output parameters: Probability
 """
 def probabilityQ (X, b, p):
+    pNew = getProbQuality(p)
     if X == b:
-        qp = 1 - p
+        qp = 1 - pNew
     else:
-        qp = p/3
+        qp = pNew/3
     return qp
 
 
