@@ -150,9 +150,8 @@ def getOverlapScore(key, readData):
                         assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     #assert 0 < probabilityOverall < 1, print(char, pos1,pos2,probabilityOverall)
-                    #print(probabilityBase,probabilityOverall)
                     probabilityOverall = probabilityOverall * probabilityBase
-                    print("M",probabilityOverall)
+                    print("M",probabilityBase,probabilityOverall)
                     assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                     L = L + 1
                 pos1 = pos1 + num
