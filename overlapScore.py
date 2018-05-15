@@ -83,10 +83,7 @@ def getGapRegionScore (score, lenGap, scoreList):
     for i in range(0, lenGap):
         #print(score[i])
         #score[i] = getProbQuality(score[i])
-        if not scoreList:
-            scoreList = ["-"]
-        else:
-            scoreList = scoreList.append(getProbQuality(score[i]))
+        scoreList = scoreList.append(getProbQuality(score[i]))
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
     prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
@@ -100,7 +97,7 @@ def getGapRegionScore (score, lenGap, scoreList):
 """
 
 def getOverlapScore(key, readData):
-    scoreList = list()
+    scoreList = [0]
     probabilityOverall = 1
     seq1 = readData[0]
     seq2 = readData[4]
