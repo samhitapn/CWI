@@ -131,18 +131,20 @@ def getOverlapScore(key, readData):
                 #probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
                 #print("I",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore2, num)
-                print(char,num,probabilityOverall)
+                #print(char,num,probabilityOverall, L)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
+                print(char,num,probabilityOverall, L)
                 #print(num,pos1,pos2,char,probabilityBase)
             elif char == "D":
                 #probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
-                print(char,num,probabilityOverall)
+
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
+                print(char,num,probabilityOverall, L)
                 #print(num,pos1,pos2,char,probabilityBase)
             elif char == "M":
                 for i in range(0, num):
@@ -154,9 +156,10 @@ def getOverlapScore(key, readData):
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     #assert 0 < probabilityOverall < 1, print(char, pos1,pos2,probabilityOverall)
                     probabilityOverall = probabilityOverall * probabilityBase
-                    print(char,num,probabilityBase,probabilityOverall)
+
                     assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                     L = L + 1
+                    print(char,num,probabilityBase,probabilityOverall, L)
                 pos1 = pos1 + num
                 pos2 = pos2 + num
                 #print(num,pos1,pos2,char,probabilityBase)
