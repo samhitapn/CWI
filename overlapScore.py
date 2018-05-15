@@ -160,12 +160,13 @@ def getOverlapScore(key, readData):
                 pos2 = pos2 + num
                 #print(num,pos1,pos2,char,probabilityBase)
             #probabilityOverall = probabilityOverall * probabilityBase
-        print(probabilityOverall)
+            #print(probabilityOverall)
         except IndexError:
             result = [pos1, pos2, 0]
             continue
         else:
             overlapScore = probabilityOverall ** (1/L)
+            print(probabilityOverall,overlapScore)
             result = [pos1, pos2, overlapScore]
         #break
     return(result)
