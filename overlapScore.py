@@ -167,7 +167,7 @@ def getOverlapScore(key, readData):
             continue
         else:
             overlapScore = probabilityOverall ** (1/L)
-            print(probabilityOverall,overlapScore)
+            print(L,probabilityOverall,overlapScore)
             result = [pos1, pos2, overlapScore]
         #break
     return(result)
