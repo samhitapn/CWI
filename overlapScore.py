@@ -74,7 +74,7 @@ def getProbQuality (q):
 @Input parameters:
 @Output parameters: Probability
 """
-def getGapRegionScore (score, lenGap):
+def getGapRegionScore (score, lenGap, scoreList):
     ovlScore = 0
     #scoreList = []
     #if lenGap > 1:
