@@ -77,18 +77,20 @@ def getProbQuality (q):
 def getGapRegionScore (score, lenGap, scoreList):
     ovlScore = 0
     #print(scoreList)
-    if not scoreList:
-        scoreList = ["-"]
     #scoreList = []
     #if lenGap > 1:
 
     for i in range(0, lenGap):
         #print(score[i])
         #score[i] = getProbQuality(score[i])
-        scoreList = scoreList.append(getProbQuality(score[i]))
+        if not scoreList:
+            scoreList = ["-"]
+        else:
+            scoreList = scoreList.append(getProbQuality(score[i]))
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
     prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
+    #print(scoreList)
     return(prob, scoreList)
 
 """
