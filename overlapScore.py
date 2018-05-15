@@ -62,7 +62,7 @@ def getProbQuality (q):
     #print(q)
     #q = int(q)
     qNew = ord(q)
-    print(q,qNew)
+    #print(q,qNew)
     #p = 10**(-np.float128(q)/10)
     p = 10 ** (-qNew/10)
     #print(p)
@@ -128,7 +128,7 @@ def getOverlapScore(key, readData):
 
             if char == "I":
                 #probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
-                #print(probabilityOverall)
+                print("I",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore2, num)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
@@ -136,7 +136,7 @@ def getOverlapScore(key, readData):
                 #print(num,pos1,pos2,char,probabilityBase)
             elif char == "D":
                 #probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
-                #print(probabilityOverall)
+                print("D",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
@@ -152,6 +152,7 @@ def getOverlapScore(key, readData):
                     #assert 0 < probabilityOverall < 1, print(char, pos1,pos2,probabilityOverall)
                     #print(probabilityBase,probabilityOverall)
                     probabilityOverall = probabilityOverall * probabilityBase
+                    print("M",probabilityOverall)
                     assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                     L = L + 1
                 pos1 = pos1 + num
