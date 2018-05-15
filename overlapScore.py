@@ -67,7 +67,7 @@ def getProbQuality (q):
     #p = 10**(-np.float128(q)/10)
     p = 10 ** (-np.float128(qNew)/10)
     #print(p)
-    return np.float128(qNew)
+    return p
 
 """
 @Definition:
@@ -132,7 +132,7 @@ def getOverlapScore(key, readData):
                 #print("I",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore2, num)
                 print(char,num,probabilityOverall)
-                #assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
@@ -140,7 +140,7 @@ def getOverlapScore(key, readData):
                 #probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                 print(char,num,probabilityOverall)
-                #assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
@@ -150,12 +150,12 @@ def getOverlapScore(key, readData):
                     print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
                         probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
-                        #assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
+                        assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     #assert 0 < probabilityOverall < 1, print(char, pos1,pos2,probabilityOverall)
                     probabilityOverall = probabilityOverall * probabilityBase
                     print(char,num,probabilityBase,probabilityOverall)
-                    #assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                    assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                     L = L + 1
                 pos1 = pos1 + num
                 pos2 = pos2 + num
