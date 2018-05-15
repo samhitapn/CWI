@@ -95,7 +95,7 @@ def getGapRegionScore (score, lenGap, scoreList):
 """
 
 def getOverlapScore(key, readData):
-    scoreList = list()
+    scoreList = ["-"]
     probabilityOverall = 1
     seq1 = readData[0]
     seq2 = readData[4]
