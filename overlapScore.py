@@ -125,7 +125,7 @@ def getOverlapScore(key, readData):
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
             tempScore2 = score2[pos2:pos2 + num]
-
+            """
             if char == "I":
                 #probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
                 print("I",probabilityOverall)
@@ -142,7 +142,8 @@ def getOverlapScore(key, readData):
                 pos1 = pos1 + num
                 L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
-            elif char == "M":
+                """
+            if char == "M":
                 for i in range(0, num):
                     probabilityBase = 0
                     for n in nt:
