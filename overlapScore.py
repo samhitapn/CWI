@@ -125,29 +125,29 @@ def getOverlapScore(key, readData):
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
             tempScore2 = score2[pos2:pos2 + num]
-            """
+
             if char == "I":
                 #probabilityBase = probabilityBase + getGapRegionScore(score2[pos2:pos2+num], num)
-                print("I",probabilityOverall)
+                #print("I",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore2, num)
+                print(char,num,probabilityOverall)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
             elif char == "D":
                 #probabilityBase = probabilityBase + getGapRegionScore(score1[pos1:pos1+num], num)
-                print("D",probabilityOverall)
                 probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
+                print(char,num,probabilityOverall)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
                 #print(num,pos1,pos2,char,probabilityBase)
-                """
-            if char == "M":
+            elif char == "M":
                 for i in range(0, num):
                     probabilityBase = 0
+                    print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
-                        print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                         probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],getProbQuality(tempScore1[i])) * probabilityQ(n,tempSeq2[i],getProbQuality(tempScore2[i])))
                         assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
