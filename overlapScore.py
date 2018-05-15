@@ -64,9 +64,9 @@ def getProbQuality (q):
     qNew = ord(q)
     #print(q,qNew)
     #p = 10**(-np.float128(q)/10)
-    p = 10 ** (-np.float128(qNew)/10)
+    #p = 10 ** (-np.float128(qNew)/10)
     #print(p)
-    return p
+    return qNew
 
 """
 @Definition:
@@ -160,7 +160,7 @@ def getOverlapScore(key, readData):
                 pos2 = pos2 + num
                 #print(num,pos1,pos2,char,probabilityBase)
             #probabilityOverall = probabilityOverall * probabilityBase
-
+        print(probabilityOverall)
         except IndexError:
             result = [pos1, pos2, 0]
             continue
