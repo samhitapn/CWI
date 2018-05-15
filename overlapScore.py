@@ -76,7 +76,7 @@ def getProbQuality (q):
 """
 def getGapRegionScore (score, lenGap, scoreList):
     ovlScore = 0
-    print(scoreList)
+    #print(scoreList)
     if not scoreList:
         scoreList = ["-"]
     #scoreList = []
@@ -157,7 +157,7 @@ def getOverlapScore(key, readData):
             continue
         else:
             overlapScore = probabilityOverall ** (1/L)
-            print(L, probabilityOverall,overlapScore)
+            #print(L, probabilityOverall,overlapScore)
             result = [pos1, pos2, overlapScore,scoreList]
         #break
     return(result)
