@@ -77,6 +77,8 @@ def getProbQuality (q):
 def getGapRegionScore (score, lenGap, scoreList):
     ovlScore = 0
     print(scoreList)
+    if not scoreList:
+        scoreList = ["-"]
     #scoreList = []
     #if lenGap > 1:
 
