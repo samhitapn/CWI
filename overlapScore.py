@@ -122,6 +122,7 @@ def getOverlapScore(key, readData):
             if char == "I":
                 sc = getGapRegionScore(tempScore2, num, scoreList)
                 probabilityOverall = probabilityOverall * sc[0]
+                print(sc[1])
                 scoreList = sc[1]
                 assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
                 pos2 = pos2 + num
