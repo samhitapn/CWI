@@ -167,7 +167,7 @@ def getOverlapScore(key, readData):
             continue
         else:
             overlapScore = probabilityOverall ** (1/L)
-            print(L,probabilityOverall,overlapScore)
+            print(L, probabilityOverall,overlapScore)
             result = [pos1, pos2, overlapScore]
         #break
     return(result)
@@ -209,9 +209,11 @@ print(len(readPairData))
 #print(readPairData)
 c = 0
 outputFile = open("100ReadsOutput.txt","w+")
+test = open("test.txt","w+")
 for key in readPairData:
     #if key == "seq5_16-seq8_86":
     print(readPairData[key])
+    test.write(readPairData[key])
     c = c + 1
     results = getOverlapScore(key, readPairData[key])
     #print(results)
