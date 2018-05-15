@@ -59,11 +59,12 @@ def probabilityQ (X, b, p):
 @Output parameters: Probability
 """
 def getProbQuality (q):
-    #print(q,ord(q))
+    #print(q)
     #q = int(q)
-    q = ord(q)
+    qNew = ord(q)
+    print(q,qNew)
     #p = 10**(-np.float128(q)/10)
-    p = 10 ** (-q/10)
+    p = 10 ** (-qNew/10)
     #print(p)
     return p
 
@@ -77,7 +78,7 @@ def getGapRegionScore (score, lenGap):
     #if lenGap > 1:
 
     for i in range(0, lenGap):
-        print(score[i])
+        #print(score[i])
         #score[i] = getProbQuality(score[i])
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
