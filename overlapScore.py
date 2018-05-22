@@ -74,7 +74,7 @@ def getProbQuality (q):
 @Input parameters:
 @Output parameters: Probability
 """
-def getGapRegionScore (score, lenGap, scoreList):
+def getGapRegionScore (score, lenGap):
     ovlScore = 0
     #print(scoreList)
     #scoreList = []
@@ -83,12 +83,12 @@ def getGapRegionScore (score, lenGap, scoreList):
     for i in range(0, lenGap):
         #print(score[i])
         #score[i] = getProbQuality(score[i])
-        scoreList = scoreList.append(getProbQuality(score[i]))
+        #scoreList = scoreList.append(getProbQuality(score[i]))
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
     prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
     #print(scoreList)
-    return(prob, scoreList)
+    return(prob)
 
 """
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
@@ -119,21 +119,21 @@ def getOverlapScore(key, readData):
             tempScore2 = score2[pos2:pos2 + num]
 
             if char == "I":
-                sc = getGapRegionScore(tempScore2, num, scoreList)
-                probabilityOverall = probabilityOverall * sc[0]
+                sc = getGapRegionScore(tempScore2, num)
+                probabilityOverall = probabilityOverall * sc
                 print(sc[1])
-                scoreList = sc[1]
-                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                #scoreList = sc[1]
+                assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
             elif char == "D":
-                sc = getGapRegionScore(tempScore2, num, scoreList)
-                probabilityOverall = probabilityOverall * sc[0]
-                print(sc[1])
-                scoreList = sc[1]
+                sc = getGapRegionScore(tempScore2, num)
+                probabilityOverall = probabilityOverall * sc
+                #print(sc[1])
+                #scoreList = sc[1]
                 #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
-                assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
@@ -143,10 +143,10 @@ def getOverlapScore(key, readData):
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
                         probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
-                        assert 0 <= probabilityBase <= 1, print(char, pos1,pos2,probabilityBase, "Base")
+                        assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     probabilityOverall = probabilityOverall * probabilityBase
-                    assert 0 <= probabilityOverall <= 1, print(char, pos1,pos2,probabilityOverall)
+                    assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
                     #print(char,num,probabilityBase,probabilityOverall, L)
                 pos1 = pos1 + num
