@@ -154,7 +154,7 @@ def getOverlapScore(key, readData):
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
-                    #print(probabilityOverall,L)
+                    print(probabilityOverall,L)
                 print(char,num,probabilityOverall, L, tempScore1,tempScore2)
                 pos1 = pos1 + num
                 pos2 = pos2 + num
