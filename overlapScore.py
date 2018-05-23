@@ -124,7 +124,7 @@ def getOverlapScore(key, readData):
                 #print(sc[1])
                 #scoreList = sc[1]
                 assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
-                assert probabilityOverall < 10e-5, print(num,char, pos1, pos2, probabilityOverall,tempScore2)
+                assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2)
                 pos2 = pos2 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
@@ -135,7 +135,7 @@ def getOverlapScore(key, readData):
                 #scoreList = sc[1]
                 #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                 assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
-                assert probabilityOverall <= 10e-5, print(num,char, pos1, pos2, probabilityOverall,tempScore1)
+                assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1)
                 pos1 = pos1 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
