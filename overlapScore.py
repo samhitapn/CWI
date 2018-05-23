@@ -150,7 +150,7 @@ def getOverlapScore(key, readData):
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
-                print(char,num,probabilityOverall, L, ord(tempScore1),ord(tempScore2))
+                print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
                 pos1 = pos1 + num
                 pos2 = pos2 + num
         except IndexError:
