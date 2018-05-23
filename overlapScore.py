@@ -48,11 +48,11 @@ def getSeqFromCigar(cigar):
 def probabilityQ (X, b, p):
     pNew = getProbQuality(p)
     if X == b:
-        print("Same")
         qp = 1 - pNew
+        print("Same",qp)
     else:
-        print("diff")
         qp = pNew/3
+        print("diff",qp)
     return qp
 
 
