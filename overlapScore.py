@@ -49,10 +49,10 @@ def probabilityQ (X, b, p):
     pNew = getProbQuality(p)
     if X == b:
         qp = 1 - pNew
-        print("Same",qp)
+        #print("Same",qp)
     else:
         qp = pNew/3
-        print("diff",qp)
+        #print("diff",qp)
     return qp
 
 
@@ -146,9 +146,10 @@ def getOverlapScore(key, readData):
                     probabilityBase = 0
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
-                        probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
+                        sc = (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
+                        probabilityBase = probabilityBase + sc
                         assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
-                        print(n,probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
+                        print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
