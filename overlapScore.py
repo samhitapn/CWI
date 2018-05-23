@@ -129,7 +129,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
                 pos2 = pos2 + num
                 L = L + 1
-                #print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
+                print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
             elif char == "D":
                 sc = getGapRegionScore(tempScore2, num)
                 probabilityOverall = probabilityOverall * sc
@@ -140,7 +140,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
                 pos1 = pos1 + num
                 L = L + 1
-                #print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
+                print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
             elif char == "M":
                 for i in range(0, num):
                     probabilityBase = 0
@@ -149,13 +149,13 @@ def getOverlapScore(key, readData):
                         sc = (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
                         probabilityBase = probabilityBase + sc
                         assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
-                        print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
+                        #print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
                     print(probabilityOverall,L)
-                #print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
+                print(char,num,probabilityOverall, L, [ord(i) for i in tempScore1],[ord(i) for i in tempScore2])
                 pos1 = pos1 + num
                 pos2 = pos2 + num
         except IndexError:
