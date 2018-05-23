@@ -65,7 +65,7 @@ def getProbQuality (q):
     qNew = ord(q)
     #print(q,qNew)
     #p = 10**(-np.float128(q)/10)
-    p = 10 ** (-np.float128(qNew)/10)
+    #p = 10 ** (-np.float128(qNew)/10)
     #print(p)
     return p
 
@@ -97,7 +97,7 @@ def getGapRegionScore (score, lenGap):
 """
 
 def getOverlapScore(key, readData):
-    scoreList = [0]
+    #scoreList = [0]
     probabilityOverall = 1
     seq1 = readData[0]
     seq2 = readData[4]
@@ -121,9 +121,9 @@ def getOverlapScore(key, readData):
             if char == "I":
                 sc = getGapRegionScore(tempScore2, num)
                 probabilityOverall = probabilityOverall * sc
-                print(sc[1])
+                #print(sc[1])
                 #scoreList = sc[1]
-                assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 pos2 = pos2 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
@@ -133,7 +133,7 @@ def getOverlapScore(key, readData):
                 #print(sc[1])
                 #scoreList = sc[1]
                 #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
-                assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 pos1 = pos1 + num
                 L = L + 1
                 #print(char,num,probabilityOverall, L)
@@ -143,21 +143,21 @@ def getOverlapScore(key, readData):
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
                     for n in nt:
                         probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
-                        assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
+                        #assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     probabilityOverall = probabilityOverall * probabilityBase
-                    assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                    #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
                     #print(char,num,probabilityBase,probabilityOverall, L)
                 pos1 = pos1 + num
                 pos2 = pos2 + num
         except IndexError:
-            result = [pos1, pos2, 0, scoreList]
+            result = [pos1, pos2, 0]
             continue
         else:
             overlapScore = probabilityOverall ** (1/L)
             #print(L, probabilityOverall,overlapScore)
-            result = [pos1, pos2, overlapScore,scoreList]
+            result = [pos1, pos2, overlapScore]
         #break
     return(result)
 
@@ -180,16 +180,6 @@ for i in range(0,len(fastqData)):
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
-    #print(overlapPair)
-    """
-    if str(ovl[0] + "-" + ovl[5])  == "seq5_16-seq8_86":
-        print(overlapPair)
-        print("".join(list(fastq[ovl[0]].seq)))
-        print("".join(str(fastq[ovl[0]].letter_annotations["phred_quality"])))
-        print("****")
-        print("".join(list(fastq[ovl[5]].seq)))
-        print("".join(str(fastq[ovl[5]].letter_annotations["phred_quality"])))
-    """
     readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1],int(ovl[2]), int(ovl[3]),fastqTemp[ovl[5]][0],fastqTemp[ovl[5]][1],int(ovl[7]),int(ovl[8]),ovl[20].split(":")[2].strip("\n")]
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
@@ -219,7 +209,7 @@ for key in readPairData:
         error = "No error"
     #readPairData[key].append(score)
     print(key,str(results[2]))
-    print(results[3])
+    #print(results[3])
     outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     break
 outputFile.close()
