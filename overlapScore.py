@@ -205,7 +205,7 @@ for key in readPairData:
     #for i in readPairData[key]:
     #    test.write(readPairData[key][i])
     c = c + 1
-    results = getOverlapScore(key, readPairData[key])
+    #results = getOverlapScore(key, readPairData[key])
     #print(results)
     keyElements = key.split("-")
     if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
@@ -221,7 +221,7 @@ for key in readPairData:
     print(key,str(results[2]))
     #print(results[3])
     outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
-    break
+    outputFile.write(key + "\t" + error + "\t"  + "\t" + ovlType + "\n")
 outputFile.close()
 #test.close()
 
