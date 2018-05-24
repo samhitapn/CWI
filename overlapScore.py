@@ -205,24 +205,24 @@ for key in readPairData:
         #for i in readPairData[key]:
         #    test.write(readPairData[key][i])
         c = c + 1
-        #results = getOverlapScore(key, readPairData[key])
+        results = getOverlapScore(key, readPairData[key])
         #print(results)
         keyElements = key.split("-")
         if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
             ovlType = "Good Overlap"
         else:
             ovlType = "Bad Overlap"
-        outputFile.write(key + "\t" + ovlType + "\t"  + "\t" )
-        """
+        #outputFile.write(key + "\t" + ovlType + "\t"  + "\t" )
+
         if results[2] == 0:
             error = "IndexError"
         else:
             error = "No error"
-            """
+
         #readPairData[key].append(score)
-        #print(key,str(results[2]))
+        print(key,str(results[2]))
         #print(results[3])
-        #outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+        outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
 
 outputFile.close()
 #test.close()
