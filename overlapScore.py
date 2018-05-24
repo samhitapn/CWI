@@ -205,7 +205,7 @@ outputFile = open("100ReadsOutput.txt","w+")
 #test = open("test.txt","w+")
 for key in readPairData:
     if key == "seq5_69-seq5_75":
-        print(readPairData[8])
+        print(readPairData[key][8])
     #print(readPairData[key])
     #for i in readPairData[key]:
     #    test.write(readPairData[key][i])
