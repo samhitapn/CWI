@@ -177,13 +177,13 @@ def getOverlapScore(key, readData):
 # MAIN
 readPairData = dict()
 fastqTemp = {}
-#with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
-with open("data/sequences/fastq_100Reads_NewNames/sample.paf") as paf:
+with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
+#with open("data/sequences/fastq_100Reads_NewNames/sample.paf") as paf:
     pafData = paf.readlines()
 
 #fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
-#with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
-with open("data/sequences/fastq_100Reads_NewNames/sample.fastq") as fastq:
+with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
+#with open("data/sequences/fastq_100Reads_NewNames/sample.fastq") as fastq:
     fastqData = fastq.readlines()
 
 for i in range(0,len(fastqData)):
@@ -204,7 +204,8 @@ c = 0
 outputFile = open("100ReadsOutput.txt","w+")
 #test = open("test.txt","w+")
 for key in readPairData:
-    #if key == "seq5_69-seq5_75":
+    if key == "seq5_69-seq5_75":
+        print(readPairData[8])
     #print(readPairData[key])
     #for i in readPairData[key]:
     #    test.write(readPairData[key][i])
