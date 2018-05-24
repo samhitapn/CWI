@@ -121,6 +121,7 @@ def getOverlapScore(key, readData):
             tempScore2 = score2[pos2:pos2 + num]
 
             if char == "I":
+                print("!!!!",char, num, "*******")
                 sc = getGapRegionScore(tempScore2, num)
                 probabilityOverall = probabilityOverall * sc
                 #print(sc[1])
@@ -129,8 +130,9 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
                 pos2 = pos2 + num
                 L = L + 1
-                print(char,num,probabilityOverall, L, tempScore1,tempScore2)
+                print("@@@@@ I-range", probabilityOverall, L, tempScore1,tempScore2)
             elif char == "D":
+                print("!!!!",char, num, "*******")
                 sc = getGapRegionScore(tempScore2, num)
                 probabilityOverall = probabilityOverall * sc
                 #print(sc[1])
@@ -140,8 +142,9 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
                 pos1 = pos1 + num
                 L = L + 1
-                print(char,num,probabilityOverall, L, tempScore1,tempScore2)
+                print("@@@@@ D-range" , probabilityOverall, L, tempScore1,tempScore2)
             elif char == "M":
+                print("!!!!", char, num, "*******")
                 for i in range(0, num):
                     probabilityBase = 0
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
@@ -154,8 +157,8 @@ def getOverlapScore(key, readData):
                     probabilityOverall = probabilityOverall * probabilityBase
                     assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
-                    print(probabilityOverall,L)
-                print(char,num,probabilityOverall, L, tempScore1,tempScore2)
+                    print("@@@@@ M-location", probabilityOverall,L)
+                print("@@@@@ M-range", probabilityOverall, L, tempScore1,tempScore2)
                 pos1 = pos1 + num
                 pos2 = pos2 + num
         except IndexError:

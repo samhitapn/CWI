@@ -1,1 +1,0 @@
-seq5_1-seq8_92	IndexError	0.0	Bad Overlap
