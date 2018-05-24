@@ -64,7 +64,7 @@ def probabilityQ (X, b, p):
 def getProbQuality (q):
     #print(q)
     #q = int(q)
-    qNew = ord(q)
+    qNew = ord(q)  - 33
     #print(q,qNew)
     #p = 10**(-np.float128(q)/10)
     p = 10 ** (-np.float128(qNew)/10)
@@ -176,11 +176,13 @@ def getOverlapScore(key, readData):
 # MAIN
 readPairData = dict()
 fastqTemp = {}
-with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
+#with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
+with open("data/sequences/fastq_100Reads_NewNames/sample.paf") as paf:
     pafData = paf.readlines()
 
 #fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
-with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
+#with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
+with open("data/sequences/fastq_100Reads_NewNames/sample.fastq") as fastq:
     fastqData = fastq.readlines()
 
 for i in range(0,len(fastqData)):
@@ -201,29 +203,29 @@ c = 0
 outputFile = open("100ReadsOutput.txt","w+")
 #test = open("test.txt","w+")
 for key in readPairData:
-    if key == "seq5_69-seq5_75":
-        #print(readPairData[key])
-        #for i in readPairData[key]:
-        #    test.write(readPairData[key][i])
-        c = c + 1
-        results = getOverlapScore(key, readPairData[key])
-        #print(results)
-        keyElements = key.split("-")
-        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
-            ovlType = "Good Overlap"
-        else:
-            ovlType = "Bad Overlap"
-        #outputFile.write(key + "\t" + ovlType + "\t"  + "\t" )
+    #if key == "seq5_69-seq5_75":
+    #print(readPairData[key])
+    #for i in readPairData[key]:
+    #    test.write(readPairData[key][i])
+    c = c + 1
+    results = getOverlapScore(key, readPairData[key])
+    #print(results)
+    keyElements = key.split("-")
+    if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+        ovlType = "Good Overlap"
+    else:
+        ovlType = "Bad Overlap"
+    #outputFile.write(key + "\t" + ovlType + "\t"  + "\t" )
 
-        if results[2] == 0:
-            error = "IndexError"
-        else:
-            error = "No error"
+    if results[2] == 0:
+        error = "IndexError"
+    else:
+        error = "No error"
 
-        #readPairData[key].append(score)
-        print(key,str(results[2]))
-        #print(results[3])
-        outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+    #readPairData[key].append(score)
+    print(key,str(results[2]))
+    #print(results[3])
+    outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
 
 outputFile.close()
 #test.close()
