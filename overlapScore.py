@@ -212,16 +212,17 @@ for key in readPairData:
         ovlType = "Good Overlap"
     else:
         ovlType = "Bad Overlap"
-
+"""
     if results[2] == 0:
         error = "IndexError"
     else:
         error = "No error"
+        """
     #readPairData[key].append(score)
-    print(key,str(results[2]))
+    #print(key,str(results[2]))
     #print(results[3])
-    outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
-    outputFile.write(key + "\t" + error + "\t"  + "\t" + ovlType + "\n")
+    #outputFile.write(key + "\t" + error + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+    outputFile.write(key + "\t" + error + "\t"  + "\t" )
 outputFile.close()
 #test.close()
 
