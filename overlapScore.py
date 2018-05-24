@@ -90,6 +90,7 @@ def getGapRegionScore (score, lenGap):
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
     prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
+    print("PROB", prob)
     #print(scoreList)
     return(prob)
 
