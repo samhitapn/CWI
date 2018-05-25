@@ -123,7 +123,7 @@ def getOverlapScore(key, readData):
             else:
                 num = 1
             c = c + num
-            if pos1 <= readData[3] and pos2 <= readData[7]:
+            if pos1 <= readData[3] or pos2 <= readData[7]:
                 tempSeq1 = seq1[pos1:pos1 + num]
                 tempScore1 = score1[pos1:pos1 + num]
                 tempSeq2 = seq2[pos2:pos2 + num]
@@ -233,7 +233,7 @@ statFile.close()
 print(len(readPairData))
 #print(readPairData)
 #c = 0
-outputFile = open("100ReadsOutput_withoutEnd.txt","w+")
+outputFile = open("100ReadsOutput_withEnd.txt","w+")
 #outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
 #test = open("test.txt","w+")
 for key in readPairData:
