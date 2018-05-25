@@ -229,13 +229,14 @@ c = 0
 #outputFile = open("100ReadsOutput.txt","w+")
 outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
 #test = open("test.txt","w+")
-
+"""
 for key in readPairData:
-    #if key == "seq5_63-seq5_66":
+    if key == "seq5_16-seq8_86":
 
         c = c + 1
         results = getOverlapScore(key, readPairData[key])
         #print(results)
+        """
         keyElements = key.split("-")
         if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
             ovlType = "Good Overlap"
