@@ -8,8 +8,8 @@
 """
 
 # LIBRARIES IMPORT
-from Bio import pairwise2
-from Bio import SeqIO as sio
+#from Bio import pairwise2
+#from Bio import SeqIO as sio
 import numpy as np
 import math as mt
 import itertools
@@ -17,7 +17,8 @@ from time import time
 import re
 import os
 import sys
-from Bio.Seq import MutableSeq
+import argparse
+
 
 # GLOBAL VARIABLES REQUIRED
 cigarPattern = re.compile('([0-9]*)([IDM])')
@@ -197,14 +198,21 @@ def getOverlapScore(key, readData):
 
 
 # MAIN
+# Arguement parsing
+parser = argparse.ArgumentParser(description='Parser for input files and output files')
+parser.add_argument('-p','--paf', help='PAF file name',required=True)
+parser.add_argument('-f','--fastq',help='Fastq file name', required=True)
+parser.add_argument('-o','--output',help='Fastq file name', required=True)
+args = parser.parse_args()
+
 readPairData = dict()
 fastqTemp = {}
-with open("data/sequences/fastq_100Reads_NewNames/100Reads_All_Overlaps.paf") as paf:
+with open(args.paf) as paf:
 #with open("data/sequences/fastq_100Reads_NewNames/sample.paf") as paf:
     pafData = paf.readlines()
 
 #fastq = sio.to_dict(sio.parse("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq","fastq"))
-with open("data/sequences/fastq_100Reads_NewNames/fastq_merged_100Reads.fastq") as fastq:
+with open(args.fastq) as fastq:
 #with open("data/sequences/fastq_100Reads_NewNames/sample.fastq") as fastq:
     fastqData = fastq.readlines()
 
@@ -213,7 +221,8 @@ for i in range(0,len(fastqData)):
          fastqTemp[fastqData[i].split(" ")[0].strip("@")] = [fastqData[i+1].rstrip("\n"),fastqData[i+3].rstrip("\n")]
     i = i + 1
 
-statFile = open("readStats.txt","w+")
+statFileName = args.output + "_stats.csv"
+statFile = open(statFileName,"w+")
 statFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ2_START \t READ2_END \t READ2_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
 for overlapPair in pafData:
     tempData = list()
@@ -235,33 +244,22 @@ for overlapPair in pafData:
 statFile.close()
 
 print(len(readPairData))
-#print(readPairData)
-#c = 0
-outputFile = open("100ReadsOutput_New.txt","w+")
-#outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
-#test = open("test.txt","w+")
+scoreFileName = args.output + "_scores.csv"
+outputFile = open(scoreFileName,"w+")
 for key in readPairData:
-    #if key == "seq5_16-seq8_86":
+    results = getOverlapScore(key, readPairData[key])
+    keyElements = key.split("-")
 
-        #c = c + 1
-        results = getOverlapScore(key, readPairData[key])
-        #print(results)
+    if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+        ovlType = "Good Overlap"
+    else:
+        ovlType = "Bad Overlap"
 
-        keyElements = key.split("-")
-        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
-            ovlType = "Good Overlap"
-        else:
-            ovlType = "Bad Overlap"
-        #outputFile.write(key + "\t" + ovlType + "\t"  + "\t" )
+    if results[2] == 1:
+        error = "IndexError"
+    else:
+        error = "No error"
 
-        if results[2] == 1:
-            error = "IndexError"
-        else:
-            error = "No error"
-
-        #readPairData[key].append(score)
-        print(key,str(results[3]))
-        #print(results[3])
-        outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
-        #break
+    print(key,str(results[3]))
+    outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
 outputFile.close()
