@@ -212,6 +212,8 @@ for i in range(0,len(fastqData)):
          fastqTemp[fastqData[i].split(" ")[0].strip("@")] = [fastqData[i+1].rstrip("\n"),fastqData[i+3].rstrip("\n")]
     i = i + 1
 
+statFile = open("readStats.txt","w+")
+outputFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ1_START \t READ1_END \t READ1_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
@@ -220,7 +222,8 @@ for overlapPair in pafData:
         print(ovl)
         print(fastqTemp[ovl[0]][0])
         print(fastqTemp[ovl[5]][0])
-
+    cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
+    outputFile.write(key + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + cig.count("M") + "\t" + cig.count("I") + "\t" + cig.count("D") + "\n")
     readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1],int(ovl[2]), int(ovl[3]),fastqTemp[ovl[5]][0],fastqTemp[ovl[5]][1],int(ovl[7]),int(ovl[8]),ovl[20].split(":")[2].strip("\n")]
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
