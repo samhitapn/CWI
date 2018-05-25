@@ -222,7 +222,9 @@ for overlapPair in pafData:
     if ovl[0] + "-" + ovl[5] == "seq5_16-seq8_86":
         print(ovl)
         print(fastqTemp[ovl[0]][0])
+        print(fastqTemp[ovl[0]][1])
         print(fastqTemp[ovl[5]][0])
+        print(fastqTemp[ovl[5]][1])
     cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
     readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1],int(ovl[2]), int(ovl[3]),fastqTemp[ovl[5]][0],fastqTemp[ovl[5]][1],int(ovl[7]),int(ovl[8]),ovl[20].split(":")[2].strip("\n")]
