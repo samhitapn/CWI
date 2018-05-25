@@ -213,7 +213,7 @@ for i in range(0,len(fastqData)):
     i = i + 1
 
 statFile = open("readStats.txt","w+")
-outputFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ1_START \t READ1_END \t READ1_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
+statFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ1_START \t READ1_END \t READ1_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
