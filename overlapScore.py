@@ -218,7 +218,7 @@ statFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ2_START 
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
-    
+
     """
     if ovl[0] + "-" + ovl[5] == "seq5_16-seq8_86":
         print(ovl)
@@ -237,7 +237,7 @@ statFile.close()
 print(len(readPairData))
 #print(readPairData)
 #c = 0
-outputFile = open("100ReadsOutput_withEnd.txt","w+")
+outputFile = open("100ReadsOutput_New.txt","w+")
 #outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
 #test = open("test.txt","w+")
 for key in readPairData:
