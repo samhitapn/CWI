@@ -229,7 +229,7 @@ for overlapPair in pafData:
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
-
+"""
 print(len(readPairData))
 #print(readPairData)
 #c = 0
@@ -261,3 +261,4 @@ for key in readPairData:
         outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
         #break
 outputFile.close()
+"""
