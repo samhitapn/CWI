@@ -117,68 +117,69 @@ def getOverlapScore(key, readData):
     print(readData[8])
     print(len(seq1),len(seq2))
     for num, char in cigarPattern.findall(readData[8]):
-        #try:
+        try:
             if num:
                 num = int(num)
             else:
                 num = 1
             c = c + num
-            tempSeq1 = seq1[pos1:pos1 + num]
-            tempScore1 = score1[pos1:pos1 + num]
-            tempSeq2 = seq2[pos2:pos2 + num]
-            tempScore2 = score2[pos2:pos2 + num]
+            if pos1 <= readData[3] and pos2 <= readData[7]
+                tempSeq1 = seq1[pos1:pos1 + num]
+                tempScore1 = score1[pos1:pos1 + num]
+                tempSeq2 = seq2[pos2:pos2 + num]
+                tempScore2 = score2[pos2:pos2 + num]
 
-            if char == "I":
-                #print("!!!!",char, num, "*******")
-                    #sc = getGapRegionScore(tempScore2, num)
-                    #probabilityOverall = probabilityOverall + np.log(sc)
-                #print(sc[1])
-                #scoreList = sc[1]
-                #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
-                #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
-                pos2 = pos2 + num
-                L = L + 1
-                print("I:",num,pos1,pos2)
-                #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
-
-            elif char == "D":
-                #print("!!!!",char, num, "*******")
-                    #sc = getGapRegionScore(tempScore2, num)
-                    #probabilityOverall = probabilityOverall + np.log(sc)
-                #print(sc[1])
-                #scoreList = sc[1]
-                #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
-                #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
-                #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
-                pos1 = pos1 + num
-                L = L + 1
-                print("D:",num,pos1,pos2)
-                    #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
-
-            elif char == "M":
-
-            #if char == "M":
-                #print("!!!!", char, num, "*******")
-                """
-                for i in range(0, num):
-                    probabilityBase = 0
-                    #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
-                    for n in nt:
-                        sc = (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
-                        probabilityBase = probabilityBase + sc
-                        #assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
-                        print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
-                        #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
-                    probabilityOverall = probabilityOverall + np.log(probabilityBase)
+                if char == "I":
+                    #print("!!!!",char, num, "*******")
+                    sc = getGapRegionScore(tempScore2, num)
+                    probabilityOverall = probabilityOverall + np.log(sc)
+                    #print(sc[1])
+                    #scoreList = sc[1]
                     #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                    #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
+                    pos2 = pos2 + num
                     L = L + 1
-                    print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
-                print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
-"""
-                pos1 = pos1 + num
-                pos2 = pos2 + num
-                print("M:",num,pos1,pos2)
-                """
+                    print("I:",num,pos1,pos2)
+                    #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
+
+                elif char == "D":
+                    #print("!!!!",char, num, "*******")
+                    sc = getGapRegionScore(tempScore2, num)
+                    probabilityOverall = probabilityOverall + np.log(sc)
+                    #print(sc[1])
+                    #scoreList = sc[1]
+                    #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
+                    #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                    #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
+                    pos1 = pos1 + num
+                    L = L + 1
+                    print("D:",num,pos1,pos2)
+                        #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
+
+                elif char == "M":
+
+                #if char == "M":
+                    #print("!!!!", char, num, "*******")
+
+                    for i in range(0, num):
+                        probabilityBase = 0
+                        #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
+                        for n in nt:
+                            sc = (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
+                            probabilityBase = probabilityBase + sc
+                            #assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
+                            print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
+                            #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
+                        probabilityOverall = probabilityOverall + np.log(probabilityBase)
+                        #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
+                        L = L + 1
+                        print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
+                    print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
+
+                    pos1 = pos1 + num
+                    pos2 = pos2 + num
+                    print("M:",num,pos1,pos2)
+
         except IndexError:
             print("ERROR",probabilityOverall)
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
@@ -190,8 +191,8 @@ def getOverlapScore(key, readData):
             overlapScore = np.exp(probabilityOverall) ** (1/L)
             #print(L, probabilityOverall,np.exp(probabilityOverall),overlapScore)
             result = [pos1, pos2, 0,overlapScore]
-        #break
-        """
+        #brEak
+
     return(result)
 
 
@@ -213,7 +214,7 @@ for i in range(0,len(fastqData)):
     i = i + 1
 
 statFile = open("readStats.txt","w+")
-statFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ1_START \t READ1_END \t READ1_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
+statFile.write("KEY \t READ1_START \t READ1_END \t READ1_OVL_LEN \t READ2_START \t READ2_END \t READ2_OVL_LEN \t MATCHES \t INSERTIONS \t DELETIONS \n")
 for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
@@ -228,21 +229,20 @@ for overlapPair in pafData:
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
-"""
+
 print(len(readPairData))
 #print(readPairData)
-c = 0
-#outputFile = open("100ReadsOutput.txt","w+")
-outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
+#c = 0
+outputFile = open("100ReadsOutput_withoutEnd.txt","w+")
+#outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
 #test = open("test.txt","w+")
-"""
 for key in readPairData:
-    if key == "seq5_16-seq8_86":
+    #if key == "seq5_16-seq8_86":
 
         #c = c + 1
         results = getOverlapScore(key, readPairData[key])
         #print(results)
-        """
+
         keyElements = key.split("-")
         if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
             ovlType = "Good Overlap"
@@ -261,4 +261,3 @@ for key in readPairData:
         outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
         #break
 outputFile.close()
-"""
