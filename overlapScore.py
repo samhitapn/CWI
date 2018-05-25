@@ -131,13 +131,13 @@ def getOverlapScore(key, readData):
 
                 if char == "I":
                     #print("!!!!",char, num, "*******")
-                    sc = getGapRegionScore(tempScore2, num)
+                    sc = getGapRegionScore(tempScore1, num)
                     probabilityOverall = probabilityOverall + np.log(sc)
                     #print(sc[1])
                     #scoreList = sc[1]
                     #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
-                    pos2 = pos2 + num
+                    pos1 = pos1 + num
                     L = L + 1
                     print("I:",num,pos1,pos2)
                     #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
@@ -151,7 +151,7 @@ def getOverlapScore(key, readData):
                     #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                     #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
-                    pos1 = pos1 + num
+                    pos2 = pos2 + num
                     L = L + 1
                     print("D:",num,pos1,pos2)
                         #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
@@ -231,7 +231,7 @@ for overlapPair in pafData:
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
-"""
+
 print(len(readPairData))
 #print(readPairData)
 #c = 0
@@ -263,4 +263,3 @@ for key in readPairData:
         outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
         #break
 outputFile.close()
-"""
