@@ -138,7 +138,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
                 pos2 = pos2 + num
                 L = L + 1
-                print("I:",pos1,pos2)
+                print("I:",num,pos1,pos2)
                 #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
 
             elif char == "D":
@@ -152,7 +152,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
                 pos1 = pos1 + num
                 L = L + 1
-                print("D:",pos1,pos2)
+                print("D:",num,pos1,pos2)
                     #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
 
             elif char == "M":
@@ -177,7 +177,7 @@ def getOverlapScore(key, readData):
 """
                 pos1 = pos1 + num
                 pos2 = pos2 + num
-                print("M:",pos1,pos2)
+                print("M:",num,pos1,pos2)
                 """
         except IndexError:
             print("ERROR",probabilityOverall)
