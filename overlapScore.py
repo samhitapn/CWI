@@ -174,7 +174,7 @@ def getOverlapScore(key, readData):
                     L = L + 1
                     print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
                 print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
-                
+
                 pos1 = pos1 + num
                 pos2 = pos2 + num
                 print("M:",pos1,pos2)
@@ -235,7 +235,7 @@ outputFile = open("100ReadsOutput_OnlyMatch.txt","w+")
 for key in readPairData:
     if key == "seq5_16-seq8_86":
 
-        c = c + 1
+        #c = c + 1
         results = getOverlapScore(key, readPairData[key])
         #print(results)
         """
