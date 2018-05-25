@@ -21,7 +21,7 @@ from tqdm import tqdm
 nt = ["A","T","G","C"]
 
 startGenerationOrig = time()
-originalSequence = rstr.rstr('ATGC', 10000000)
+originalSequence = rstr.rstr('ATGC', 100000)
 stopGenerationOrig = time()
 print(stopGenerationOrig - startGenerationOrig)
 print("Reference Done")
@@ -36,10 +36,10 @@ print("Written")
 for i in tqdm(range(1,11)):
     seqList = re.findall("[ATGC]",originalSequence)
     print(i)
-    mutationPercent = i/100 * 10000000
+    mutationPercent = i/100 * 100000
     #seed = 123
     print(mutationPercent)
-    pos = random.sample(range(0,10000000),int(mutationPercent))
+    pos = random.sample(range(0,100000),int(mutationPercent))
     for n in tqdm(pos):
         nReplace = [j for j in nt if j != originalSequence[n]]
         seqList[n] = random.choice(nReplace)
@@ -50,27 +50,3 @@ for i in tqdm(range(1,11)):
     with open("data/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
     print("Written")
-
-
-
-
-
-for oldFile in os.listdir():
-    print(oldFile)
-    with open(oldFile, "r") as f:
-        data = f.readlines()
-        number = 1
-        newFile = "../fastq_100Reads_NewNames/" + oldFile
-        print(newFile)
-        with open(newFile, "w") as f:
-            for oldLine in data:
-                readName = "@" + oldFile.split(".")[0] + "_" + str(number)
-                if oldLine.startswith("@"):
-                    newLine = oldLine.split(" ")
-                    newLine[0] = readName
-                    newLine = " ".join(newLine)
-                    #print(newLine)
-                    f.writelines(newLine)
-                    number = number + 1
-                else:
-                    f.writelines(oldLine)
