@@ -1,70 +1,70 @@
-seq5_1-seq8_92	No error	0.08352833571198171282	Bad Overlap
-seq5_16-seq8_86	No error	0.08665300981437756322	Bad Overlap
-seq5_20-seq8_54	No error	0.091441170587580434384	Bad Overlap
+seq5_1-seq8_92	No error	0.08358188502261024376	Bad Overlap
+seq5_16-seq8_86	IndexError	0.08680039683495478169	Bad Overlap
+seq5_20-seq8_54	No error	0.09148757742129411325	Bad Overlap
 seq5_21-seq8_17	No error	0.074773358742010945424	Bad Overlap
 seq5_23-seq5_96	IndexError	0.08752199379902291585	Good Overlap
-seq5_24-seq9_32	No error	0.08208214462474667265	Bad Overlap
+seq5_24-seq9_32	No error	0.08281603032372865607	Bad Overlap
 seq5_31-seq6_83	No error	0.08970735601118186518	Bad Overlap
 seq5_32-seq7_89	No error	0.0	Bad Overlap
 seq5_58-seq8_90	No error	0.09375456988506656643	Bad Overlap
 seq5_58-seq8_88	No error	0.09511070209036570359	Bad Overlap
 seq5_60-seq9_45	No error	0.08520941617189556445	Bad Overlap
-seq5_62-seq6_21	No error	0.0826877098183795474	Bad Overlap
-seq5_62-seq9_56	No error	0.08750568433984115469	Bad Overlap
+seq5_62-seq6_21	IndexError	0.082896843073853905445	Bad Overlap
+seq5_62-seq9_56	IndexError	0.08758963521343331704	Bad Overlap
 seq5_63-seq5_66	No error	0.083163072752082265205	Good Overlap
-seq5_67-seq7_63	No error	0.091798537465962683665	Bad Overlap
+seq5_67-seq7_63	No error	0.09182420655291152657	Bad Overlap
 seq5_69-seq7_89	No error	0.0	Bad Overlap
-seq5_69-seq5_75	No error	0.0	Good Overlap
+seq5_69-seq5_75	IndexError	0.0	Good Overlap
 seq5_69-seq9_67	No error	0.0	Bad Overlap
 seq5_75-seq7_89	No error	0.0	Bad Overlap
-seq5_77-seq7_91	No error	0.0	Bad Overlap
+seq5_77-seq7_91	IndexError	0.0	Bad Overlap
 seq5_77-seq9_98	No error	0.0	Bad Overlap
-seq5_77-seq6_84	No error	0.0	Bad Overlap
-seq5_77-seq9_57	No error	0.0	Bad Overlap
-seq5_79-seq7_76	No error	0.0	Bad Overlap
+seq5_77-seq6_84	IndexError	0.0	Bad Overlap
+seq5_77-seq9_57	IndexError	0.0	Bad Overlap
+seq5_79-seq7_76	IndexError	0.0	Bad Overlap
 seq5_83-seq7_16	No error	0.100057196959523043716	Bad Overlap
 seq5_86-seq7_13	No error	0.08991657948939022801	Bad Overlap
 seq5_87-seq8_86	No error	0.0	Bad Overlap
 seq5_88-seq5_92	No error	0.0	Good Overlap
 seq5_88-seq9_42	IndexError	0.0	Bad Overlap
-seq5_89-seq6_73	No error	0.0	Bad Overlap
+seq5_89-seq6_73	IndexError	0.0	Bad Overlap
 seq5_90-seq6_52	No error	0.0	Bad Overlap
 seq5_90-seq6_46	No error	0.0	Bad Overlap
-seq5_90-seq9_75	No error	0.083965174773486722004	Bad Overlap
-seq5_91-seq6_87	No error	0.089178997143110600664	Bad Overlap
+seq5_90-seq9_75	No error	0.084002489334735577415	Bad Overlap
+seq5_91-seq6_87	No error	0.08923372089285818772	Bad Overlap
 seq5_92-seq9_42	No error	0.0	Bad Overlap
-seq5_93-seq8_82	No error	0.0	Bad Overlap
-seq5_94-seq8_76	No error	0.08197971275169814636	Bad Overlap
+seq5_93-seq8_82	IndexError	0.0	Bad Overlap
+seq5_94-seq8_76	No error	0.08224358893251253627	Bad Overlap
 seq5_95-seq7_59	No error	0.07614339602863390084	Bad Overlap
-seq5_98-seq9_41	No error	0.092409678801013283556	Bad Overlap
-seq5_100-seq7_94	No error	0.0	Bad Overlap
+seq5_98-seq9_41	No error	0.09231870681829946448	Bad Overlap
+seq5_100-seq7_94	IndexError	0.0	Bad Overlap
 seq5_100-seq6_55	No error	0.0	Bad Overlap
 seq4_4-seq9_49	No error	0.08652107755964753517	Bad Overlap
 seq4_10-seq6_1	No error	0.09041397909213115044	Bad Overlap
-seq4_13-seq6_66	No error	0.08002254274022560548	Bad Overlap
+seq4_13-seq6_66	No error	0.08013007189246139352	Bad Overlap
 seq4_14-seq5_89	No error	0.08150866579079663848	Bad Overlap
 seq4_14-seq6_73	No error	0.08813474484964219312	Bad Overlap
 seq4_27-seq7_41	No error	0.094025341434482735236	Bad Overlap
-seq4_27-seq6_73	No error	0.08517920340760873345	Bad Overlap
-seq4_30-seq9_95	No error	0.08666700210891267397	Bad Overlap
+seq4_27-seq6_73	No error	0.085285650354238329674	Bad Overlap
+seq4_30-seq9_95	IndexError	0.08674947701065694094	Bad Overlap
 seq4_32-seq5_5	No error	0.08598730999359209871	Bad Overlap
 seq4_33-seq8_84	No error	0.084055932097359393855	Bad Overlap
 seq4_35-seq4_97	No error	0.091658178736033036395	Good Overlap
 seq4_38-seq7_71	No error	0.0	Bad Overlap
 seq4_40-seq4_67	IndexError	0.08591570436165950789	Good Overlap
-seq4_41-seq5_97	No error	0.086864328626373366285	Bad Overlap
+seq4_41-seq5_97	IndexError	0.08698016356174927615	Bad Overlap
 seq4_42-seq9_81	No error	0.0	Bad Overlap
 seq4_47-seq8_77	No error	0.0	Bad Overlap
-seq4_48-seq8_91	No error	0.091055726188817972405	Bad Overlap
-seq4_49-seq6_75	No error	0.08754809191699375807	Bad Overlap
-seq4_51-seq8_94	No error	0.08607758562253120861	Bad Overlap
+seq4_48-seq8_91	IndexError	0.09113580633222678862	Bad Overlap
+seq4_49-seq6_75	No error	0.087556317084687340015	Bad Overlap
+seq4_51-seq8_94	IndexError	0.08597562317652030684	Bad Overlap
 seq4_52-seq6_6	No error	0.08158706739230868822	Bad Overlap
 seq4_53-seq6_3	IndexError	0.092590938822309677386	Bad Overlap
-seq4_54-seq9_69	No error	0.079592252188707009436	Bad Overlap
-seq4_54-seq7_51	No error	0.08378281395190864318	Bad Overlap
-seq4_55-seq6_65	No error	0.08197712962448796067	Bad Overlap
+seq4_54-seq9_69	IndexError	0.07964685842227888504	Bad Overlap
+seq4_54-seq7_51	No error	0.08406052315359857744	Bad Overlap
+seq4_55-seq6_65	IndexError	0.082147643610035125884	Bad Overlap
 seq4_55-seq9_36	No error	0.08460084375992284117	Bad Overlap
-seq4_58-seq5_82	No error	0.089013532070382757105	Bad Overlap
+seq4_58-seq5_82	No error	0.089006178960716847266	Bad Overlap
 seq4_62-seq9_79	No error	0.09553883736662241306	Bad Overlap
 seq4_64-seq6_41	No error	0.0	Bad Overlap
 seq4_64-seq6_32	No error	0.08911243084923094449	Bad Overlap
@@ -72,54 +72,54 @@ seq4_64-seq6_62	No error	0.097666186608180221605	Bad Overlap
 seq4_66-seq6_25	No error	0.09053841267083634568	Bad Overlap
 seq4_67-seq9_97	No error	0.08082518311420882578	Bad Overlap
 seq4_70-seq6_71	No error	0.0	Bad Overlap
-seq4_78-seq7_35	No error	0.08254440332106081253	Bad Overlap
-seq4_80-seq8_61	No error	0.07995294950111811804	Bad Overlap
-seq4_84-seq6_32	No error	0.09264355482909101271	Bad Overlap
+seq4_78-seq7_35	IndexError	0.08268639844294075917	Bad Overlap
+seq4_80-seq8_61	No error	0.07987726884627880623	Bad Overlap
+seq4_84-seq6_32	IndexError	0.09277099483319828693	Bad Overlap
 seq4_85-seq7_90	No error	0.0	Bad Overlap
-seq4_85-seq9_31	No error	0.08474711720792251996	Bad Overlap
+seq4_85-seq9_31	No error	0.08481254880598179035	Bad Overlap
 seq4_85-seq9_78	No error	0.08644684169688123324	Bad Overlap
 seq4_86-seq5_20	No error	0.0	Bad Overlap
-seq4_86-seq8_54	No error	0.0	Bad Overlap
+seq4_86-seq8_54	IndexError	0.0	Bad Overlap
 seq4_87-seq5_87	No error	0.0	Bad Overlap
 seq4_87-seq8_86	No error	0.0	Bad Overlap
 seq4_88-seq9_35	No error	0.089861988508618262786	Bad Overlap
-seq4_89-seq6_33	No error	0.089920956776005230566	Bad Overlap
-seq4_89-seq7_93	No error	0.08265216566314990376	Bad Overlap
+seq4_89-seq6_33	IndexError	0.090356379327280687707	Bad Overlap
+seq4_89-seq7_93	IndexError	0.08269300584187278814	Bad Overlap
 seq4_92-seq5_25	No error	0.0	Bad Overlap
 seq4_92-seq7_25	No error	0.088819105846041955394	Bad Overlap
 seq4_93-seq5_13	No error	0.087850852342572381066	Bad Overlap
-seq4_95-seq6_37	No error	0.0	Bad Overlap
-seq4_97-seq5_99	No error	0.0	Bad Overlap
+seq4_95-seq6_37	IndexError	0.0	Bad Overlap
+seq4_97-seq5_99	IndexError	0.0	Bad Overlap
 seq1_1-seq1_90	No error	0.08618358431183565025	Good Overlap
-seq1_2-seq4_84	No error	0.08825782258586785764	Bad Overlap
+seq1_2-seq4_84	IndexError	0.08828807777288249259	Bad Overlap
 seq1_3-seq9_70	No error	0.09223506561811033404	Bad Overlap
 seq1_4-seq1_95	No error	0.08497823391367802953	Good Overlap
 seq1_4-seq5_62	No error	0.091733676650490112456	Bad Overlap
-seq1_5-seq5_29	No error	0.08416551863436830358	Bad Overlap
+seq1_5-seq5_29	IndexError	0.084297021627651680664	Bad Overlap
 seq1_6-seq9_96	No error	0.08536462475001874358	Bad Overlap
 seq1_6-seq6_72	No error	0.093865592323653774903	Bad Overlap
 seq1_7-seq7_71	No error	0.08884231327234548266	Bad Overlap
 seq1_7-seq2_73	No error	0.088208250477321881716	Bad Overlap
-seq1_9-seq5_99	No error	0.084175274300451047616	Bad Overlap
-seq1_11-seq4_95	No error	0.09031676843797317367	Bad Overlap
-seq1_13-seq3_22	No error	0.08681056566570861126	Bad Overlap
+seq1_9-seq5_99	IndexError	0.08506039091577732668	Bad Overlap
+seq1_11-seq4_95	No error	0.09035849330798512725	Bad Overlap
+seq1_13-seq3_22	IndexError	0.08693319939248047997	Bad Overlap
 seq1_14-seq3_35	No error	0.09032366180797960343	Bad Overlap
 seq1_17-seq8_58	No error	0.0	Bad Overlap
-seq1_17-seq6_87	No error	0.086606935570077206046	Bad Overlap
-seq1_17-seq5_7	No error	0.096724400222296991154	Bad Overlap
-seq1_17-seq5_91	No error	0.08919272847669208947	Bad Overlap
+seq1_17-seq6_87	No error	0.08696397550153143338	Bad Overlap
+seq1_17-seq5_7	IndexError	0.09717497224581374363	Bad Overlap
+seq1_17-seq5_91	IndexError	0.08937277421753816456	Bad Overlap
 seq1_19-seq1_70	No error	0.08702195201687060913	Good Overlap
 seq1_23-seq1_91	No error	0.088667324956387362234	Good Overlap
-seq1_23-seq6_65	No error	0.084967279914996682	Bad Overlap
-seq1_24-seq7_78	No error	0.08223768677094772697	Bad Overlap
+seq1_23-seq6_65	No error	0.08491033072512398031	Bad Overlap
+seq1_24-seq7_78	IndexError	0.082298709469613696734	Bad Overlap
 seq1_24-seq9_49	No error	0.08143789044857847241	Bad Overlap
 seq1_24-seq4_4	No error	0.08077620178082789969	Bad Overlap
 seq1_27-seq3_73	IndexError	0.09884539652640265292	Bad Overlap
-seq1_28-seq6_58	No error	0.09183583383813101468	Bad Overlap
+seq1_28-seq6_58	No error	0.09163635475148906766	Bad Overlap
 seq1_29-seq7_90	No error	0.0	Bad Overlap
-seq1_29-seq9_78	No error	0.0	Bad Overlap
+seq1_29-seq9_78	IndexError	0.0	Bad Overlap
 seq1_29-seq4_85	No error	0.09093144264112253925	Bad Overlap
-seq1_31-seq5_71	No error	0.09156591175005708041	Bad Overlap
+seq1_31-seq5_71	IndexError	0.091595354919112131445	Bad Overlap
 seq1_31-seq4_63	IndexError	0.09059669226336611733	Bad Overlap
 seq1_32-seq3_93	No error	0.08431733443132820602	Bad Overlap
 seq1_33-seq7_47	No error	0.096587609671036818204	Bad Overlap
@@ -134,33 +134,33 @@ seq1_42-seq6_18	No error	0.096741838944186368515	Bad Overlap
 seq1_43-seq4_78	No error	0.0	Bad Overlap
 seq1_43-seq7_35	IndexError	0.0	Bad Overlap
 seq1_44-seq2_85	No error	0.0	Bad Overlap
-seq1_44-seq1_53	No error	0.085759504942838033116	Good Overlap
-seq1_44-seq3_46	No error	0.07795642539616521678	Bad Overlap
+seq1_44-seq1_53	No error	0.085912192763993694295	Good Overlap
+seq1_44-seq3_46	IndexError	0.078131631381052587485	Bad Overlap
 seq1_46-seq7_71	No error	0.0	Bad Overlap
 seq1_46-seq1_7	No error	0.08973401700493098328	Good Overlap
 seq1_46-seq2_73	No error	0.085891529431034230494	Bad Overlap
 seq1_50-seq2_68	No error	0.0	Bad Overlap
-seq1_50-seq7_79	No error	0.09184463949057166111	Bad Overlap
+seq1_50-seq7_79	IndexError	0.091660221870420377766	Bad Overlap
 seq1_51-seq3_84	No error	0.0	Bad Overlap
-seq1_51-seq4_56	No error	0.08640035292284717285	Bad Overlap
+seq1_51-seq4_56	IndexError	0.08663418431703953837	Bad Overlap
 seq1_52-seq4_88	No error	0.0	Bad Overlap
-seq1_52-seq7_74	No error	0.0	Bad Overlap
+seq1_52-seq7_74	IndexError	0.0	Bad Overlap
 seq1_52-seq9_35	No error	0.0	Bad Overlap
 seq1_53-seq2_85	No error	0.08415224820542043295	Bad Overlap
-seq1_53-seq3_46	No error	0.08877113901957543478	Bad Overlap
+seq1_53-seq3_46	IndexError	0.08900944987895189382	Bad Overlap
 seq1_54-seq4_53	No error	0.0	Bad Overlap
 seq1_54-seq6_3	No error	0.08222707945963843917	Bad Overlap
 seq1_55-seq8_74	No error	0.0	Bad Overlap
 seq1_55-seq3_74	IndexError	0.088103211571913539395	Bad Overlap
 seq1_57-seq7_52	No error	0.0	Bad Overlap
 seq1_58-seq9_98	No error	0.0	Bad Overlap
-seq1_58-seq5_77	No error	0.084256672064709077545	Bad Overlap
+seq1_58-seq5_77	No error	0.084350155883469293786	Bad Overlap
 seq1_58-seq6_84	No error	0.09258489962308100212	Bad Overlap
-seq1_59-seq1_90	No error	0.08036554080144889503	Good Overlap
-seq1_60-seq2_81	No error	0.0	Bad Overlap
+seq1_59-seq1_90	IndexError	0.080905009564257084145	Good Overlap
+seq1_60-seq2_81	IndexError	0.0	Bad Overlap
 seq1_61-seq1_82	No error	0.08241255288700164069	Good Overlap
 seq1_63-seq8_93	IndexError	0.09140708848311020008	Bad Overlap
-seq1_63-seq8_44	No error	0.08512789675929530064	Bad Overlap
+seq1_63-seq8_44	IndexError	0.08522367409132599074	Bad Overlap
 seq1_64-seq5_14	IndexError	0.08726873957596323412	Bad Overlap
 seq1_66-seq1_86	IndexError	0.06962232885554610932	Good Overlap
 seq1_67-seq9_91	No error	0.09402108519394667985	Bad Overlap
@@ -174,53 +174,53 @@ seq1_72-seq9_41	No error	0.092083079708190799073	Bad Overlap
 seq1_73-seq7_81	IndexError	0.0	Bad Overlap
 seq1_73-seq8_75	IndexError	0.0	Bad Overlap
 seq1_74-seq9_76	No error	0.0	Bad Overlap
-seq1_74-seq5_24	No error	0.086280377766095150625	Bad Overlap
+seq1_74-seq5_24	No error	0.08637170400340794891	Bad Overlap
 seq1_74-seq9_32	No error	0.093649303519210421075	Bad Overlap
 seq1_76-seq8_89	No error	0.0	Bad Overlap
-seq1_76-seq6_47	No error	0.081338605869489904264	Bad Overlap
+seq1_76-seq6_47	IndexError	0.081338605869489904264	Bad Overlap
 seq1_76-seq7_69	No error	0.08836556115928632101	Bad Overlap
-seq1_77-seq5_86	No error	0.08764843186964122839	Bad Overlap
+seq1_77-seq5_86	No error	0.08770712416996649596	Bad Overlap
 seq1_78-seq4_16	No error	0.10117453491970869184	Bad Overlap
-seq1_79-seq6_75	No error	0.09156524797790411074	Bad Overlap
-seq1_80-seq2_96	No error	0.0	Bad Overlap
-seq1_80-seq7_92	No error	0.0	Bad Overlap
+seq1_79-seq6_75	IndexError	0.09163374483938635177	Bad Overlap
+seq1_80-seq2_96	IndexError	0.0	Bad Overlap
+seq1_80-seq7_92	IndexError	0.0	Bad Overlap
 seq1_81-seq5_66	No error	0.0	Bad Overlap
 seq1_81-seq8_27	No error	0.091247569157929957806	Bad Overlap
 seq1_81-seq5_63	No error	0.097154148212315891846	Bad Overlap
 seq1_83-seq2_94	No error	0.0	Bad Overlap
 seq1_83-seq9_24	No error	0.0849017446148604641	Bad Overlap
 seq1_85-seq2_90	No error	0.0	Bad Overlap
-seq1_86-seq7_85	No error	0.0	Bad Overlap
+seq1_86-seq7_85	IndexError	0.0	Bad Overlap
 seq1_86-seq6_38	No error	0.0	Bad Overlap
 seq1_86-seq6_67	No error	0.09326861806346360517	Bad Overlap
 seq1_86-seq2_30	No error	0.09921764762157029028	Bad Overlap
-seq1_86-seq8_28	No error	0.09403017653950169815	Bad Overlap
-seq1_88-seq4_81	No error	0.089822927975473064696	Bad Overlap
+seq1_86-seq8_28	No error	0.09372965417662222272	Bad Overlap
+seq1_88-seq4_81	No error	0.08982520072376556115	Bad Overlap
 seq1_89-seq7_89	No error	0.0	Bad Overlap
-seq1_89-seq5_32	No error	0.0	Bad Overlap
-seq1_89-seq5_75	No error	0.09342963963077911035	Bad Overlap
+seq1_89-seq5_32	IndexError	0.0	Bad Overlap
+seq1_89-seq5_75	IndexError	0.093624619179980641375	Bad Overlap
 seq1_90-seq2_44	No error	0.0	Bad Overlap
-seq1_90-seq3_39	No error	0.084523345348535864725	Bad Overlap
+seq1_90-seq3_39	No error	0.08440316770750619113	Bad Overlap
 seq1_90-seq9_13	No error	0.091775093734147618997	Bad Overlap
 seq1_90-seq3_29	No error	0.0974042919624291793	Bad Overlap
 seq1_91-seq6_65	No error	0.0	Bad Overlap
-seq1_91-seq4_55	No error	0.09130390327610650042	Bad Overlap
-seq1_91-seq9_36	No error	0.09138442553855943446	Bad Overlap
-seq1_92-seq9_23	No error	0.07415678585408593798	Bad Overlap
-seq1_93-seq4_98	No error	0.0	Bad Overlap
+seq1_91-seq4_55	No error	0.091310192996648084047	Bad Overlap
+seq1_91-seq9_36	No error	0.091503133919917281096	Bad Overlap
+seq1_92-seq9_23	No error	0.07448057026936891743	Bad Overlap
+seq1_93-seq4_98	IndexError	0.0	Bad Overlap
 seq1_93-seq2_95	No error	0.0	Bad Overlap
-seq1_93-seq8_39	No error	0.10538668541518533654	Bad Overlap
-seq1_94-seq8_86	No error	0.0	Bad Overlap
+seq1_93-seq8_39	No error	0.10238268488720248029	Bad Overlap
+seq1_94-seq8_86	IndexError	0.0	Bad Overlap
 seq1_94-seq5_87	No error	0.0	Bad Overlap
 seq1_94-seq5_16	IndexError	0.09221692328331715257	Bad Overlap
 seq1_94-seq4_87	No error	0.100981748117569495996	Bad Overlap
 seq1_95-seq5_62	No error	0.0	Bad Overlap
-seq1_95-seq6_21	No error	0.08746867977376209812	Bad Overlap
+seq1_95-seq6_21	No error	0.08760835473522262213	Bad Overlap
 seq1_95-seq9_56	No error	0.0955396101480263594	Bad Overlap
 seq1_95-seq8_46	No error	0.098342075272685842176	Bad Overlap
-seq10_7-seq10_89	No error	0.09401751641187618309	Good Overlap
-seq10_13-seq2_39	No error	0.07913579282101483439	Bad Overlap
-seq10_15-seq3_92	No error	0.08685997383314703328	Bad Overlap
+seq10_7-seq10_89	IndexError	0.09412180947733340597	Good Overlap
+seq10_13-seq2_39	No error	0.07879262267149683802	Bad Overlap
+seq10_15-seq3_92	IndexError	0.08718363916142555041	Bad Overlap
 seq10_18-seq10_69	No error	0.0	Good Overlap
 seq10_18-seq7_84	IndexError	0.0	Bad Overlap
 seq10_20-seq2_68	No error	0.08660688794452768173	Bad Overlap
@@ -229,52 +229,52 @@ seq10_21-seq1_76	No error	0.08987071420219394877	Bad Overlap
 seq10_26-seq1_93	No error	0.09701818228350574747	Bad Overlap
 seq10_30-seq5_80	No error	0.089793970689459702646	Bad Overlap
 seq10_32-seq2_62	No error	0.08635859916872728582	Bad Overlap
-seq10_32-seq6_89	No error	0.086007782149309858194	Bad Overlap
+seq10_32-seq6_89	No error	0.08606829359541102191	Bad Overlap
 seq10_42-seq1_51	No error	0.0	Bad Overlap
 seq10_44-seq4_90	No error	0.08385127623700003012	Bad Overlap
 seq10_46-seq10_76	No error	0.0	Good Overlap
-seq10_47-seq5_69	No error	0.087840874776018960884	Bad Overlap
-seq10_47-seq7_89	No error	0.08923301669788145842	Bad Overlap
+seq10_47-seq5_69	No error	0.087951494797442303166	Bad Overlap
+seq10_47-seq7_89	No error	0.08914367805540113807	Bad Overlap
 seq10_49-seq2_82	No error	0.082702626736030149	Bad Overlap
 seq10_50-seq1_56	No error	0.0	Bad Overlap
 seq10_52-seq10_85	No error	0.0	Good Overlap
-seq10_52-seq7_24	No error	0.08393479464182189793	Bad Overlap
+seq10_52-seq7_24	No error	0.084221830018485908045	Bad Overlap
 seq10_52-seq7_7	No error	0.07906612187691020646	Bad Overlap
-seq10_56-seq2_93	No error	0.0	Bad Overlap
+seq10_56-seq2_93	IndexError	0.0	Bad Overlap
 seq10_56-seq4_75	No error	0.08759500159110474515	Bad Overlap
 seq10_58-seq2_95	IndexError	0.090874776333513723506	Bad Overlap
-seq10_58-seq5_82	No error	0.08312625669514830781	Bad Overlap
-seq10_61-seq7_87	No error	0.0	Bad Overlap
+seq10_58-seq5_82	No error	0.08298292320718704445	Bad Overlap
+seq10_61-seq7_87	IndexError	0.0	Bad Overlap
 seq10_63-seq10_74	IndexError	0.0	Good Overlap
 seq10_65-seq9_93	No error	0.0	Bad Overlap
-seq10_69-seq7_84	No error	0.0	Bad Overlap
+seq10_69-seq7_84	IndexError	0.0	Bad Overlap
 seq10_71-seq6_81	No error	0.0	Bad Overlap
 seq10_71-seq8_16	No error	0.082763027558723772805	Bad Overlap
 seq10_72-seq4_18	No error	0.08660773583384296971	Bad Overlap
-seq10_72-seq7_56	No error	0.089467697028833337763	Bad Overlap
-seq10_73-seq1_21	No error	0.08641411466988866589	Bad Overlap
-seq10_75-seq2_74	No error	0.0812910759889109089	Bad Overlap
+seq10_72-seq7_56	No error	0.08943869347676175736	Bad Overlap
+seq10_73-seq1_21	No error	0.08666399043004639441	Bad Overlap
+seq10_75-seq2_74	No error	0.081352827424924543855	Bad Overlap
 seq10_77-seq6_12	No error	0.08944009577610945254	Bad Overlap
-seq10_79-seq9_66	No error	0.0	Bad Overlap
-seq10_79-seq6_14	No error	0.08885187734569602667	Bad Overlap
-seq10_81-seq8_82	No error	0.0	Bad Overlap
-seq10_81-seq6_74	No error	0.0	Bad Overlap
+seq10_79-seq9_66	IndexError	0.0	Bad Overlap
+seq10_79-seq6_14	IndexError	0.08911054320137099184	Bad Overlap
+seq10_81-seq8_82	IndexError	0.0	Bad Overlap
+seq10_81-seq6_74	IndexError	0.0	Bad Overlap
 seq10_81-seq5_93	No error	0.0	Bad Overlap
 seq10_81-seq7_38	No error	0.086733685569870566854	Bad Overlap
-seq10_83-seq9_99	No error	0.0	Bad Overlap
-seq10_85-seq7_24	No error	0.08300297346015594342	Bad Overlap
-seq10_86-seq6_68	No error	0.0	Bad Overlap
-seq10_86-seq7_31	No error	0.08503430908039387955	Bad Overlap
-seq10_87-seq7_82	No error	0.0	Bad Overlap
+seq10_83-seq9_99	IndexError	0.0	Bad Overlap
+seq10_85-seq7_24	No error	0.083230306752114776336	Bad Overlap
+seq10_86-seq6_68	IndexError	0.0	Bad Overlap
+seq10_86-seq7_31	No error	0.084837806843373622114	Bad Overlap
+seq10_87-seq7_82	IndexError	0.0	Bad Overlap
 seq10_90-seq8_88	No error	0.0	Bad Overlap
 seq10_91-seq1_22	No error	0.08813380073428314453	Bad Overlap
-seq10_92-seq4_53	No error	0.08236426523337098812	Bad Overlap
+seq10_92-seq4_53	IndexError	0.08257498966444220018	Bad Overlap
 seq10_92-seq1_54	No error	0.09059791190737596331	Bad Overlap
 seq10_93-seq7_62	No error	0.0	Bad Overlap
 seq10_94-seq3_87	No error	0.0	Bad Overlap
 seq10_94-seq2_79	No error	0.084560341480099063384	Bad Overlap
 seq10_94-seq9_94	No error	0.0	Bad Overlap
-seq10_94-seq2_26	No error	0.09131801811192605234	Bad Overlap
+seq10_94-seq2_26	No error	0.091514601624650135496	Bad Overlap
 seq10_95-seq4_64	No error	0.0	Bad Overlap
 seq10_95-seq6_41	No error	0.0	Bad Overlap
 seq10_95-seq6_32	No error	0.089832195593349515225	Bad Overlap
@@ -283,34 +283,34 @@ seq10_96-seq7_39	No error	0.0	Bad Overlap
 seq10_96-seq5_14	No error	0.09426884768473323397	Bad Overlap
 seq6_5-seq7_90	IndexError	0.08583333350715486368	Bad Overlap
 seq6_5-seq9_78	No error	0.08498278980994582711	Bad Overlap
-seq6_17-seq8_85	No error	0.087099063536261198694	Bad Overlap
+seq6_17-seq8_85	No error	0.08655794186372343179	Bad Overlap
 seq6_24-seq7_46	No error	0.079605713164129409584	Bad Overlap
-seq6_28-seq7_60	No error	0.09276153601607322447	Bad Overlap
+seq6_28-seq7_60	IndexError	0.09284676244508129203	Bad Overlap
 seq6_29-seq6_8	No error	0.1172346770020645546	Good Overlap
-seq6_32-seq6_41	No error	0.087099393684759860316	Good Overlap
+seq6_32-seq6_41	No error	0.08685152752597732677	Good Overlap
 seq6_34-seq8_28	No error	0.08868891712520584739	Bad Overlap
-seq6_35-seq7_17	No error	0.082574672242220526625	Bad Overlap
+seq6_35-seq7_17	No error	0.082591621481753306307	Bad Overlap
 seq6_38-seq7_85	No error	0.0	Bad Overlap
 seq6_41-seq6_62	No error	0.0829839345339719483	Good Overlap
-seq6_43-seq9_53	No error	0.08439859371597645912	Bad Overlap
-seq6_45-seq9_85	No error	0.08699681876967890333	Bad Overlap
-seq6_46-seq6_52	No error	0.0	Good Overlap
-seq6_50-seq6_91	No error	0.10789427504521748426	Good Overlap
-seq6_53-seq6_75	No error	0.08893286759283651309	Good Overlap
+seq6_43-seq9_53	No error	0.08445680381886747903	Bad Overlap
+seq6_45-seq9_85	No error	0.086702092375104336935	Bad Overlap
+seq6_46-seq6_52	IndexError	0.0	Good Overlap
+seq6_50-seq6_91	No error	0.10893177161822627698	Good Overlap
+seq6_53-seq6_75	No error	0.08940255210452106101	Good Overlap
 seq6_55-seq7_94	No error	0.0	Bad Overlap
-seq6_57-seq8_42	No error	0.08650182894495553794	Bad Overlap
-seq6_59-seq8_92	No error	0.08248162186125469163	Bad Overlap
-seq6_65-seq9_36	No error	0.09354937235403918458	Bad Overlap
-seq6_67-seq7_85	No error	0.07962201415304867284	Bad Overlap
+seq6_57-seq8_42	IndexError	0.08664263788576181881	Bad Overlap
+seq6_59-seq8_92	No error	0.082920291649135124316	Bad Overlap
+seq6_65-seq9_36	IndexError	0.09372712214845170242	Bad Overlap
+seq6_67-seq7_85	IndexError	0.07984514719931498734	Bad Overlap
 seq6_72-seq9_96	No error	0.0	Bad Overlap
 seq6_73-seq7_41	No error	0.0	Bad Overlap
-seq6_74-seq8_82	No error	0.0	Bad Overlap
-seq6_74-seq7_38	No error	0.08637632619622234232	Bad Overlap
+seq6_74-seq8_82	IndexError	0.0	Bad Overlap
+seq6_74-seq7_38	No error	0.08652500358450929045	Bad Overlap
 seq6_76-seq9_74	No error	0.09004660066912583868	Bad Overlap
 seq6_78-seq7_51	No error	0.08587371064410833531	Bad Overlap
 seq6_81-seq8_16	No error	0.0	Bad Overlap
-seq6_81-seq7_15	No error	0.08948247418333940399	Bad Overlap
-seq6_84-seq7_91	No error	0.0	Bad Overlap
+seq6_81-seq7_15	No error	0.089421201003661723476	Bad Overlap
+seq6_84-seq7_91	IndexError	0.0	Bad Overlap
 seq6_84-seq9_98	No error	0.0	Bad Overlap
 seq6_84-seq9_57	No error	0.0	Bad Overlap
 seq6_85-seq8_69	IndexError	0.0	Bad Overlap
@@ -322,298 +322,298 @@ seq6_89-seq8_34	No error	0.0	Bad Overlap
 seq6_90-seq7_67	No error	0.0	Bad Overlap
 seq6_90-seq7_87	No error	0.0	Bad Overlap
 seq6_91-seq8_24	No error	0.08909178413969808777	Bad Overlap
-seq6_92-seq7_83	No error	0.0	Bad Overlap
-seq2_6-seq5_98	No error	0.08941093915529725342	Bad Overlap
+seq6_92-seq7_83	IndexError	0.0	Bad Overlap
+seq2_6-seq5_98	No error	0.09006586990135512966	Bad Overlap
 seq2_8-seq9_97	No error	0.087048110641478571176	Bad Overlap
 seq2_10-seq8_52	No error	0.08905095841886036294	Bad Overlap
 seq2_11-seq4_12	IndexError	0.089378925339800193114	Bad Overlap
 seq2_12-seq9_89	No error	0.0850594614080714157	Bad Overlap
 seq2_13-seq6_85	No error	0.08566889262857519656	Bad Overlap
-seq2_13-seq8_69	No error	0.08980073692131160376	Bad Overlap
+seq2_13-seq8_69	IndexError	0.08961432150112521261	Bad Overlap
 seq2_16-seq5_85	IndexError	0.0	Bad Overlap
 seq2_17-seq9_95	No error	0.08840440668237109681	Bad Overlap
-seq2_19-seq2_93	No error	0.07850218552064302795	Good Overlap
+seq2_19-seq2_93	IndexError	0.078522905195353541374	Good Overlap
 seq2_19-seq4_75	IndexError	0.08316567076974581445	Bad Overlap
 seq2_20-seq2_91	No error	0.09345682153689459895	Good Overlap
 seq2_21-seq5_96	No error	0.087243899915365325475	Bad Overlap
-seq2_26-seq9_94	No error	0.086088343256769114535	Bad Overlap
+seq2_26-seq9_94	No error	0.08607672154946451745	Bad Overlap
 seq2_28-seq8_93	No error	0.088519562107777638796	Bad Overlap
-seq2_32-seq5_92	No error	0.09440077880439427087	Bad Overlap
-seq2_34-seq3_93	No error	0.0	Bad Overlap
+seq2_32-seq5_92	No error	0.09381611871346566622	Bad Overlap
+seq2_34-seq3_93	IndexError	0.0	Bad Overlap
 seq2_34-seq3_70	No error	0.07817371251689017128	Bad Overlap
-seq2_36-seq2_76	No error	0.08645539469748575463	Good Overlap
+seq2_36-seq2_76	IndexError	0.086853329145481621625	Good Overlap
 seq2_37-seq8_80	IndexError	0.08547544775445907703	Bad Overlap
-seq2_38-seq4_85	No error	0.083674417470866050724	Bad Overlap
-seq2_38-seq7_90	No error	0.0841487342944465876	Bad Overlap
-seq2_38-seq9_31	No error	0.093386539883800371515	Bad Overlap
+seq2_38-seq4_85	IndexError	0.083836535073141707784	Bad Overlap
+seq2_38-seq7_90	IndexError	0.084169198126779270176	Bad Overlap
+seq2_38-seq9_31	No error	0.09344537079801422687	Bad Overlap
 seq2_40-seq2_56	No error	0.0946896136722465099	Good Overlap
 seq2_41-seq2_72	No error	0.080918550506866693045	Good Overlap
-seq2_42-seq7_43	No error	0.080842310329953016545	Bad Overlap
-seq2_43-seq2_65	No error	0.084607082359865249904	Good Overlap
+seq2_42-seq7_43	IndexError	0.080935133562373008646	Bad Overlap
+seq2_43-seq2_65	No error	0.08452789612265153248	Good Overlap
 seq2_43-seq5_73	No error	0.08445169158289076008	Bad Overlap
 seq2_44-seq3_29	No error	0.0	Bad Overlap
-seq2_44-seq3_39	No error	0.09939760829979593256	Bad Overlap
-seq2_45-seq2_78	No error	0.0	Good Overlap
+seq2_44-seq3_39	IndexError	0.099730513297853584886	Bad Overlap
+seq2_45-seq2_78	IndexError	0.0	Good Overlap
 seq2_45-seq5_51	No error	0.0	Bad Overlap
-seq2_45-seq2_93	No error	0.09475674909277819198	Good Overlap
-seq2_46-seq5_9	No error	0.08273392816253319896	Bad Overlap
+seq2_45-seq2_93	No error	0.093999881522344765574	Good Overlap
+seq2_46-seq5_9	IndexError	0.08290482241708878787	Bad Overlap
 seq2_46-seq3_36	No error	0.10102229059674616766	Bad Overlap
 seq2_50-seq8_52	No error	0.085924716130365947565	Bad Overlap
 seq2_52-seq3_85	IndexError	0.08263927475598681981	Bad Overlap
 seq2_52-seq6_77	No error	0.088696175045059522964	Bad Overlap
 seq2_53-seq9_18	No error	0.093395057158764940736	Bad Overlap
-seq2_55-seq5_60	No error	0.0	Bad Overlap
+seq2_55-seq5_60	IndexError	0.0	Bad Overlap
 seq2_55-seq9_45	No error	0.099415892284031036296	Bad Overlap
 seq2_58-seq3_91	No error	0.0801175280728428802	Bad Overlap
 seq2_59-seq8_69	No error	0.11177864351767975265	Bad Overlap
 seq2_62-seq6_89	No error	0.0	Bad Overlap
 seq2_62-seq8_34	No error	0.0	Bad Overlap
-seq2_62-seq3_55	No error	0.08679326364930163079	Bad Overlap
-seq2_62-seq7_29	No error	0.090061926913405951765	Bad Overlap
+seq2_62-seq3_55	IndexError	0.087013877491264774464	Bad Overlap
+seq2_62-seq7_29	IndexError	0.09021285547092527387	Bad Overlap
 seq2_63-seq9_30	No error	0.089902796395917827064	Bad Overlap
 seq2_65-seq5_73	IndexError	0.08611270843608772981	Bad Overlap
 seq2_66-seq6_54	No error	0.08278512753015255454	Bad Overlap
-seq2_67-seq5_84	No error	0.084075462513888479266	Bad Overlap
+seq2_67-seq5_84	No error	0.08407961275755772293	Bad Overlap
 seq2_68-seq7_79	No error	0.0	Bad Overlap
-seq2_69-seq9_71	No error	0.093430418788386666886	Bad Overlap
+seq2_69-seq9_71	IndexError	0.093635901418183829016	Bad Overlap
 seq2_72-seq4_1	No error	0.08923955943835500811	Bad Overlap
 seq2_73-seq7_71	No error	0.09872677634799997829	Bad Overlap
-seq2_75-seq3_67	No error	0.086440366375003822625	Bad Overlap
-seq2_77-seq6_26	No error	0.0	Bad Overlap
+seq2_75-seq3_67	IndexError	0.0863090223275314767	Bad Overlap
+seq2_77-seq6_26	IndexError	0.0	Bad Overlap
 seq2_78-seq2_93	No error	0.0	Good Overlap
-seq2_78-seq5_51	No error	0.0	Bad Overlap
-seq2_79-seq3_87	No error	0.0	Bad Overlap
-seq2_80-seq6_71	No error	0.08503723003995252776	Bad Overlap
+seq2_78-seq5_51	IndexError	0.0	Bad Overlap
+seq2_79-seq3_87	IndexError	0.0	Bad Overlap
+seq2_80-seq6_71	No error	0.08542689528765433931	Bad Overlap
 seq2_83-seq6_83	No error	0.081931704523379664	Bad Overlap
 seq2_83-seq5_31	No error	0.10471411428864843691	Bad Overlap
-seq2_83-seq6_9	No error	0.090054049504338896004	Bad Overlap
-seq2_83-seq2_92	No error	0.082564130176381919325	Good Overlap
+seq2_83-seq6_9	No error	0.08991180959810110329	Bad Overlap
+seq2_83-seq2_92	IndexError	0.08423090331934136478	Good Overlap
 seq2_84-seq4_74	IndexError	0.091033928969348313614	Bad Overlap
-seq2_85-seq3_49	No error	0.088281932016336083195	Bad Overlap
+seq2_85-seq3_49	No error	0.08834850381551395122	Bad Overlap
 seq2_85-seq3_46	IndexError	0.08271766414679057635	Bad Overlap
 seq2_86-seq3_34	No error	0.0	Bad Overlap
-seq2_87-seq5_38	No error	0.09050864326182721486	Bad Overlap
-seq2_89-seq8_94	No error	0.0	Bad Overlap
+seq2_87-seq5_38	No error	0.091029382166063103055	Bad Overlap
+seq2_89-seq8_94	IndexError	0.0	Bad Overlap
 seq2_89-seq4_51	No error	0.11667757327882583991	Bad Overlap
 seq2_89-seq5_59	No error	0.083430533864745282047	Bad Overlap
-seq2_91-seq9_77	No error	0.08853685398128933795	Bad Overlap
+seq2_91-seq9_77	IndexError	0.088751031512764270594	Bad Overlap
 seq2_92-seq5_31	No error	0.094649454014228981665	Bad Overlap
 seq2_92-seq6_83	No error	0.087622182959599404944	Bad Overlap
 seq2_93-seq4_75	No error	0.08880374445299817743	Bad Overlap
 seq2_94-seq9_24	No error	0.0	Bad Overlap
-seq2_95-seq4_98	No error	0.0	Bad Overlap
-seq2_95-seq5_82	No error	0.0	Bad Overlap
-seq2_96-seq7_92	No error	0.0	Bad Overlap
+seq2_95-seq4_98	IndexError	0.0	Bad Overlap
+seq2_95-seq5_82	IndexError	0.0	Bad Overlap
+seq2_96-seq7_92	IndexError	0.0	Bad Overlap
 seq2_96-seq8_4	No error	0.09850631930606372754	Bad Overlap
 seq2_97-seq2_98	No error	0.0	Good Overlap
 seq2_97-seq5_48	No error	0.0	Bad Overlap
-seq2_97-seq4_38	No error	0.08697879552771851793	Bad Overlap
+seq2_97-seq4_38	No error	0.0864780726475885699	Bad Overlap
 seq2_97-seq7_71	No error	0.12759794331394030971	Bad Overlap
 seq2_98-seq5_48	No error	0.0	Bad Overlap
-seq2_98-seq7_11	No error	0.08813904379651025108	Bad Overlap
-origSeq_4-seq3_78	No error	0.082761420033005327316	Bad Overlap
-origSeq_5-seq6_34	No error	0.08517451028861330008	Bad Overlap
-origSeq_6-seq3_25	No error	0.07970771678520392185	Bad Overlap
-origSeq_10-seq4_38	No error	0.098292316763282144796	Bad Overlap
-origSeq_10-seq2_97	No error	0.100502305468192226366	Bad Overlap
+seq2_98-seq7_11	No error	0.088464337772714169084	Bad Overlap
+origSeq_4-seq3_78	No error	0.082753503621254793166	Bad Overlap
+origSeq_5-seq6_34	IndexError	0.08528382956043749005	Bad Overlap
+origSeq_6-seq3_25	IndexError	0.079938621814550814245	Bad Overlap
+origSeq_10-seq4_38	No error	0.09850513258475768768	Bad Overlap
+origSeq_10-seq2_97	No error	0.10112249723012895164	Bad Overlap
 origSeq_12-seq7_66	No error	0.08596477215292730921	Bad Overlap
-origSeq_13-seq10_66	No error	0.08798229931556233015	Bad Overlap
+origSeq_13-seq10_66	IndexError	0.08818945298068571916	Bad Overlap
 origSeq_14-seq6_75	IndexError	0.09412748944690994691	Bad Overlap
 origSeq_14-seq4_49	No error	0.085412401618809916054	Bad Overlap
-origSeq_17-seq1_81	No error	0.0882985696411902622	Bad Overlap
+origSeq_17-seq1_81	No error	0.08826614915645963297	Bad Overlap
 origSeq_17-seq5_66	No error	0.095338711134032908344	Bad Overlap
 origSeq_17-seq5_63	IndexError	0.09711577651481453954	Bad Overlap
 origSeq_18-seq10_78	IndexError	0.08172414902134871762	Bad Overlap
-origSeq_19-seq4_96	No error	0.08531709336199279514	Bad Overlap
+origSeq_19-seq4_96	IndexError	0.08549611087063499884	Bad Overlap
 origSeq_22-seq9_50	No error	0.07431042794811594631	Bad Overlap
 origSeq_23-seq2_41	No error	0.08673747549472547742	Bad Overlap
-origSeq_23-seq2_72	No error	0.08120520074393724747	Bad Overlap
-origSeq_24-seq2_50	No error	0.081670529874435295524	Bad Overlap
+origSeq_23-seq2_72	IndexError	0.081312282094496077645	Bad Overlap
+origSeq_24-seq2_50	IndexError	0.08196651128534197636	Bad Overlap
 origSeq_25-origSeq_55	No error	0.08148884557345719046	Good Overlap
 origSeq_26-seq1_89	IndexError	0.08626819883577812889	Bad Overlap
 origSeq_27-seq7_88	No error	0.0	Bad Overlap
 origSeq_28-seq3_18	No error	0.08136403993730324605	Bad Overlap
-origSeq_32-seq4_26	No error	0.07745983803034435507	Bad Overlap
+origSeq_32-seq4_26	No error	0.078363266557312390226	Bad Overlap
 origSeq_32-seq10_84	IndexError	0.098367250825904187315	Bad Overlap
-origSeq_33-seq7_78	No error	0.08879945806562366755	Bad Overlap
-origSeq_33-seq1_24	No error	0.10530889081174843849	Bad Overlap
-origSeq_34-seq1_30	No error	0.08949177670739469065	Bad Overlap
-origSeq_35-seq5_2	No error	0.087213378844138185836	Bad Overlap
+origSeq_33-seq7_78	IndexError	0.08887122245124968934	Bad Overlap
+origSeq_33-seq1_24	No error	0.10547084894753450574	Bad Overlap
+origSeq_34-seq1_30	No error	0.089156849822413455925	Bad Overlap
+origSeq_35-seq5_2	IndexError	0.0874541445157760774	Bad Overlap
 origSeq_35-origSeq_50	No error	0.08368572475717773956	Good Overlap
 origSeq_36-origSeq_85	No error	0.08665857675721401801	Good Overlap
 origSeq_36-seq7_82	No error	0.09456878521935647381	Bad Overlap
-origSeq_37-seq6_91	No error	0.08449229017797269727	Bad Overlap
-origSeq_38-seq6_81	No error	0.08434426139901945475	Bad Overlap
+origSeq_37-seq6_91	IndexError	0.084941281083029772554	Bad Overlap
+origSeq_38-seq6_81	No error	0.08422324095596415804	Bad Overlap
 origSeq_38-seq10_71	No error	0.08445319427775842434	Bad Overlap
 origSeq_39-seq2_83	No error	0.0	Bad Overlap
 origSeq_41-seq6_24	IndexError	0.08969683329882474711	Bad Overlap
-origSeq_41-seq7_46	No error	0.08338591173656613283	Bad Overlap
+origSeq_41-seq7_46	IndexError	0.083864304042100511286	Bad Overlap
 origSeq_42-seq4_34	No error	0.085001458387069629196	Bad Overlap
-origSeq_45-origSeq_47	No error	0.0	Good Overlap
-origSeq_45-seq5_49	No error	0.08386505865145295506	Bad Overlap
+origSeq_45-origSeq_47	IndexError	0.0	Good Overlap
+origSeq_45-seq5_49	IndexError	0.084181454716867883036	Bad Overlap
 origSeq_46-seq10_62	No error	0.0	Bad Overlap
 origSeq_46-seq8_80	No error	0.084163228488253149964	Bad Overlap
 origSeq_46-seq2_37	No error	0.080365510932485606005	Bad Overlap
 origSeq_47-seq5_49	IndexError	0.0	Bad Overlap
 origSeq_47-seq3_19	No error	0.08840382777479941167	Bad Overlap
-origSeq_47-seq4_24	No error	0.10676544219771441014	Bad Overlap
+origSeq_47-seq4_24	No error	0.106949957721692647574	Bad Overlap
 origSeq_49-seq9_16	No error	0.08992332464885146483	Bad Overlap
 origSeq_49-origSeq_67	IndexError	0.111667630918083758705	Good Overlap
 origSeq_49-seq6_83	No error	0.08557839012482204784	Bad Overlap
 origSeq_50-seq5_2	No error	0.08937543925939946719	Bad Overlap
-origSeq_52-seq5_92	No error	0.083326751640945704425	Bad Overlap
+origSeq_52-seq5_92	IndexError	0.083587675523845881203	Bad Overlap
 origSeq_52-seq2_32	No error	0.086371281534341409904	Bad Overlap
 origSeq_53-seq5_98	No error	0.0809050949060902646	Bad Overlap
 origSeq_53-seq7_10	No error	0.10877246437911861989	Bad Overlap
 origSeq_54-seq8_28	No error	0.0	Bad Overlap
-origSeq_54-seq7_85	No error	0.091186112827661040466	Bad Overlap
+origSeq_54-seq7_85	No error	0.09076552103165215339	Bad Overlap
 origSeq_54-seq6_34	No error	0.10349596240160829524	Bad Overlap
 origSeq_56-seq4_93	No error	0.08731413212360761602	Bad Overlap
 origSeq_57-origSeq_98	No error	0.0	Good Overlap
 origSeq_58-seq7_60	No error	0.0	Bad Overlap
-origSeq_58-seq5_89	No error	0.07991440973982130127	Bad Overlap
-origSeq_58-seq6_73	No error	0.08640046953466040474	Bad Overlap
+origSeq_58-seq5_89	No error	0.079914405510215561825	Bad Overlap
+origSeq_58-seq6_73	IndexError	0.08657315062439501816	Bad Overlap
 origSeq_60-seq7_45	No error	0.086672475377118013374	Bad Overlap
 origSeq_61-seq6_88	No error	0.0	Bad Overlap
 origSeq_63-seq7_67	No error	0.0	Bad Overlap
 origSeq_63-seq6_90	No error	0.0	Bad Overlap
-origSeq_63-seq3_69	No error	0.09118567854498873302	Bad Overlap
-origSeq_63-seq9_80	No error	0.08858864762357454561	Bad Overlap
-origSeq_64-seq5_57	No error	0.083872800591163679625	Bad Overlap
+origSeq_63-seq3_69	No error	0.09133583228288788484	Bad Overlap
+origSeq_63-seq9_80	No error	0.08821474281888018716	Bad Overlap
+origSeq_64-seq5_57	No error	0.08383649163061368541	Bad Overlap
 origSeq_64-seq9_52	No error	0.09210117679225533402	Bad Overlap
 origSeq_66-seq4_67	No error	0.108977938828745266544	Bad Overlap
 origSeq_66-seq4_40	No error	0.08743090889730773804	Bad Overlap
 origSeq_68-seq5_55	No error	0.09428725684566062929	Bad Overlap
 origSeq_69-seq3_24	No error	0.08932047143681084224	Bad Overlap
 origSeq_71-seq8_34	No error	0.0	Bad Overlap
-origSeq_71-seq2_62	No error	0.08836578425566198588	Bad Overlap
-origSeq_71-seq6_89	No error	0.09030075929405951372	Bad Overlap
+origSeq_71-seq2_62	No error	0.089946219103082567667	Bad Overlap
+origSeq_71-seq6_89	No error	0.09015213274799430253	Bad Overlap
 origSeq_72-seq5_8	No error	0.08883361126322057941	Bad Overlap
 origSeq_73-seq9_27	No error	0.08155724010183699487	Bad Overlap
 origSeq_74-seq2_98	No error	0.0	Bad Overlap
 origSeq_74-seq2_97	No error	0.0859326034236555983	Bad Overlap
-origSeq_74-seq7_11	No error	0.091295496357502737105	Bad Overlap
-origSeq_75-seq1_55	No error	0.08690847841802957305	Bad Overlap
-origSeq_75-seq8_74	No error	0.0	Bad Overlap
+origSeq_74-seq7_11	No error	0.091860065693296069984	Bad Overlap
+origSeq_75-seq1_55	IndexError	0.08759083000625536932	Bad Overlap
+origSeq_75-seq8_74	IndexError	0.0	Bad Overlap
 origSeq_75-seq3_74	No error	0.08964580367719516898	Bad Overlap
 origSeq_75-seq5_26	No error	0.08289570168304786593	Bad Overlap
 origSeq_76-seq6_49	No error	0.0	Bad Overlap
 origSeq_78-seq5_79	No error	0.0	Bad Overlap
 origSeq_78-seq7_76	No error	0.0	Bad Overlap
 origSeq_79-seq2_23	IndexError	0.100680534909596518895	Bad Overlap
-origSeq_80-seq2_86	No error	0.08502675731229000674	Bad Overlap
+origSeq_80-seq2_86	No error	0.08456841834791969238	Bad Overlap
 origSeq_80-seq3_34	No error	0.08970931005370518778	Bad Overlap
 origSeq_82-seq6_81	No error	0.0	Bad Overlap
 origSeq_82-seq7_15	No error	0.081223190929989808214	Bad Overlap
-origSeq_82-seq8_16	No error	0.089606887276663680756	Bad Overlap
-origSeq_82-seq10_71	No error	0.0930388298548435524	Bad Overlap
-origSeq_83-seq4_54	No error	0.0	Bad Overlap
+origSeq_82-seq8_16	No error	0.08981578813728327636	Bad Overlap
+origSeq_82-seq10_71	No error	0.092920979674603735995	Bad Overlap
+origSeq_83-seq4_54	IndexError	0.0	Bad Overlap
 origSeq_83-seq9_69	IndexError	0.0	Bad Overlap
-origSeq_83-seq7_51	No error	0.08394385503891086338	Bad Overlap
-origSeq_83-seq6_78	No error	0.088931117515177998174	Bad Overlap
+origSeq_83-seq7_51	IndexError	0.08403106838979000227	Bad Overlap
+origSeq_83-seq6_78	No error	0.08885415874789193975	Bad Overlap
 origSeq_84-seq1_91	No error	0.0	Bad Overlap
 origSeq_84-seq9_36	No error	0.0	Bad Overlap
 origSeq_84-seq4_55	No error	0.085517716943047816164	Bad Overlap
-origSeq_84-seq6_65	No error	0.083910816264133018546	Bad Overlap
-origSeq_84-seq10_3	No error	0.07879529820814847538	Bad Overlap
+origSeq_84-seq6_65	IndexError	0.08407789796766092165	Bad Overlap
+origSeq_84-seq10_3	IndexError	0.07906460449759030308	Bad Overlap
 origSeq_85-seq7_82	No error	0.0	Bad Overlap
 origSeq_85-seq10_87	No error	0.0	Bad Overlap
-origSeq_87-seq8_87	No error	0.0	Bad Overlap
+origSeq_87-seq8_87	IndexError	0.0	Bad Overlap
 origSeq_87-seq9_87	No error	0.07883746805548069392	Bad Overlap
-origSeq_88-seq8_68	No error	0.0	Bad Overlap
+origSeq_88-seq8_68	IndexError	0.0	Bad Overlap
 origSeq_89-seq3_56	No error	0.0	Bad Overlap
 origSeq_90-seq7_37	No error	0.0	Bad Overlap
 origSeq_91-seq6_44	No error	0.07951980726496181742	Bad Overlap
 origSeq_92-seq4_86	No error	0.0	Bad Overlap
 origSeq_93-seq4_89	No error	0.0	Bad Overlap
-origSeq_93-seq6_33	No error	0.08539698932309301295	Bad Overlap
-origSeq_93-seq7_93	No error	0.091458683568948663704	Bad Overlap
-origSeq_94-seq3_71	No error	0.07567408694918203877	Bad Overlap
+origSeq_93-seq6_33	No error	0.08553932390166744527	Bad Overlap
+origSeq_93-seq7_93	IndexError	0.091844673539083848584	Bad Overlap
+origSeq_94-seq3_71	IndexError	0.07574239571138615616	Bad Overlap
 origSeq_94-seq10_67	No error	0.09371878649004393028	Bad Overlap
 origSeq_94-seq10_25	No error	0.1121649236251608763	Bad Overlap
-origSeq_95-seq4_27	No error	0.08197150015337739661	Bad Overlap
-origSeq_95-seq2_24	No error	0.09101385076716650858	Bad Overlap
-origSeq_95-seq7_41	No error	0.08664479105235397992	Bad Overlap
-origSeq_95-seq6_73	No error	0.0873125776404900867	Bad Overlap
+origSeq_95-seq4_27	IndexError	0.0824009308085627214	Bad Overlap
+origSeq_95-seq2_24	No error	0.091124348403467830305	Bad Overlap
+origSeq_95-seq7_41	No error	0.086835669554606580576	Bad Overlap
+origSeq_95-seq6_73	No error	0.087206488131221986653	Bad Overlap
 origSeq_96-seq8_37	No error	0.0	Bad Overlap
-origSeq_97-seq3_53	No error	0.09441972974733320011	Bad Overlap
+origSeq_97-seq3_53	No error	0.094176323066224903576	Bad Overlap
 origSeq_97-seq2_15	No error	0.10869825900507383737	Bad Overlap
-origSeq_98-seq5_33	No error	0.08349357022210029745	Bad Overlap
-origSeq_99-seq9_99	No error	0.0	Bad Overlap
+origSeq_98-seq5_33	No error	0.083452869701125465286	Bad Overlap
+origSeq_99-seq9_99	IndexError	0.0	Bad Overlap
 origSeq_99-seq3_15	No error	0.106079299090290761574	Bad Overlap
-seq9_17-seq9_54	No error	0.08676750974700912452	Good Overlap
+seq9_17-seq9_54	No error	0.08684175139915731823	Good Overlap
 seq9_31-seq9_78	No error	0.0855228051757099096	Good Overlap
-seq9_40-seq9_72	No error	0.088919953050770938365	Good Overlap
-seq9_57-seq9_98	No error	0.0	Good Overlap
+seq9_40-seq9_72	No error	0.08866102871799948314	Good Overlap
+seq9_57-seq9_98	IndexError	0.0	Good Overlap
 seq9_61-seq9_81	No error	0.088091331377570490836	Good Overlap
-seq9_63-seq9_95	No error	0.088035086214885868856	Good Overlap
+seq9_63-seq9_95	IndexError	0.08865378380982507501	Good Overlap
 seq7_23-seq9_90	No error	0.091876162184552308834	Bad Overlap
 seq7_24-seq7_7	No error	0.088840026903968605976	Good Overlap
 seq7_38-seq8_82	No error	0.08550306710431509198	Bad Overlap
-seq7_47-seq9_37	No error	0.090967983355675471966	Bad Overlap
-seq7_48-seq7_91	No error	0.087976999733870038886	Good Overlap
+seq7_47-seq9_37	No error	0.09124207992975169983	Bad Overlap
+seq7_48-seq7_91	IndexError	0.08822844312399017105	Good Overlap
 seq7_50-seq8_69	No error	0.0	Bad Overlap
-seq7_56-seq9_40	No error	0.08990317352808522014	Bad Overlap
-seq7_56-seq8_14	No error	0.08662974914893904246	Bad Overlap
-seq7_56-seq9_72	No error	0.089647884664112126134	Bad Overlap
+seq7_56-seq9_40	No error	0.08979717538544867957	Bad Overlap
+seq7_56-seq8_14	IndexError	0.08749046076009238742	Bad Overlap
+seq7_56-seq9_72	No error	0.08989116086181266853	Bad Overlap
 seq7_57-seq9_92	IndexError	0.09268821314322511318	Bad Overlap
 seq7_58-seq9_68	No error	0.0	Bad Overlap
 seq7_74-seq9_35	No error	0.09141278133975800869	Bad Overlap
 seq7_78-seq9_49	No error	0.0	Bad Overlap
 seq7_81-seq8_75	No error	0.0	Bad Overlap
 seq7_85-seq8_28	No error	0.0	Bad Overlap
-seq7_86-seq7_94	No error	0.090636915632240154625	Good Overlap
+seq7_86-seq7_94	No error	0.09015882061752244685	Good Overlap
 seq7_88-seq8_79	No error	0.0	Bad Overlap
 seq7_89-seq9_67	No error	0.0	Bad Overlap
 seq7_90-seq9_78	No error	0.0	Bad Overlap
-seq7_90-seq9_31	No error	0.0945665949602396205	Bad Overlap
-seq7_91-seq9_98	No error	0.0	Bad Overlap
+seq7_90-seq9_31	No error	0.09393300570548598487	Bad Overlap
+seq7_91-seq9_98	IndexError	0.0	Bad Overlap
 seq7_91-seq8_51	No error	0.0	Bad Overlap
 seq7_91-seq9_57	No error	0.0	Bad Overlap
-seq7_92-seq8_4	No error	0.08400806638486346141	Bad Overlap
-seq8_14-seq9_72	No error	0.080387525948226501915	Bad Overlap
-seq8_15-seq8_67	No error	0.085713193803797176775	Good Overlap
+seq7_92-seq8_4	No error	0.08406669031308175555	Bad Overlap
+seq8_14-seq9_72	No error	0.08039925103818655112	Bad Overlap
+seq8_15-seq8_67	IndexError	0.08606373462170641153	Good Overlap
 seq8_15-seq8_57	No error	0.07613036093684774603	Good Overlap
 seq8_31-seq8_90	No error	0.0	Good Overlap
 seq8_31-seq8_88	No error	0.081462587953777270304	Good Overlap
-seq8_36-seq8_91	No error	0.086421830450454989274	Good Overlap
+seq8_36-seq8_91	IndexError	0.08655151338231979748	Good Overlap
 seq8_40-seq9_98	No error	0.0	Bad Overlap
 seq8_44-seq8_93	No error	0.0	Good Overlap
 seq8_45-seq8_87	No error	0.0	Good Overlap
 seq8_51-seq9_98	No error	0.09365615505145393293	Bad Overlap
 seq8_57-seq8_67	No error	0.0	Good Overlap
-seq8_73-seq8_78	No error	0.07713149360802303773	Good Overlap
+seq8_73-seq8_78	No error	0.077108771839364338894	Good Overlap
 seq8_88-seq8_90	No error	0.0	Good Overlap
-seq3_3-seq7_84	No error	0.09333338207938766846	Bad Overlap
+seq3_3-seq7_84	No error	0.09230054900427654255	Bad Overlap
 seq3_7-seq5_99	IndexError	0.083671609141757238475	Bad Overlap
-seq3_8-seq5_95	No error	0.08261297358926872468	Bad Overlap
+seq3_8-seq5_95	No error	0.08262622648487293811	Bad Overlap
 seq3_9-seq7_63	No error	0.093962574274474028075	Bad Overlap
 seq3_11-seq5_50	IndexError	0.08619117924010079154	Bad Overlap
-seq3_12-seq8_91	No error	0.083892351922168262075	Bad Overlap
-seq3_13-seq5_80	No error	0.089707930034283002384	Bad Overlap
+seq3_12-seq8_91	IndexError	0.083862433264032015856	Bad Overlap
+seq3_13-seq5_80	No error	0.08955490985823183139	Bad Overlap
 seq3_14-seq5_71	No error	0.09306462046139319211	Bad Overlap
-seq3_15-seq9_99	No error	0.083505555967726523895	Bad Overlap
+seq3_15-seq9_99	No error	0.08369178998794569999	Bad Overlap
 seq3_19-seq4_24	No error	0.086576650046037263626	Bad Overlap
-seq3_23-seq4_41	No error	0.08641936583447682434	Bad Overlap
-seq3_23-seq5_97	No error	0.08288041736778153607	Bad Overlap
+seq3_23-seq4_41	No error	0.086612372383391210075	Bad Overlap
+seq3_23-seq5_97	No error	0.08312712130622499091	Bad Overlap
 seq3_27-seq4_63	No error	0.08845461955233505464	Bad Overlap
-seq3_28-seq5_44	No error	0.08682617704119415713	Bad Overlap
-seq3_32-seq6_64	No error	0.088153791819354544696	Bad Overlap
+seq3_28-seq5_44	No error	0.086707537456562710036	Bad Overlap
+seq3_32-seq6_64	No error	0.088563705526934394996	Bad Overlap
 seq3_32-seq8_57	No error	0.091337443378064865084	Bad Overlap
 seq3_32-seq8_15	No error	0.0842640558738945699	Bad Overlap
-seq3_37-seq8_62	No error	0.08392956615788276092	Bad Overlap
+seq3_37-seq8_62	No error	0.083574435409467459266	Bad Overlap
 seq3_40-seq7_91	No error	0.0	Bad Overlap
 seq3_40-seq9_98	No error	0.0	Bad Overlap
-seq3_40-seq8_51	No error	0.09035689654673307036	Bad Overlap
+seq3_40-seq8_51	No error	0.090548902151685200533	Bad Overlap
 seq3_41-seq3_94	No error	0.0	Good Overlap
 seq3_41-seq3_69	No error	0.0	Good Overlap
-seq3_41-seq8_35	No error	0.080490101406559480466	Bad Overlap
+seq3_41-seq8_35	No error	0.08007500076144029865	Bad Overlap
 seq3_43-seq9_55	No error	0.0	Bad Overlap
 seq3_47-seq7_68	No error	0.08627687890858926729	Bad Overlap
 seq3_48-seq5_17	No error	0.076562590029513534766	Bad Overlap
 seq3_50-seq7_80	No error	0.0	Bad Overlap
-seq3_50-seq8_53	No error	0.07989321433626470243	Bad Overlap
-seq3_52-seq9_44	No error	0.09461289052575980977	Bad Overlap
+seq3_50-seq8_53	No error	0.08015817159314740252	Bad Overlap
+seq3_52-seq9_44	IndexError	0.09480600212128895726	Bad Overlap
 seq3_54-seq3_89	IndexError	0.0	Good Overlap
 seq3_54-seq8_92	IndexError	0.0	Bad Overlap
 seq3_54-seq5_1	No error	0.09623591729695308508	Bad Overlap
@@ -630,26 +630,26 @@ seq3_69-seq3_94	No error	0.0	Good Overlap
 seq3_69-seq9_80	No error	0.0	Bad Overlap
 seq3_69-seq7_67	No error	0.084369213530303965824	Bad Overlap
 seq3_70-seq3_93	No error	0.0	Good Overlap
-seq3_71-seq7_78	No error	0.08557866877417379403	Bad Overlap
+seq3_71-seq7_78	No error	0.0854185963520828213	Bad Overlap
 seq3_73-seq5_83	No error	0.091704330615443094204	Bad Overlap
-seq3_74-seq8_74	No error	0.081672098106167902324	Bad Overlap
+seq3_74-seq8_74	No error	0.08158312615191808513	Bad Overlap
 seq3_77-seq5_88	No error	0.0	Bad Overlap
 seq3_77-seq5_92	No error	0.0	Bad Overlap
-seq3_77-seq9_42	No error	0.096258070893291935485	Bad Overlap
-seq3_79-seq6_82	No error	0.08154551746498707958	Bad Overlap
+seq3_77-seq9_42	No error	0.096042692616556432	Bad Overlap
+seq3_79-seq6_82	IndexError	0.081631982053189029455	Bad Overlap
 seq3_80-seq5_21	IndexError	0.081343023680664452134	Bad Overlap
-seq3_80-seq8_17	No error	0.07292648533613883694	Bad Overlap
+seq3_80-seq8_17	No error	0.072905974894411393314	Bad Overlap
 seq3_82-seq5_81	No error	0.0	Bad Overlap
 seq3_83-seq8_47	No error	0.08848836301263095991	Bad Overlap
 seq3_84-seq4_56	No error	0.085278213029798916456	Bad Overlap
 seq3_85-seq6_77	No error	0.0	Bad Overlap
-seq3_88-seq8_22	No error	0.085006819345264682077	Bad Overlap
+seq3_88-seq8_22	No error	0.084818449628046061647	Bad Overlap
 seq3_89-seq8_92	No error	0.0	Bad Overlap
 seq3_89-seq5_1	No error	0.086329648379728468166	Bad Overlap
 seq3_90-seq6_91	No error	0.0	Bad Overlap
-seq3_91-seq5_13	No error	0.08437028658046370495	Bad Overlap
-seq3_91-seq4_93	No error	0.08140131136890424271	Bad Overlap
+seq3_91-seq5_13	No error	0.083820351568398809044	Bad Overlap
+seq3_91-seq4_93	No error	0.08145079388977839165	Bad Overlap
 seq3_92-seq9_85	No error	0.0	Bad Overlap
 seq3_92-seq6_45	No error	0.086229196177650435283	Bad Overlap
-seq3_94-seq8_35	No error	0.0	Bad Overlap
+seq3_94-seq8_35	IndexError	0.0	Bad Overlap
 seq3_94-seq4_2	No error	0.08618657896988513992	Bad Overlap
