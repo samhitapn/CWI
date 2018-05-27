@@ -114,9 +114,9 @@ def getOverlapScore(key, readData):
     errorDet = list()
     c = 0
     cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
-    #print("CIGAR:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
-    #print(readData[8])
-    #print(len(seq1),len(seq2))
+    print("CIGAR:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
+    print(readData[8])
+    print(len(seq1),len(seq2))
     for num, char in cigarPattern.findall(readData[8]):
         try:
             if num:
@@ -249,19 +249,20 @@ scoreFileName = args.output + "_scores.csv"
 outputFile = open(scoreFileName,"w+")
 for key in readPairData:
     c = c + 1
-    results = getOverlapScore(key, readPairData[key])
-    keyElements = key.split("-")
+    if c == 13931:
+        results = getOverlapScore(key, readPairData[key])
+        keyElements = key.split("-")
 
-    if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
-        ovlType = "Good Overlap"
-    else:
-        ovlType = "Bad Overlap"
+        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+            ovlType = "Good Overlap"
+        else:
+            ovlType = "Bad Overlap"
 
-    if results[2] == 1:
-        error = "IndexError"
-    else:
-        error = "No error"
+        if results[2] == 1:
+            error = "IndexError"
+        else:
+            error = "No error"
 
-    print(c,key,str(results[3]))
-    outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
+        print(c,key,str(results[3]))
+        outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
 outputFile.close()
