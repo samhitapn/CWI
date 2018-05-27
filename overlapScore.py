@@ -114,9 +114,9 @@ def getOverlapScore(key, readData):
     errorDet = list()
     c = 0
     cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
-    print("CIGAR:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
-    print(readData[8])
-    print(len(seq1),len(seq2))
+    #print("CIGAR:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
+    #print(readData[8])
+    #print(len(seq1),len(seq2))
     for num, char in cigarPattern.findall(readData[8]):
         try:
             if num:
@@ -174,7 +174,7 @@ def getOverlapScore(key, readData):
                     probabilityOverall = probabilityOverall + np.log(probabilityBase)
                     #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
-                    print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
+                    #print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
                 #print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
 
                 pos1 = pos1 + num
