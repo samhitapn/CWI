@@ -140,7 +140,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
                 pos1 = pos1 + num
                 L = L + 1
-                print("I:",num,pos1,pos2)
+                #print("I:",num,pos1,pos2)
                 #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
 
             elif char == "D":
@@ -154,7 +154,7 @@ def getOverlapScore(key, readData):
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
                 pos2 = pos2 + num
                 L = L + 1
-                print("D:",num,pos1,pos2)
+                #print("D:",num,pos1,pos2)
                     #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
 
             elif char == "M":
@@ -169,20 +169,20 @@ def getOverlapScore(key, readData):
                         sc = (probabilityQ(n,tempSeq1[i],tempScore1[i]) * probabilityQ(n,tempSeq2[i],tempScore2[i]))
                         probabilityBase = probabilityBase + sc
                         #assert 0 <= probabilityBase <= 1, print(char, pos1, pos2, probabilityBase, "Base")
-                        print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
+                        #print(n, sc, probabilityBase, tempSeq1[i],ord(tempScore1[i]),tempSeq2[i],ord(tempScore2[i]))
                         #probabilityBase = probabilityBase + (probabilityQ(n,tempSeq1[i],np.float128(tempScore1[i])) * probabilityQ(n,tempSeq2[i],np.float128(tempScore2[i])))
                     probabilityOverall = probabilityOverall + np.log(probabilityBase)
                     #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                     L = L + 1
                     print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
-                print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
+                #print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
 
                 pos1 = pos1 + num
                 pos2 = pos2 + num
-                print("M:",num,pos1,pos2)
+                #print("M:",num,pos1,pos2)
 
         except IndexError:
-            print("ERROR",probabilityOverall)
+            #print("ERROR",probabilityOverall)
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
             overlapScore = np.exp(probabilityOverall) ** (1/L)
             result = [pos1, pos2, 1, overlapScore]
