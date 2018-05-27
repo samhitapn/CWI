@@ -230,11 +230,14 @@ for overlapPair in pafData:
 
 
     if ovl[0] + "-" + ovl[5] == "origSeq_159-origSeq_77":
+        """
         print(ovl)
         print(fastqTemp[ovl[0]][0])
         print(fastqTemp[ovl[0]][1])
         print(fastqTemp[ovl[5]][0])
         print(fastqTemp[ovl[5]][1])
+        """
+        print(ovl[20].split(":")[2].strip("\n"))
 
     cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
