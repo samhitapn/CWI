@@ -114,9 +114,9 @@ def getOverlapScore(key, readData):
     errorDet = list()
     c = 0
     cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
-    print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
-    print("CIGAR:",readData[8])
-    print(len(seq1),len(seq2))
+    #print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
+    #print("CIGAR:",readData[8])
+    #print(len(seq1),len(seq2))
     for num, char in cigarPattern.findall(readData[8]):
         try:
             if num:
@@ -229,18 +229,18 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
 
-
+"""
     if ovl[0] + "-" + ovl[5] == "origSeq_159-origSeq_77":
-        """
+
         print(ovl)
         print(fastqTemp[ovl[0]][0])
         print(fastqTemp[ovl[0]][1])
         print(fastqTemp[ovl[5]][0])
         print(fastqTemp[ovl[5]][1])
-        """
+
         print(ovl)
         print("Init:",ovl[20].split(":")[2].strip("\n"))
-
+"""
     cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
     cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
@@ -255,21 +255,21 @@ scoreFileName = args.output + "_scores.csv"
 outputFile = open(scoreFileName,"w+")
 for key in readPairData:
     c = c + 1
-    if c == 13931:
-        print(key)
-        results = getOverlapScore(key, readPairData[key])
-        keyElements = key.split("-")
+    #if c == 13931:
+    print(key)
+    results = getOverlapScore(key, readPairData[key])
+    keyElements = key.split("-")
 
-        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
-            ovlType = "Good Overlap"
-        else:
-            ovlType = "Bad Overlap"
+    if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+        ovlType = "Good Overlap"
+    else:
+        ovlType = "Bad Overlap"
 
-        if results[2] == 1:
-            error = "IndexError"
-        else:
-            error = "No error"
+    if results[2] == 1:
+        error = "IndexError"
+    else:
+        error = "No error"
 
-        print(c,key,str(results[3]))
-        outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
+    print(c,key,str(results[3]))
+    outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
 outputFile.close()
