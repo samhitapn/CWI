@@ -114,8 +114,8 @@ def getOverlapScore(key, readData):
     errorDet = list()
     c = 0
     cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
-    print("CIGAR:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
-    print(readData[8])
+    print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
+    print("CIGAR:",readData[8])
     print(len(seq1),len(seq2))
     for num, char in cigarPattern.findall(readData[8]):
         try:
@@ -181,12 +181,13 @@ def getOverlapScore(key, readData):
                 pos2 = pos2 + num
                 #print("M:",num,pos1,pos2)
 
-        except IndexError:
+        except (IndexError, UnboundLocalError):
             #print("ERROR",probabilityOverall)
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
             overlapScore = np.exp(probabilityOverall) ** (1/L)
             result = [pos1, pos2, 1, overlapScore]
             continue
+
         else:
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
             overlapScore = np.exp(probabilityOverall) ** (1/L)
@@ -237,7 +238,7 @@ for overlapPair in pafData:
         print(fastqTemp[ovl[5]][0])
         print(fastqTemp[ovl[5]][1])
         """
-        print(ovl[20].split(":")[2].strip("\n"))
+        print("Init:",ovl[20].split(":")[2].strip("\n"))
 
     cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
