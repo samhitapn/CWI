@@ -244,9 +244,11 @@ for overlapPair in pafData:
 statFile.close()
 
 print(len(readPairData))
+c = 0
 scoreFileName = args.output + "_scores.csv"
 outputFile = open(scoreFileName,"w+")
 for key in readPairData:
+    c = c + 1
     results = getOverlapScore(key, readPairData[key])
     keyElements = key.split("-")
 
@@ -260,6 +262,6 @@ for key in readPairData:
     else:
         error = "No error"
 
-    print(key,str(results[3]))
+    print(c,key,str(results[3]))
     outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
 outputFile.close()
