@@ -250,6 +250,7 @@ outputFile = open(scoreFileName,"w+")
 for key in readPairData:
     c = c + 1
     if c == 13931:
+        print(key)
         results = getOverlapScore(key, readPairData[key])
         keyElements = key.split("-")
 
