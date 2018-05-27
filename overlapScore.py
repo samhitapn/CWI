@@ -238,6 +238,7 @@ for overlapPair in pafData:
         print(fastqTemp[ovl[5]][0])
         print(fastqTemp[ovl[5]][1])
         """
+        print(ovl)
         print("Init:",ovl[20].split(":")[2].strip("\n"))
 
     cig = getSeqFromCigar(ovl[20].split(":")[2].strip("\n"))
