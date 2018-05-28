@@ -264,7 +264,8 @@ for key in readPairData:
     #if c == 13931:
     print(key)
     args.gap = [args.gap]
-    print(args.gap,typ(args.gap))
+    for i in arg.gaps:
+        print(i)
     """
     results = getOverlapScore(key, readPairData[key], args.gap, args.scoreA)
     keyElements = key.split("-")
