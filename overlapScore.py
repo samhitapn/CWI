@@ -133,34 +133,34 @@ def getOverlapScore(key, readData):
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
             tempScore2 = score2[pos2:pos2 + num]
-
+            """
             if char == "I":
                 #print("!!!!",char, num, "*******")
-                sc = getGapRegionScore(tempScore1, num)
-                prob = prob + np.log(sc)
+                #sc = getGapRegionScore(tempScore1, num)
+                #prob = prob + np.log(sc)
                 #print(sc[1])
                 #scoreList = sc[1]
                 #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore2,tempSeq2)
                 pos1 = pos1 + num
-                L = L + 1
+                #L = L + 1
                 #print("I:",num,pos1,pos2)
                 #print("@@@@@ I-range",num, probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
 
             elif char == "D":
                 #print("!!!!",char, num, "*******")
-                sc = getGapRegionScore(tempScore2, num)
-                prob = prob + np.log(sc)
+                #sc = getGapRegionScore(tempScore2, num)
+                #prob = prob + np.log(sc)
                 #print(sc[1])
                 #scoreList = sc[1]
                 #probabilityOverall = probabilityOverall * getGapRegionScore(tempScore1, num)
                 #assert 0 <= probabilityOverall <= 1, print(char, pos1, pos2, probabilityOverall)
                 #assert probabilityOverall <= 0.000001, print(num,char, pos1, pos2, probabilityOverall,tempScore1,tempSeq1)
                 pos2 = pos2 + num
-                L = L + 1
+                #L = L + 1
                 #print("D:",num,pos1,pos2)
                     #print("@@@@@ D-range" , num,probabilityOverall, tempScore1,tempScore2, pos1, pos2, L, c)
-
+            """
             elif char == "M":
 
             #if char == "M":
