@@ -197,8 +197,8 @@ def getOverlapScore(key, readData):
             #print(L, probabilityOverall,np.exp(probabilityOverall),overlapScore)
             result = [0]
         #brEak
-        overlapScore = np.exp(prob) ** (1/L)
-        result.append(overlapScore)
+    overlapScore = np.exp(prob) ** (1/L)
+    result.append(overlapScore)
 
     return(result)
 
