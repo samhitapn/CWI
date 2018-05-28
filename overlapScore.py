@@ -264,7 +264,7 @@ for key in readPairData:
     #if c == 13931:
     print(key)
     #args.gap = [args.gap]
-    print(args.gap,typeof(args.gap))
+    print(args.gap,type(args.gap))
     for i in args.gap:
         print(i)
     """
