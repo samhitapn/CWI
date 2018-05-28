@@ -101,7 +101,7 @@ def getGapRegionScore (score, lenGap):
 @Output parameters:
 """
 
-def getOverlapScore(key, readData, gapArg, scoreArg):
+def getOverlapScore(key, readData):
     #scoreList = [0]
     probabilityOverall = 0
     probabilityGaps = 0
@@ -266,7 +266,7 @@ for key in readPairData:
     #args.gap = [args.gap]
     #print(args.gap,type(args.gap))
 
-    results = getOverlapScore(key, readPairData[key], args.gap, args.scoreA)
+    results = getOverlapScore(key, readPairData[key])
     keyElements = key.split("-")
 
     if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
