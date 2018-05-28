@@ -274,11 +274,11 @@ for key in readPairData:
     else:
         ovlType = "Bad Overlap"
 
-    if results[2] == 1:
+    if results[0] == 1:
         error = "IndexError"
     else:
         error = "No error"
 
-    print(c,key,str(results[3]))
-    outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
+    print(c,key,str(results[1]))
+    outputFile.write(key + "\t" + error + "\t" + str(results[1]) + "\t" + ovlType + "\n")
 outputFile.close()
