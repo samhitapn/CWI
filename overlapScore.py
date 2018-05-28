@@ -208,8 +208,8 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-p','--paf', help='PAF file name',required=True)
 parser.add_argument('-f','--fastq',help='Fastq file name', required=True)
 parser.add_argument('-o','--output',help='Fastq file name', required=True)
-parser.add_argument('-g','--gap',help='Gap region method max (0), min (1), avg (2), all(3)', required=True, type = int)
-parser.add_argument('-t','--scoreArea',help='Score only gaps and/or substitutions: Gaps(0), Substitutions(1), Both(2), All(3)', required=True, type = int)
+#parser.add_argument('-g','--gap',help='Gap region method max (0), min (1), avg (2), all(3)', required=True, type = int)
+#parser.add_argument('-t','--scoreArea',help='Score only gaps and/or substitutions: Gaps(0), Substitutions(1), Both(2), All(3)', required=True, type = int)
 args = parser.parse_args()
 
 readPairData = dict()
@@ -264,10 +264,8 @@ for key in readPairData:
     #if c == 13931:
     print(key)
     #args.gap = [args.gap]
-    print(args.gap,type(args.gap))
-    for i in args.gap:
-        print(i)
-    """
+    #print(args.gap,type(args.gap))
+
     results = getOverlapScore(key, readPairData[key], args.gap, args.scoreA)
     keyElements = key.split("-")
 
