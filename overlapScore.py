@@ -282,4 +282,3 @@ for key in readPairData:
     print(c,key,str(results[3]))
     outputFile.write(key + "\t" + error + "\t" + str(results[3]) + "\t" + ovlType + "\n")
 outputFile.close()
-"""
