@@ -165,7 +165,7 @@ def getOverlapScore(key, readData):
 
             #if char == "M":
                 #print("!!!!", char, num, "*******")
-                """
+
                 for i in range(0, num):
                     probabilityBase = 0
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
@@ -180,7 +180,7 @@ def getOverlapScore(key, readData):
                     L = L + 1
                     #print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
                 #print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
-                """
+
                 pos1 = pos1 + num
                 pos2 = pos2 + num
                 #print("M:",num,pos1,pos2)
@@ -188,16 +188,17 @@ def getOverlapScore(key, readData):
         except (IndexError, UnboundLocalError):
             #print("ERROR",probabilityOverall)
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
-            overlapScore = np.exp(prob) ** (1/L)
-            result = [1, overlapScore]
+            result = [1]
             continue
 
         else:
             #print("TTTTTT",probabilityOverall,np.exp(probabilityOverall))
-            overlapScore = np.exp(prob) ** (1/L)
+            #overlapScore = np.exp(prob) ** (1/L)
             #print(L, probabilityOverall,np.exp(probabilityOverall),overlapScore)
-            result = [0, overlapScore]
+            result = [0]
         #brEak
+        overlapScore = np.exp(prob) ** (1/L)
+        result.append(overlapScore)
 
     return(result)
 
