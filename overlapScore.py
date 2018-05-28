@@ -90,10 +90,11 @@ def getGapRegionScore (score, lenGap):
         #print("Score&&&&&",ord(score[i]))
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
-    prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
+
+    #prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
     #print("PROB", prob)
     #print(scoreList)
-    return(prob)
+    return(ovlScore)
 
 """
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
@@ -136,6 +137,7 @@ def getOverlapScore(key, readData):
 
             if char == "I":
                 #print("!!!!",char, num, "*******")
+
                 sc = getGapRegionScore(tempScore1, num)
                 prob = prob + np.log(sc)
                 #print(sc[1])
@@ -165,7 +167,7 @@ def getOverlapScore(key, readData):
 
             #if char == "M":
                 #print("!!!!", char, num, "*******")
-
+"""
                 for i in range(0, num):
                     probabilityBase = 0
                     #print(tempScore1[i],getProbQuality(tempScore1[i]),tempScore2[i],getProbQuality(tempScore2[i]))
@@ -180,7 +182,7 @@ def getOverlapScore(key, readData):
                     L = L + 1
                     #print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
                 #print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
-
+"""
                 pos1 = pos1 + num
                 pos2 = pos2 + num
                 #print("M:",num,pos1,pos2)
