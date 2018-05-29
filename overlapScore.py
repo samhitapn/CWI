@@ -182,7 +182,7 @@ def getOverlapScore(key, readData):
                     L = L + 1
                     #print("@@@@@ M-location", probabilityOverall,L,c,pos1,pos2)
                 #print("@@@@@ M-range", num,probabilityOverall, tempScore1,tempScore2, pos1,pos2,L,c)
-                
+
                 pos1 = pos1 + num
                 pos2 = pos2 + num
                 #print("M:",num,pos1,pos2)
@@ -257,7 +257,7 @@ for overlapPair in pafData:
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
-
+"""
 print(len(readPairData))
 c = 0
 scoreFileName = args.output + "_scores.csv"
@@ -285,3 +285,4 @@ for key in readPairData:
     print(c,key,str(results[1]))
     outputFile.write(key + "\t" + error + "\t" + str(results[1]) + "\t" + ovlType + "\n")
 outputFile.close()
+"""
