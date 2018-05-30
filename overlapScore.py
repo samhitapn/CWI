@@ -144,6 +144,9 @@ def getOverlapScore(key, readData, scoreType):
     #print(len(seq1),len(seq2))
     for i in range(0,3):
         print(i)
+        pos1 = readData[3]
+        pos2 = readData[8]
+        L = 0
         for num, char in cigarPattern.findall(readData[10]):
 
             if num:
@@ -152,9 +155,6 @@ def getOverlapScore(key, readData, scoreType):
                 num = 1
             #c = c + num
             #if pos1 <= readData[3] and pos2 <= readData[7]:
-            pos1 = readData[3]
-            pos2 = readData[8]
-            L = 0
             tempSeq1 = seq1[pos1:pos1 + num]
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
