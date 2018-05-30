@@ -192,7 +192,7 @@ def getOverlapScore(key, readData, scoreType):
                     pos1 = pos1 + num
                     pos2 = pos2 + num
                     #print("M:",num,pos1,pos2)
-
+        print(alpha1,alpha2,alpha)
         overlapScore = (np.exp(prob) ** (1/L)) * alpha
         result.append(overlapScore)
         print(result)
@@ -278,13 +278,13 @@ for key in readPairData:
         elif i == 2:
             name = "mean"
             print(name)
-        elif i == 1:
+        elif i == 3:
             name = "median"
             print(name)
-        elif i == 1:
+        elif i == 4:
             name = "geometricMean"
             print(name)
-        elif i == 1:
+        elif i == 5:
             name = "positionByPosition"
             print(name)
         results = getOverlapScore(key, readPairData[key],i)
