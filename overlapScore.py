@@ -135,7 +135,7 @@ def getOverlapScore(key, readData, scoreType):
     score2 = readData[6]
     result = []
     alpha1 = (readData[4] - readData[3])/(readData[2] - readData[3] + readData[8])
-    alpha2 = (readData[9] - readData[8])/(readData[8] + readData[7] - readData[9])
+    alpha2 = (readData[9] - readData[8])/(readData[9] + readData[2] - readData[4])
     alpha = max(alpha1, alpha2)
     #c = 0
     #cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
