@@ -143,7 +143,7 @@ def getOverlapScore(key, readData, scoreType):
     #print("CIGAR:",readData[8])
     #print(len(seq1),len(seq2))
     for j in range(0,3):
-        print(i)
+        print(j)
         pos1 = readData[3]
         pos2 = readData[8]
         L = 0
