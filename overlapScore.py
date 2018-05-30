@@ -269,6 +269,11 @@ for key in readPairData:
     else:
         gapScoreType = [args.gapScoreType]
 """
+if args.gapScoreType == 6:
+    gapScoreType = [0,1,2,3,4,5]
+else:
+    gapScoreType = [args.gapScoreType]
+
 for i in gapScoreType:
     if i == 0:
         name = "max"
@@ -299,11 +304,6 @@ for i in gapScoreType:
             ovlType = "Good Overlap"
         else:
             ovlType = "Bad Overlap"
-
-        if args.gapScoreType == 6:
-            gapScoreType = [0,1,2,3,4,5]
-        else:
-            gapScoreType = [args.gapScoreType]
 
         results = getOverlapScore(key, readPairData[key],i)
 
