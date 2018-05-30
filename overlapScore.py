@@ -77,12 +77,14 @@ def getProbQuality (q):
 @Input parameters:
 @Output parameters: Probability
 """
-def getGapRegionScore (score, lenGap):
-    ovlScore = 0
+def getGapRegionScore (score, lenGap, scoreType):
+    gapProb = 0
     #print(scoreList)
     #scoreList = []
     #if lenGap > 1:
-
+    convertedScores = [getGapRegionScore(score[i]) for i in range(0,lenGap)]
+    score = lambda sc : (97/100 * sc) + (3/100 * (1 - sc))
+    """
     for i in range(0, lenGap):
         #print(score[i])
         #score[i] = getProbQuality(score[i])
@@ -90,11 +92,30 @@ def getGapRegionScore (score, lenGap):
         #print("Score&&&&&",ord(score[i]))
         ovlScore = ovlScore + getProbQuality(score[i])
     ovlScore = ovlScore/lenGap
-
-    #prob = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
+    """
+    if scoreType == 0:
+        gapScore = max(convertedScores)
+        gapProb = score(gapScore)
+    elif scoreType == 1:
+        gapScore = min(convertedScores)
+        gapProb = score(gapScore)
+    elif scoreType == 2:
+        gapScore = np.mean(convertedScores)
+        gapProb = score(gapScore)
+    elif scoreType == 3:
+        gapScore = np.median(convertedScores)
+        gapProb = score(gapScore)
+    elif scoreType == 4:
+        gapScore = np.prod(convertedScores) ** (1/len(convertedScores))
+        gapProb = score(gapScore)
+    elif scoreType == 5:
+        for i in convertedScores:
+            gapProb = gapProb + score(i)
+    #gapProb = (10/13 * ovlScore) + (3/13 * (1 - ovlScore))
+    #gapProb = (97/100 * gapScore) + (3/100 * (1 - gapScore))
     #print("PROB", prob)
     #print(scoreList)
-    return(ovlScore)
+    return(gapProb)
 
 """
 @Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
@@ -109,11 +130,11 @@ def getOverlapScore(key, readData):
     probabilityMatches = 0
     prob = 0
     seq1 = readData[0]
-    seq2 = readData[4]
+    seq2 = readData[5]
     score1 = readData[1]
-    score2 = readData[5]
-    pos1 = readData[2]
-    pos2 = readData[6]
+    score2 = readData[6]
+    pos1 = readData[3]
+    pos2 = readData[8]
     L = 0
     errorDet = list()
     #c = 0
@@ -121,7 +142,7 @@ def getOverlapScore(key, readData):
     #print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
     #print("CIGAR:",readData[8])
     #print(len(seq1),len(seq2))
-    for num, char in cigarPattern.findall(readData[8]):
+    for num, char in cigarPattern.findall(readData[10]):
         try:
             if num:
                 num = int(num)
@@ -211,8 +232,8 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-p','--paf', help='PAF file name',required=True)
 parser.add_argument('-f','--fastq',help='Fastq file name', required=True)
 parser.add_argument('-o','--output',help='Fastq file name', required=True)
-#parser.add_argument('-g','--gap',help='Gap region method max (0), min (1), avg (2), all(3)', required=True, type = int)
-#parser.add_argument('-t','--scoreArea',help='Score only gaps and/or substitutions: Gaps(0), Substitutions(1), Both(2), All(3)', required=True, type = int)
+parser.add_argument('-g','--gapScoreType',help='Gap region method max (0), min (1), avg (2), median (3), geometricMean (4), position-by-position (5), all(6)', required=True, type = int)
+parser.add_argument('-s','--scoreRegion',help='Score only gaps and/or substitutions: gaps (0), substitutions (1), both (2), all (3)', required=True, type = int)
 args = parser.parse_args()
 
 readPairData = dict()
@@ -253,11 +274,11 @@ for overlapPair in pafData:
     cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
     cig = getSeqFromCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[1]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[6]) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
-    readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1],int(ovl[2]), int(ovl[3]),fastqTemp[ovl[5]][0],fastqTemp[ovl[5]][1],int(ovl[7]),int(ovl[8]),ovl[cigarIndex[0]].split(":")[2].strip("\n")]
+    readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1], int(ovl[1]), int(ovl[2]), int(ovl[3]), fastqTemp[ovl[5]][0], fastqTemp[ovl[5]][1], int(ovl[6]), int(ovl[7]),int(ovl[8]),ovl[cigarIndex[0]].split(":")[2].strip("\n")]
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
-"""
+
 print(len(readPairData))
 c = 0
 scoreFileName = args.output + "_scores.csv"
@@ -268,7 +289,17 @@ for key in readPairData:
     print(key)
     #args.gap = [args.gap]
     #print(args.gap,type(args.gap))
+    if args.gapScoreType == 6:
+        gapScoreType = [0,1,2,3,4,5]
+    else:
+        gapScoreType = [args.gapScoreType]
 
+    for i in gapScoreType:
+        print(i)
+
+
+
+    """
     results = getOverlapScore(key, readPairData[key])
     keyElements = key.split("-")
 
