@@ -269,7 +269,7 @@ for key in readPairData:
 
     for i in gapScoreType:
         #print(i)
-        results = getOverlapScore(key, readPairData[key],scoreType)
+        results = getOverlapScore(key, readPairData[key],i)
         if i == 0:
             name = "max"
         elif i == 1:
