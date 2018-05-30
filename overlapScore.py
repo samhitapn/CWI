@@ -205,7 +205,7 @@ parser.add_argument('-p','--paf', help='PAF file name',required=True)
 parser.add_argument('-f','--fastq',help='Fastq file name', required=True)
 parser.add_argument('-o','--output',help='Fastq file name', required=True)
 parser.add_argument('-g','--gapScoreType',help='Gap region method max (0), min (1), avg (2), median (3), geometricMean (4), position-by-position (5), all(6)', required=True, type = int)
-parser.add_argument('-s','--scoreRegion',help='Score only gaps and/or substitutions: gaps (0), substitutions (1), both (2), all (3)', required=True, type = int)
+#parser.add_argument('-s','--scoreRegion',help='Score only gaps and/or substitutions: gaps (0), substitutions (1), both (2), all (3)', required=True, type = int)
 args = parser.parse_args()
 
 readPairData = dict()
