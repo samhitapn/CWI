@@ -256,6 +256,7 @@ print(len(readPairData))
 c = 0
 #scoreFileName = args.output + "_scores.csv"
 #outputFile = open(scoreFileName,"w+")
+"""
 for key in readPairData:
     keyElements = key.split("-")
     if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
@@ -267,29 +268,45 @@ for key in readPairData:
         gapScoreType = [0,1,2,3,4,5]
     else:
         gapScoreType = [args.gapScoreType]
+"""
+for i in gapScoreType:
+    if i == 0:
+        name = "max"
+        print(name)
+    elif i == 1:
+        name = "min"
+        print(name)
+    elif i == 2:
+        name = "mean"
+        print(name)
+    elif i == 3:
+        name = "median"
+        print(name)
+    elif i == 4:
+        name = "geometricMean"
+        print(name)
+    elif i == 5:
+        name = "positionByPosition"
+        print(name)
 
-    for i in gapScoreType:
-        if i == 0:
-            name = "max"
-            print(name)
-        elif i == 1:
-            name = "min"
-            print(name)
-        elif i == 2:
-            name = "mean"
-            print(name)
-        elif i == 3:
-            name = "median"
-            print(name)
-        elif i == 4:
-            name = "geometricMean"
-            print(name)
-        elif i == 5:
-            name = "positionByPosition"
-            print(name)
+    scoreFileName = args.output + name + "_scores.csv"
+    outputFile = open(scoreFileName,"w+")
+    outputFile.write("KEY \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+
+    for key in readPairData:
+        keyElements = key.split("-")
+        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+            ovlType = "Good Overlap"
+        else:
+            ovlType = "Bad Overlap"
+
+        if args.gapScoreType == 6:
+            gapScoreType = [0,1,2,3,4,5]
+        else:
+            gapScoreType = [args.gapScoreType]
+
         results = getOverlapScore(key, readPairData[key],i)
-        scoreFileName = args.output + name + "_scores.csv"
-        outputFile = open(scoreFileName,"w+")
+
         """
         if results[0] == 1:
             error = "IndexError"
@@ -297,6 +314,6 @@ for key in readPairData:
             error = "No error"
         """
         print(c,key,str(results[0]))
-        outputFile.write("KEY \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+
         outputFile.write(key + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
-        outputFile.close()
+    outputFile.close()
