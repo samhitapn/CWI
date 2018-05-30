@@ -133,9 +133,6 @@ def getOverlapScore(key, readData, scoreType):
     seq2 = readData[5]
     score1 = readData[1]
     score2 = readData[6]
-    pos1 = readData[3]
-    pos2 = readData[8]
-    L = 0
     result = []
     alpha1 = (readData[4] - readData[3])/(readData[2] - readData[3] + readData[8])
     alpha2 = (readData[9] - readData[8])/(readData[8] + readData[7] - readData[9])
@@ -155,7 +152,9 @@ def getOverlapScore(key, readData, scoreType):
                 num = 1
             #c = c + num
             #if pos1 <= readData[3] and pos2 <= readData[7]:
-
+            pos1 = readData[3]
+            pos2 = readData[8]
+            L = 0
             tempSeq1 = seq1[pos1:pos1 + num]
             tempScore1 = score1[pos1:pos1 + num]
             tempSeq2 = seq2[pos2:pos2 + num]
