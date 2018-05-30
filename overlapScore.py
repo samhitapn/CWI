@@ -142,7 +142,7 @@ def getOverlapScore(key, readData, scoreType):
     #print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
     #print("CIGAR:",readData[8])
     #print(len(seq1),len(seq2))
-    for i in range(0,3):
+    for j in range(0,3):
         print(i)
         pos1 = readData[3]
         pos2 = readData[8]
@@ -161,7 +161,7 @@ def getOverlapScore(key, readData, scoreType):
             tempScore2 = score2[pos2:pos2 + num]
 
             if char == "I":
-                if i == 1:
+                if j == 1:
                     pos1 = pos1 + num
                 else:
                     sc = getGapRegionScore(tempScore1, num, scoreType)
@@ -169,7 +169,7 @@ def getOverlapScore(key, readData, scoreType):
                     pos1 = pos1 + num
                     L = L + 1
             elif char == "D":
-                if i == 1:
+                if j == 1:
                     pos2 = pos2 + num
                 else:
                     sc = getGapRegionScore(tempScore2, num, scoreType)
@@ -177,7 +177,7 @@ def getOverlapScore(key, readData, scoreType):
                     pos2 = pos2 + num
                     L = L + 1
             elif char == "M":
-                if i == 0:
+                if j == 0:
                     pos1 = pos1 + num
                     pos2 = pos2 + num
                 else:
