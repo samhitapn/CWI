@@ -146,6 +146,7 @@ def getOverlapScore(key, readData, scoreType):
     #print("CIGAR:",readData[8])
     #print(len(seq1),len(seq2))
     for i in range(0,3):
+        print(i)
         for num, char in cigarPattern.findall(readData[10]):
 
             if num:
