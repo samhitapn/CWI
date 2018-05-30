@@ -268,20 +268,25 @@ for key in readPairData:
         gapScoreType = [args.gapScoreType]
 
     for i in gapScoreType:
-        #print(i)
-        results = getOverlapScore(key, readPairData[key],i)
         if i == 0:
             name = "max"
+            print(name)
         elif i == 1:
             name = "min"
+            print(name)
         elif i == 2:
             name = "mean"
+            print(name)
         elif i == 1:
             name = "median"
+            print(name)
         elif i == 1:
             name = "geometricMean"
+            print(name)
         elif i == 1:
             name = "positionByPosition"
+            print(name)
+        results = getOverlapScore(key, readPairData[key],i)
         scoreFileName = args.output + name + "_scores.csv"
         outputFile = open(scoreFileName,"w+")
         """
