@@ -50,13 +50,13 @@ for i in tqdm(range(1,11)):
         delPos.sort()
         delChoices = random.choices([1,2,3,4,5],k = int(delNumber))
         repeat = False
-        for j in range(0,delNumber - 1):
+        for j in range(0,int(delNumber) - 1):
              temp = delPos[j] + delChoices[j]
              if temp > delPos[j + 1]:
                  repeat = True
                  break
     # REPLACING THE BASES TO BE DELETED
-    for d in range(0,delNumber):
+    for d in range(0,int(delNumber)):
         start = delPos[d]
         end = delPos[d] + choices[d]
         seqList[delPos[d]:delPos[d] + choices[d]] = "X"
@@ -85,14 +85,14 @@ for i in tqdm(range(1,11)):
         insPos.sort()
         insChoices = random.choices([1,2,3,4,5],k = int(insNumber))
         repeat = False
-        for k in range(0,insNumber - 1):
+        for k in range(0,int(insNumber) - 1):
              temp = inSPos[k] + insChoices[k]
              if temp > insPos[k + 1]:
                  repeat = True
                  break
     # INSERTING THE REQUIRED BASES
     counter = 0
-    for d in range(0,insNumber):
+    for d in range(0,int(insNumber)):
         insertions = random.choices(["A","T","G","C"],k = insChoices[d])
         seqList[insPos[d] + counter : insPos[d] + counter] = insertions
         counter = counter + insChoices[d]
