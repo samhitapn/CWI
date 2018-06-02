@@ -98,13 +98,12 @@ for i in tqdm(range(1,11)):
         counter = counter + insChoices[d]
     print("AFTER INSERTION",len(seqList))
 
-    """
+
     # JOIN THE SEQUENCE LIST
     seq = "".join(seqList)
     print(len(seq))
     #print(seq)
     fileName = "seq" + str(i)
-    with open("data/" + fileName + ".fasta", "w") as file:
+    with open("data/sequences/fasta_100000_indel/" + fileName + ".fasta", "w") as file:
             file.write(">" + fileName + "\n" + seq)
     print("Written")
-    """
