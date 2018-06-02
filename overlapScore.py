@@ -26,7 +26,7 @@ nt = ["A","T","C","G"] # Bases
 
 # FUNCTIONS
 """
-@Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
+@Definition: Converting the CIGAR string to the expanded form
 @Input parameters:
 @Output parameters:
 """
@@ -42,7 +42,7 @@ def getSeqFromCigar(cigar):
     return(cigarSeq)
 
 """
-@Definition: For calculating the probaility of the base at a given position
+@Definition: For calculating the probability of the base at a given position
 @Input parameters: X -> base A/C/T/G; b -> base in the particular position; q -> quality score at the position
 @Output parameters: Probability
 """
@@ -73,7 +73,7 @@ def getProbQuality (q):
     return p
 
 """
-@Definition:
+@Definition: For calculating the probability of the gap region
 @Input parameters:
 @Output parameters: Probability
 """
@@ -118,9 +118,9 @@ def getGapRegionScore (score, lenGap, scoreType):
     return(gapProb)
 
 """
-@Definition: Mapping the sequences, getting the sequence and the scores and converting the CIGAR string to the alignment
-@Input parameters:
-@Output parameters:
+@Definition: Calculation of overlap score for the overlap region
+@Input parameters: Key (Seqs IDs), overlap data, scoring type
+@Output parameters: overlap score
 """
 
 def getOverlapScore(key, readData, scoreType):
