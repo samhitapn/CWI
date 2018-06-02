@@ -86,7 +86,7 @@ for i in tqdm(range(1,11)):
         insChoices = random.choices([1,2,3,4,5],k = int(insNumber))
         repeat = False
         for k in range(0,int(insNumber) - 1):
-             temp = inSPos[k] + insChoices[k]
+             temp = insPos[k] + insChoices[k]
              if temp > insPos[k + 1]:
                  repeat = True
                  break
