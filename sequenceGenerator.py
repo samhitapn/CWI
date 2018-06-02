@@ -47,7 +47,7 @@ for i in tqdm(range(1,11)):
     repeat = True
     while repeat:
         delPos = random.sample(range(0,len(seqList)),int(delNumber))
-        delPos = sort(delPos)
+        delPos.sort()
         delChoices = random.choices([1,2,3,4,5],k = int(delNumber))
         repeat = False
         for j in range(0,delNumber - 1):
@@ -82,7 +82,7 @@ for i in tqdm(range(1,11)):
     repeat = True
     while repeat:
         insPos = random.sample(range(0,len(seqList)),int(insNumber))
-        insPos = sort(insPos)
+        insPos.sort()
         insChoices = random.choices([1,2,3,4,5],k = int(insNumber))
         repeat = False
         for k in range(0,insNumber - 1):
