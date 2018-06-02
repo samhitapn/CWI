@@ -45,7 +45,7 @@ for i in tqdm(range(1,11)):
     #pos = random.sample(range(0,100000),int(mutationNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
     while repeat:
-        delPos = random.sample(range(0,len(seqList) - 1)),int(delNumber))
+        delPos = random.sample(range(0,len(seqList)),int(delNumber))
         delPos = sort(delPos)
         delChoices = random.choices([1,2,3,4,5],k = int(delNumber))
         repeat = FALSE
@@ -67,7 +67,7 @@ for i in tqdm(range(1,11)):
     # SUBSTITUIONS
     subNumber = 93.2/100 * mutationNumber
     #pos2 = [x for x in pos1 if x not in insPos]
-    subPos = random.sample(range(0,len(seqList) - 1), int(subNumber))
+    subPos = random.sample(range(0,len(seqList)), int(subNumber))
     for n in subPos:
         nReplace = [b for b in nt if b != originalSequence[n]]
         seqList[n] = random.choice(nReplace)
@@ -79,7 +79,7 @@ for i in tqdm(range(1,11)):
     insPos = random.sample(range(0,len(seqList) - 1),int(insNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
     while repeat:
-        insPos = random.sample(range(0,len(seqList) - 1)),int(insNumber))
+        insPos = random.sample(range(0,len(seqList)),int(insNumber))
         insPos = sort(insPos)
         insChoices = random.choices([1,2,3,4,5],k = int(insNumber))
         repeat = FALSE
