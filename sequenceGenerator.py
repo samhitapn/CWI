@@ -44,6 +44,7 @@ for i in tqdm(range(1,11)):
     delNumber = 3.2/100 * mutationNumber
     #pos = random.sample(range(0,100000),int(mutationNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
+    repeat = TRUE
     while repeat:
         delPos = random.sample(range(0,len(seqList)),int(delNumber))
         delPos = sort(delPos)
@@ -78,6 +79,7 @@ for i in tqdm(range(1,11)):
     #pos1 = [x for x in pos if x not in delPos]
     insPos = random.sample(range(0,len(seqList) - 1),int(insNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
+    repeat = TRUE
     while repeat:
         insPos = random.sample(range(0,len(seqList)),int(insNumber))
         insPos = sort(insPos)
