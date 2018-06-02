@@ -58,8 +58,8 @@ for i in tqdm(range(1,11)):
     # REPLACING THE BASES TO BE DELETED
     for d in range(0,int(delNumber)):
         start = delPos[d]
-        end = delPos[d] + choices[d]
-        seqList[delPos[d]:delPos[d] + choices[d]] = "X"
+        end = delPos[d] + delChoices[d]
+        seqList[delPos[d]:delPos[d] + delChoices[d]] = "X"
     # DELETING THE BASES
     seqList = [b for b in seqList if b != "X"]
     print("AFTER DELETION",len(seqList))
