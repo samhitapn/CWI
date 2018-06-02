@@ -44,16 +44,16 @@ for i in tqdm(range(1,11)):
     delNumber = 3.2/100 * mutationNumber
     #pos = random.sample(range(0,100000),int(mutationNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
-    repeat = TRUE
+    repeat = True
     while repeat:
         delPos = random.sample(range(0,len(seqList)),int(delNumber))
         delPos = sort(delPos)
         delChoices = random.choices([1,2,3,4,5],k = int(delNumber))
-        repeat = FALSE
+        repeat = False
         for j in range(0,delNumber - 1):
              temp = delPos[j] + delChoices[j]
              if temp > delPos[j + 1]:
-                 repeat = TRUE
+                 repeat = True
                  break
     # REPLACING THE BASES TO BE DELETED
     for d in range(0,delNumber):
@@ -79,16 +79,16 @@ for i in tqdm(range(1,11)):
     #pos1 = [x for x in pos if x not in delPos]
     insPos = random.sample(range(0,len(seqList) - 1),int(insNumber))
     # CHECKING THE VALIDITY OF THE POSITIONS
-    repeat = TRUE
+    repeat = True
     while repeat:
         insPos = random.sample(range(0,len(seqList)),int(insNumber))
         insPos = sort(insPos)
         insChoices = random.choices([1,2,3,4,5],k = int(insNumber))
-        repeat = FALSE
+        repeat = False
         for k in range(0,insNumber - 1):
              temp = inSPos[k] + insChoices[k]
              if temp > insPos[k + 1]:
-                 repeat = TRUE
+                 repeat = True
                  break
     # INSERTING THE REQUIRED BASES
     counter = 0
