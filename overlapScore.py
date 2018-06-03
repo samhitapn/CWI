@@ -143,7 +143,7 @@ def getOverlapScore(key, readData, scoreType):
     #print("CIGAR:",readData[8])
     #print(len(seq1),len(seq2))
     for j in range(0,3):
-        print(j)
+        #print(j)
         pos1 = readData[3]
         pos2 = readData[8]
         L = 0
@@ -192,11 +192,11 @@ def getOverlapScore(key, readData, scoreType):
                     pos1 = pos1 + num
                     pos2 = pos2 + num
                     #print("M:",num,pos1,pos2)
-        print(alpha1,alpha2,alpha)
+        #print(alpha1,alpha2,alpha)
         overlapScore = (np.exp(prob) ** (1/L)) * alpha
         result.append(overlapScore)
-        print(result)
-    result[3:3] = [alpha1,aplha2]
+        #print(result)
+    result[3:3] = [alpha1,aplpha2]
     return(result)
 
 
