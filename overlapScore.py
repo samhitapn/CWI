@@ -254,7 +254,7 @@ for overlapPair in pafData:
 statFile.close()
 
 print(len(readPairData))
-c = 0
+#c = 0
 #scoreFileName = args.output + "_scores.csv"
 #outputFile = open(scoreFileName,"w+")
 """
@@ -314,7 +314,7 @@ for i in gapScoreType:
         else:
             error = "No error"
         """
-        print(c,key,str(results[0]))
+        print(key,str(results[0]))
 
         outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     outputFile.close()
