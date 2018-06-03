@@ -4,7 +4,7 @@
 @created: 02.may.2018
 @author: samhitapn
 @purpose: Overlap Score generator along with preprocessing
-@modified: 02.May.2018
+@modified: 03.June.2018
 """
 
 # LIBRARIES IMPORT
@@ -27,10 +27,10 @@ nt = ["A","T","C","G"] # Bases
 # FUNCTIONS
 """
 @Definition: Converting the CIGAR string to the expanded form
-@Input parameters:
-@Output parameters:
+@Input parameters: CIGAR string
+@Output parameters: expanded CIGAR string
 """
-def getSeqFromCigar(cigar):
+def getExpandedCigar(cigar):
     cigarSeq = []
     for num, char in cigarPattern.findall(cigar):
         if num:
@@ -59,7 +59,7 @@ def probabilityQ (X, b, p):
 
 """
 @Definition: For calculating the probaility from the phred quality scores
-@Input parameters:
+@Input parameters: Raw phred scores
 @Output parameters: Probability
 """
 def getProbQuality (q):
@@ -74,7 +74,7 @@ def getProbQuality (q):
 
 """
 @Definition: For calculating the probability of the gap region
-@Input parameters:
+@Input parameters: List of scores, length of the gap region, scoring type
 @Output parameters: Probability
 """
 def getGapRegionScore (score, lenGap, scoreType):
@@ -196,6 +196,7 @@ def getOverlapScore(key, readData, scoreType):
         overlapScore = (np.exp(prob) ** (1/L)) * alpha
         result.append(overlapScore)
         print(result)
+    result[3:3] = [alpha1,aplha2]
     return(result)
 
 
@@ -296,7 +297,7 @@ for i in gapScoreType:
 
     scoreFileName = args.output + name + "_scores.csv"
     outputFile = open(scoreFileName,"w+")
-    outputFile.write("KEY \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+    outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
         keyElements = key.split("-")
@@ -315,5 +316,5 @@ for i in gapScoreType:
         """
         print(c,key,str(results[0]))
 
-        outputFile.write(key + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+        outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     outputFile.close()
