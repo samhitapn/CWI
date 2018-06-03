@@ -196,7 +196,7 @@ def getOverlapScore(key, readData, scoreType):
         overlapScore = (np.exp(prob) ** (1/L)) * alpha
         result.append(overlapScore)
         #print(result)
-    result[3:3] = [alpha1,aplpha2]
+    result[3:3] = [alpha1,alpha2]
     return(result)
 
 
