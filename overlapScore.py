@@ -309,7 +309,7 @@ for i in gapScoreType:
 
             results = getOverlapScore(key, readPairData[key],i)
 
-            print(key,str(results[0]))
+            print(key,str(results[0]),str(results[1]),str(results[2]))
 
             outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     outputFile.close()
