@@ -300,7 +300,7 @@ for i in gapScoreType:
     outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
-        if key == "origSeq_189-origSeq_190":
+        #if key == "origSeq_189-origSeq_190":
             keyElements = key.split("-")
             if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
                 ovlType = "Good Overlap"
