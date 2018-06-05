@@ -234,7 +234,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
 
-
+    """
     if ovl[0] + "-" + ovl[5] == "origSeq_189-origSeq_190":
 
         #print(ovl)
@@ -245,7 +245,7 @@ for overlapPair in pafData:
 
         print(ovl)
         #print("Init:",ovl[20].split(":")[2].strip("\n"))
-
+    """
     cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
     cig = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[1]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[6]) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
@@ -301,7 +301,7 @@ for i in gapScoreType:
     outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
-        if key == "origSeq_125-origSeq_147":
+        #if key == "origSeq_125-origSeq_147":
             keyElements = key.split("-")
             if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
                 ovlType = "Good Overlap"
