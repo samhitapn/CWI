@@ -233,7 +233,7 @@ for overlapPair in pafData:
     tempData = list()
     ovl = overlapPair.split("\t")
 
-
+    """
     if ovl[0] + "-" + ovl[5] == "origSeq_189-origSeq_190":
 
         #print(ovl)
@@ -244,7 +244,7 @@ for overlapPair in pafData:
 
         #print(ovl)
         print("Init:",ovl[20].split(":")[2].strip("\n"))
-
+    """
     cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
     cig = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[1]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[6]) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\n")
@@ -274,7 +274,7 @@ if args.gapScoreType == 6:
     gapScoreType = [0,1,2,3,4,5]
 else:
     gapScoreType = [args.gapScoreType]
-"""
+
 for i in gapScoreType:
     if i == 0:
         name = "max"
@@ -300,16 +300,16 @@ for i in gapScoreType:
     outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
-        keyElements = key.split("-")
-        if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
-            ovlType = "Good Overlap"
-        else:
-            ovlType = "Bad Overlap"
+        if key == "origSeq_189-origSeq_190":
+            keyElements = key.split("-")
+            if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
+                ovlType = "Good Overlap"
+            else:
+                ovlType = "Bad Overlap"
 
-        results = getOverlapScore(key, readPairData[key],i)
+            results = getOverlapScore(key, readPairData[key],i)
 
-        print(key,str(results[0]))
+            print(key,str(results[0]))
 
-        outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     outputFile.close()
-"""
