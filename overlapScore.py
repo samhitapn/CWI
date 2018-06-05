@@ -307,14 +307,7 @@ for i in gapScoreType:
             ovlType = "Bad Overlap"
 
         results = getOverlapScore(key, readPairData[key],i)
-        """
-        """
-        if results[0] == 1:
-            error = "IndexError"
-        else:
-            error = "No error"
-        """
-        """
+
         print(key,str(results[0]))
 
         outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
