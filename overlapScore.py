@@ -4,7 +4,7 @@
 @created: 02.may.2018
 @author: samhitapn
 @purpose: Overlap Score generator along with preprocessing
-@modified: 03.June.2018
+@modified: 12.June.2018
 """
 
 # LIBRARIES IMPORT
@@ -134,9 +134,11 @@ def getOverlapScore(key, readData, scoreType):
     score1 = readData[1]
     score2 = readData[6]
     result = []
-    alpha1 = (readData[4] - readData[3])/(readData[2] - readData[3] + readData[8])
-    alpha2 = (readData[9] - readData[8])/(readData[9] + readData[2] - readData[4])
-    alpha = max(alpha1, alpha2)
+    #alpha1 = (readData[4] - readData[3])/(readData[2] - readData[3] + readData[8])
+    #alpha2 = (readData[9] - readData[8])/(readData[9] + readData[2] - readData[4])
+    #alpha = max(alpha1, alpha2)
+    k = max((readData[4] - readData[3]),(readData[9] - readData[8]))
+    newAlpha = k/(k + min(readData[3],readData[8]) + min((readData[2] - readData[4]),(readData[7] - readData[9])))
     #c = 0
     #cig = readData[8].count("M") + readData[8].count("I") + readData[8].count("D")
     #print("CIGARDetails:",cig, readData[8].count("M"), readData[8].count("I"), readData[8].count("D"))
@@ -197,7 +199,8 @@ def getOverlapScore(key, readData, scoreType):
         #overlapScore = (np.exp(prob) ** (1/L))
         result.append(overlapScore)
         #print(result)
-    result[3:3] = [alpha1,alpha2]
+    #result[3:3] = [alpha1,alpha2]
+    result[3:3] = [newAlpha]
     return(result)
 
 
@@ -298,7 +301,8 @@ for i in gapScoreType:
 
     scoreFileName = args.output + name + "_scores.csv"
     outputFile = open(scoreFileName,"w+")
-    outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+    #outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+    outputFile.write("KEY \t ALPHA \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
         #if key == "origSeq_125-origSeq_147":
@@ -312,5 +316,6 @@ for i in gapScoreType:
 
             print(key,str(results[0]),str(results[1]),str(results[2]))
 
-            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+            #outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
     outputFile.close()
