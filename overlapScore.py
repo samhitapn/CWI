@@ -195,7 +195,7 @@ def getOverlapScore(key, readData, scoreType):
                     pos2 = pos2 + num
                     #print("M:",num,pos1,pos2)
         #print(alpha1,alpha2,alpha)
-        overlapScore = (np.exp(prob) ** (1/L)) * alpha
+        overlapScore = (np.exp(prob) ** (1/L)) * newAlpha
         #overlapScore = (np.exp(prob) ** (1/L))
         result.append(overlapScore)
         #print(result)
