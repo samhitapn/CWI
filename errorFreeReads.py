@@ -84,6 +84,7 @@ os.chdir("all")
 for j in ["EB0","EB10","EB100","EB1000"]:
     file_paf = "allMerged_" + j + "_errorFree.paf"
     cmd = "minimap2 -x ava-ont " + fileNew_fastq + " " + fileNew_fastq + " -c --end-bonus " + j[2:] + " > " + file_paf
+    print(cmd)
     os.system(cmd)
 
 # Parsing CIGAR string from both PAF files for gaps
