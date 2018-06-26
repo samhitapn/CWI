@@ -72,8 +72,8 @@ with open(fileNew_fastq,"w+") as fw:
         fw.write("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
 
 # Generating overlaps from error-free reads
-for i in ["eb0","eb10","eb100","eb1000"]:
-    fileNew_paf = i + "/" + args.file + "_errorFree.paf"
+for j in ["eb0","eb10","eb100","eb1000"]:
+    fileNew_paf = j + "/" + args.file + "_errorFree.paf"
     cmd = "minimap2 -x ava-ont " + fileNew_fastq + " " + fileNew_fastq + " -c --end-bonus " + i[2:] + " > " + fileNew_paf
     os.system(cmd)
 
