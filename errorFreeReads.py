@@ -43,7 +43,7 @@ fastqTemp = dict()
 
 with open(args.file + ".sam") as s:
     sam = s.readlines()
-with open("origSeq.fastq") as fq:
+with open(args.file + ".fastq") as fq:
     fastqData = fq.readlines()
 for i in range(0,len(fastqData)):
     if fastqData[i].startswith("@"):
