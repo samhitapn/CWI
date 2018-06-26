@@ -92,20 +92,22 @@ for i in ["eb0","eb10","eb100","eb1000"]:
     print("PAF DATA RECEIVED")
     with open(args.file + "_CIGAR.csv","w+") as oldCigar:
         oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS")
-        for pair in pafData:
-            ovl = pair.split("\t")
+        for oldPair in pafData:
+            ovl = oldPair.split("\t")
             cigarIndex = [ovl.index(of) for of in ovl if of.startswith("cg")]
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")))
-
+    print("OLD DONE")
     with open(args.file + "_errorFree_CIGAR.csv","w+") as newCigar:
         newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS")
-        for pair in pafData_New:
-            ovl = pair.split("\t")
+        for newPair in pafData_New:
+            ovl = newPair.split("\t")
             cigarIndex = [ovl.index(nf) for nf in ovl if nf.startswith("cg")]
+            print(cigarIndex)
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")))
+    print("NEW DONE")
     print("PAF STATS SAVED")
     os.chdir("..")
