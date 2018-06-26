@@ -35,10 +35,11 @@ def getExpandedCigar(cigar):
 
 
 # Arguement parser
+"""
 parser = argparse.ArgumentParser(description='Parser for input files and output files')
 parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
-
+"""
 # Input data
 for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", "seq8", "seq9", "seq10"]:
     fastqTemp = dict()
