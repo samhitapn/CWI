@@ -19,6 +19,7 @@ cigarPattern = re.compile('([0-9]*)([DMSH])')
 def getExpandedCigar(cigar):
     cigarSeq = []
     start = True
+    clipCount = 0
     for num, char in cigarPattern.findall(cigar):
         if num:
             num = int(num)
@@ -28,7 +29,6 @@ def getExpandedCigar(cigar):
             clipCount = num
             start = False
         cigarSeq.append("".join(char * num))
-        start = False
     cigarSeq = "".join(cigarSeq)
     #reqLength = cigarSeq.count("S") + cigarSeq.count("H") + cigarSeq.count("D") + cigarSeq.count("M")
     return(cigarSeq,clipCount)
