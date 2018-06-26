@@ -25,12 +25,13 @@ def getExpandedCigar(cigar):
         else:
             num = 1
         if start and (char == "S" or char == "H"):
-            s = num
+            clipCount = num
             start = False
         cigarSeq.append("".join(char * num))
+        start = False
     cigarSeq = "".join(cigarSeq)
     #reqLength = cigarSeq.count("S") + cigarSeq.count("H") + cigarSeq.count("D") + cigarSeq.count("M")
-    return(cigarSeq,s)
+    return(cigarSeq,clipCount)
 
 
 # Arguement parser
