@@ -94,7 +94,7 @@ for i in ["eb0","eb10","eb100","eb1000"]:
         oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS")
         for pair in pafData:
             ovl = pair.split("\t")
-            cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
+            cigarIndex = [ovl.index(of) for of in ovl if of.startswith("cg")]
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")))
@@ -103,7 +103,7 @@ for i in ["eb0","eb10","eb100","eb1000"]:
         newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS")
         for pair in pafData_New:
             ovl = pair.split("\t")
-            cigarIndex = [ovl.index(i) for i in ovl if i.startswith("cg")]
+            cigarIndex = [ovl.index(nf) for nf in ovl if nf.startswith("cg")]
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")))
