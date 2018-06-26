@@ -74,7 +74,7 @@ with open(fileNew_fastq,"w+") as fw:
 # Generating overlaps from error-free reads
 for i in ["eb0","eb10","eb100","eb1000"]:
     fileNew_paf = i + "/" + args.file + "_errorFree.paf"
-    cmd = "minimap2 -x ava-ont " + fileNew_fastq + " " + fileNew_fastq + "-c --end-bonus " + i[2:] + " > " + fileNew_paf
+    cmd = "minimap2 -x ava-ont " + fileNew_fastq + " " + fileNew_fastq + " -c --end-bonus " + i[2:] + " > " + fileNew_paf
     os.system(cmd)
 
 # Parsing CIGAR string from both PAF files for gaps
