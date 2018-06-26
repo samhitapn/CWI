@@ -79,7 +79,7 @@ for i in ["eb0","eb10","eb100","eb1000"]:
 # Parsing CIGAR string from both PAF files for gaps
 for i in ["eb0","eb10","eb100","eb1000"]:
     os.chdir(i)
-    file_paf = i + "/" + args.file + ".paf"
+    file_paf = args.file + ".paf"
     with open(file_paf) as paf:
         pafData = paf.readlines()
     with open(fileNew_paf) as pafNew:
