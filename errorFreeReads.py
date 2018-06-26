@@ -39,6 +39,8 @@ parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
 
 # Input data
+fastqTemp = dict()
+
 with open(args.file + ".sam") as s:
     sam = s.readlines()
 with open("origSeq.fastq") as fq:
