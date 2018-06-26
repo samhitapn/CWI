@@ -7,6 +7,7 @@
 
 import re
 import os
+import argparse
 
 cigarPattern = re.compile('([0-9]*)([DMSH])')
 
