@@ -91,6 +91,7 @@ for j in ["EB0","EB10","EB100","EB1000"]:
     #print(cmd)
     os.system(cmd)
 #os.system("du -shx *|sort -rh")
+print("DONE GENERATING OVERLAPS")
 
 # Parsing CIGAR string from both PAF files for gaps
 for i in ["EB0","EB10","EB100","EB1000"]:
