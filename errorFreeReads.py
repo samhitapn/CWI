@@ -68,6 +68,7 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
                 seq = fasta.readlines()
             sequence = seq[1][startPos:endPos]
             fastqTemp[readName][0] = sequence
+            c = c + 1
 
     # Writing replaced error-free fastq file
     fileNew_fastq = file + "_errorFree.fastq"
