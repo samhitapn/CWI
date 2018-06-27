@@ -40,7 +40,7 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
 """
-
+"""
 # Input data
 for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", "seq8", "seq9", "seq10"]:
     fastqTemp = dict()
@@ -82,14 +82,16 @@ print("DONE REPLACING INDIVIDUAL FASTQ")
 cmdCat = "for f in *_errorFree.fastq; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fastq; done"
 os.system(cmdCat)
 print("DONE COMBINING FASTQ's")
-
+"""
 # Generating overlaps from error-free reads
 os.chdir("all")
+os.system("pwd")
 for j in ["EB0","EB10","EB100","EB1000"]:
     file_paf = "allMerged_" + j + "_errorFree.paf"
     cmd = "minimap2 -x ava-ont allMerged_200_errorFree.fastq allMerged_200_errorFree.fastq -c --end-bonus " + j[2:] + " > " + file_paf
-    #print(cmd)
+    print(cmd)
     os.system(cmd)
+    print(j + "DONE")
 #os.system("du -shx *|sort -rh")
 print("DONE GENERATING OVERLAPS")
 
