@@ -40,7 +40,7 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
 """
-"""
+
 # Input data
 for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", "seq8", "seq9", "seq10"]:
     fastqTemp = dict()
@@ -72,6 +72,7 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
     # Writing replaced error-free fastq file
     fileNew_fastq = file + "_errorFree.fastq"
     with open(fileNew_fastq,"w+") as fw:
+        f.seek(0)
         for key in fastqTemp:
             fw.write("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
 
@@ -87,7 +88,7 @@ for j in ["EB0","EB10","EB100","EB1000"]:
     cmd = "minimap2 -x ava-ont allMerged_200_errorFree.fastq allMerged_200_errorFree.fastq -c --end-bonus " + j[2:] + " > " + file_paf
     print(cmd)
     os.system(cmd)
-"""
+
 # Parsing CIGAR string from both PAF files for gaps
 #fileList = [f for f in os.listdir(".") if "allMerged_errorFree_" in f]
 os.chdir("all")
@@ -103,6 +104,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
         pafData_New = pafNew.readlines()
     print("PAF DATA RECEIVED")
     with open(i + "_CIGAR.csv","w+") as oldCigar:
+        f.seek(0)
         oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
         for oldPair in pafData:
             ovl = oldPair.split("\t")
@@ -112,6 +114,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
     print("OLD DONE")
     with open(i + "_errorFree_CIGAR.csv","w+") as newCigar:
+        f.seek(0)
         newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
         for newPair in pafData_New:
             ovl = newPair.split("\t")
