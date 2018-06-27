@@ -63,7 +63,7 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
             pos = getExpandedCigar(temp[5])
             reqLength = pos[0].count("S") + pos[0].count("H") + pos[0].count("D") + pos[0].count("M")
             startPos = int(temp[3]) - (1 + reqLength)
-            endPos = startPos + pos[0]
+            endPos = startPos + reqLength
             with open("../fasta_100000_indel/" + file + ".fasta") as fasta:
                 seq = fasta.readlines()
             sequence = seq[1][startPos:endPos]
