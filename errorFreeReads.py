@@ -76,11 +76,12 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
         fw.seek(0)
         for key in fastqTemp:
             fw.write("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
+print("DONE REPLACING INDIVIDUAL FASTQ")
 
 # Concatenating all files
-
 cmdCat = "for f in *_errorFree.fastq; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fastq; done"
 os.system(cmdCat)
+print("DONE COMBINING FASTQ's")
 
 # Generating overlaps from error-free reads
 os.chdir("all")
@@ -89,10 +90,9 @@ for j in ["EB0","EB10","EB100","EB1000"]:
     cmd = "minimap2 -x ava-ont allMerged_200_errorFree.fastq allMerged_200_errorFree.fastq -c --end-bonus " + j[2:] + " > " + file_paf
     #print(cmd)
     os.system(cmd)
-os.system("du -shx *|sort -rh")
+#os.system("du -shx *|sort -rh")
+
 # Parsing CIGAR string from both PAF files for gaps
-#fileList = [f for f in os.listdir(".") if "allMerged_errorFree_" in f]
-#os.chdir("all")
 for i in ["EB0","EB10","EB100","EB1000"]:
     print(i)
     #os.system("pwd")
