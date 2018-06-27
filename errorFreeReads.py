@@ -72,7 +72,7 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
     # Writing replaced error-free fastq file
     fileNew_fastq = file + "_errorFree.fastq"
     with open(fileNew_fastq,"w+") as fw:
-        f.seek(0)
+        fw.seek(0)
         for key in fastqTemp:
             fw.write("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
 
@@ -104,7 +104,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
         pafData_New = pafNew.readlines()
     print("PAF DATA RECEIVED")
     with open(i + "_CIGAR.csv","w+") as oldCigar:
-        f.seek(0)
+        oldCigar.seek(0)
         oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
         for oldPair in pafData:
             ovl = oldPair.split("\t")
@@ -114,7 +114,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
     print("OLD DONE")
     with open(i + "_errorFree_CIGAR.csv","w+") as newCigar:
-        f.seek(0)
+        newCigar.seek(0)
         newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
         for newPair in pafData_New:
             ovl = newPair.split("\t")
