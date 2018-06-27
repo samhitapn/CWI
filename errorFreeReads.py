@@ -9,7 +9,7 @@ import re
 import os
 import argparse
 
-cigarPattern = re.compile('([0-9]*)([DMSH])')
+cigarPattern = re.compile('([0-9]*)([IDMSH])')
 
 """
 @Definition: Converting the CIGAR string to the expanded form
@@ -121,4 +121,4 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
     print("NEW DONE")
     print("PAF STATS SAVED")
-    os.chdir("..")
+os.chdir("..")
