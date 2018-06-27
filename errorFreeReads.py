@@ -116,7 +116,6 @@ for i in ["EB0","EB10","EB100","EB1000"]:
         for newPair in pafData_New:
             ovl = newPair.split("\t")
             cigarIndex = [ovl.index(nf) for nf in ovl if nf.startswith("cg")]
-            print(cigarIndex)
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
