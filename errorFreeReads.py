@@ -40,7 +40,7 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
 """
-"""
+
 # Input data
 for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", "seq8", "seq9", "seq10"]:
     fastqTemp = dict()
@@ -55,34 +55,36 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
         i = i + 1
 
     # Replacing fastq Dictionary
-    c = 0
+    #c = 0
     for line in sam:
-        if c >= 2:
+        if !line.startswith("@"):
             temp = line.split("\t")
             readName = temp[0]
             pos = getExpandedCigar(temp[5])
             reqLength = pos[0].count("S") + pos[0].count("H") + pos[0].count("D") + pos[0].count("M")
-            startPos = int(temp[3]) - (1 + reqLength)
+            startPos = int(temp[3]) - (1 + pos[1])
             endPos = startPos + reqLength
             with open("../fasta_100000_indel/" + file + ".fasta") as fasta:
                 seq = fasta.readlines()
             sequence = seq[1][startPos:endPos]
             fastqTemp[readName][0] = sequence
-        c = c + 1
+        #c = c + 1
 
     # Writing replaced error-free fastq file
     fileNew_fastq = file + "_errorFree.fastq"
     with open(fileNew_fastq,"w+") as fw:
         fw.seek(0)
+        n = "\n"
         for key in fastqTemp:
-            fw.write("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
+            line = "@",key,n,fastqTemp[key][0],n,"+",n,fastqTemp[key][1],n
+            fw.writelines("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
 print("DONE REPLACING INDIVIDUAL FASTQ")
 
 # Concatenating all files
 cmdCat = "for f in *_errorFree.fastq; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fastq; done"
 os.system(cmdCat)
 print("DONE COMBINING FASTQ's")
-"""
+
 # Generating overlaps from error-free reads
 os.chdir("all")
 os.system("pwd")
