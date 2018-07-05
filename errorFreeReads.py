@@ -57,7 +57,7 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
     # Replacing fastq Dictionary
     #c = 0
     for line in sam:
-        if !line.startswith("@"):
+        if not line.startswith("@"):
             temp = line.split("\t")
             readName = temp[0]
             pos = getExpandedCigar(temp[5])
