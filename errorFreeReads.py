@@ -56,47 +56,106 @@ for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", 
 
     # Replacing fastq Dictionary
     #c = 0
+    with open("../fasta_100000_indel/" + file + ".fasta") as fasta:
+        seq = fasta.readlines()
     for line in sam:
         if not line.startswith("@"):
             temp = line.split("\t")
             readName = temp[0]
             pos = getExpandedCigar(temp[5])
             reqLength = pos[0].count("S") + pos[0].count("H") + pos[0].count("D") + pos[0].count("M")
-            startPos = int(temp[3]) - (1 + pos[1])
-            endPos = startPos + reqLength
-            with open("../fasta_100000_indel/" + file + ".fasta") as fasta:
-                seq = fasta.readlines()
+            trimLength = max(0, pos[1] - (int(temp[3]) - 1))
+            startPos = max(0, int(temp[3]) - (1 + pos[1]))
+            endPos = min(len(seq[1]), startPos + reqLength - trimLength)
+            if startPos >= endPos:
+                print(temp[:6])
+                print(trimLength)
+                print(reqLength)
+                print(startPos, endPos)
+            assert startPos < endPos
             sequence = seq[1][startPos:endPos]
+            if len(sequence) == 0:
+                print(startPos, endPos)
+            assert len(sequence) > 0
             fastqTemp[readName][0] = sequence
+            #if readName == 'origSeq_192':
+                #print(fastqTemp[readName][0])
         #c = c + 1
-
     # Writing replaced error-free fastq file
     fileNew_fastq = file + "_errorFree.fastq"
     with open(fileNew_fastq,"w+") as fw:
         fw.seek(0)
-        n = "\n"
+        #n = "\n"
         for key in fastqTemp:
-            line = "@",key,n,fastqTemp[key][0],n,"+",n,fastqTemp[key][1],n
+            #line = "@",key,n,fastqTemp[key][0],n,"+",n,fastqTemp[key][1],n
+            #if key == 'origSeq_192':
+                #print(fastqTemp[key][0])
             fw.writelines("@" + key + "\n" + fastqTemp[key][0] + "\n+\n" + fastqTemp[key][1] + "\n")
-print("DONE REPLACING INDIVIDUAL FASTQ")
+            #fw.writelines(">" + key + "\n" + fastqTemp[key][0] + "\n")
+
+    fileNew_fasta = file + "_errorFree.fasta"
+    with open(fileNew_fasta,"w+") as faw:
+        faw.seek(0)
+        #n = "\n"
+        for key in fastqTemp:
+            #line = "@",key,n,fastqTemp[key][0],n,"+",n,fastqTemp[key][1],n
+            #if key == 'origSeq_192':
+                #print(fastqTemp[key][0])
+            faw.writelines("@" + key + "\n" + fastqTemp[key][0] + "\n")
+
+print("DONE REPLACING INDIVIDUAL FASTQ  AND FASTA")
 
 # Concatenating all files
-cmdCat = "for f in *_errorFree.fastq; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fastq; done"
+#cmdCat = "for f in *_errorFree.fastq; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fastq; done"
+cmdCat = "for f in *_errorFree.fasta; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fasta; done"
 os.system(cmdCat)
 print("DONE COMBINING FASTQ's")
 
 # Generating overlaps from error-free reads
 os.chdir("all")
 os.system("pwd")
-for j in ["EB0","EB10","EB100","EB1000"]:
-    file_paf = "allMerged_" + j + "_errorFree.paf"
-    cmd = "minimap2 -x ava-ont allMerged_200_errorFree.fastq allMerged_200_errorFree.fastq -c --end-bonus " + j[2:] + " > " + file_paf
-    print(cmd)
-    os.system(cmd)
-    print(j + "DONE")
-#os.system("du -shx *|sort -rh")
-print("DONE GENERATING OVERLAPS")
+for i in ["EB0","EB10","EB100","EB1000"]:
+    print(i)
+    file_paf = "allMerged_" + i + "_fa.paf"
+    fileNew_paf = "allMerged_" + i + "_errorFree.paf"
+    cmdOld = "minimap2 -x ava-ont allMerged_200.fasta allMerged_200.fasta -c --end-bonus " + i[2:] + " > " + file_paf
+    cmdNew = "minimap2 -x ava-ont allMerged_200_errorFree.fasta allMerged_200_errorFree.fasta -c --end-bonus " + i[2:] + " > " + fileNew_paf
+    #print(cmd)
+    os.system(cmdOld)
+    os.system(cmdNew)
+    print("OVERLAP GENRATION DONE")
+    #os.system("du -shx *|sort -rh")
+    with open(file_paf) as paf:
+        pafData = paf.readlines()
+    with open(fileNew_paf) as pafNew:
+        pafData_New = pafNew.readlines()
+    print("PAF DATA RECEIVED")
+    with open(i + "_CIGAR.csv","w+") as oldCigar:
+        oldCigar.seek(0)
+        oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
+        for oldPair in pafData:
+            ovl = oldPair.split("\t")
+            cigarIndex = [ovl.index(of) for of in ovl if of.startswith("cg")]
+            expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
+            gaps = expCigar[0].count("D") + expCigar[0].count("I")
+            oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
+    print("OLD DONE")
+    with open(i + "_errorFree_CIGAR.csv","w+") as newCigar:
+        newCigar.seek(0)
+        newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
+        for newPair in pafData_New:
+            ovl = newPair.split("\t")
+            cigarIndex = [ovl.index(nf) for nf in ovl if nf.startswith("cg")]
+            expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
+            gaps = expCigar[0].count("D") + expCigar[0].count("I")
+            newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
+    print("NEW DONE")
+    print("PAF STATS SAVED")
 
+
+
+
+"""
 # Parsing CIGAR string from both PAF files for gaps
 for i in ["EB0","EB10","EB100","EB1000"]:
     print(i)
@@ -130,4 +189,5 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
     print("NEW DONE")
     print("PAF STATS SAVED")
+"""
 os.chdir("..")

@@ -1,2 +1,0 @@
-@SQ	SN:seq1	LN:100015
-@PG	ID:minimap2	PN:minimap2	VN:2.10-r761	CL:minimap2 -a ../fasta_100000_indel/seq1.fasta seq1_errorFree.fastq
