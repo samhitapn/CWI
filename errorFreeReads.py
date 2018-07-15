@@ -140,7 +140,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             subsIndex = [ovl.index(of) for of in ovl if of.startswith("NM")]
             subsNumber = ovl[subsIndex[0]].split(":")
-            oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + subsNumber + "\n")
+            oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + str(subsNumber) + "\n")
     print("OLD DONE")
     with open(i + "_errorFree_CIGAR.csv","w+") as newCigar:
         newCigar.seek(0)
@@ -152,7 +152,7 @@ for i in ["EB0","EB10","EB100","EB1000"]:
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
             subsIndex = [ovl.index(nf) for nf in ovl if nf.startswith("NM")]
             subsNumber = ovl[subsIndex[0]].split(":")
-            newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + subsNumber + "\n")
+            newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + str(subsNumber) + "\n")
     print("NEW DONE")
     print("PAF STATS SAVED")
 
