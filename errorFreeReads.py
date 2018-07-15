@@ -40,7 +40,7 @@ parser = argparse.ArgumentParser(description='Parser for input files and output 
 parser.add_argument('-f','--file', help='File Name',required=True)
 args = parser.parse_args()
 """
-
+"""
 # Input data
 for file in ["origSeq", "seq1", "seq2", "seq3", "seq4", "seq5", "seq6", "seq7", "seq8", "seq9", "seq10"]:
     fastqTemp = dict()
@@ -110,7 +110,7 @@ print("DONE REPLACING INDIVIDUAL FASTQ  AND FASTA")
 cmdCat = "for f in *_errorFree.fasta; do (cat \"${f}\"; echo) >> all/allMerged_200_errorFree.fasta; done"
 os.system(cmdCat)
 print("DONE COMBINING FASTQ's")
-
+"""
 # Generating overlaps from error-free reads
 os.chdir("all")
 os.system("pwd")
@@ -121,8 +121,8 @@ for i in ["EB0","EB10","EB100","EB1000"]:
     cmdOld = "minimap2 -x ava-ont allMerged_200.fasta allMerged_200.fasta -c --end-bonus " + i[2:] + " > " + file_paf
     cmdNew = "minimap2 -x ava-ont allMerged_200_errorFree.fasta allMerged_200_errorFree.fasta -c --end-bonus " + i[2:] + " > " + fileNew_paf
     #print(cmd)
-    os.system(cmdOld)
-    os.system(cmdNew)
+        #os.system(cmdOld)
+        #os.system(cmdNew)
     print("OVERLAP GENRATION DONE")
     #os.system("du -shx *|sort -rh")
     with open(file_paf) as paf:
@@ -132,23 +132,27 @@ for i in ["EB0","EB10","EB100","EB1000"]:
     print("PAF DATA RECEIVED")
     with open(i + "_CIGAR.csv","w+") as oldCigar:
         oldCigar.seek(0)
-        oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
+        oldCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \t SUBSTITUTIONS \n")
         for oldPair in pafData:
             ovl = oldPair.split("\t")
             cigarIndex = [ovl.index(of) for of in ovl if of.startswith("cg")]
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
-            oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
+            subsIndex = [ovl.index(of) for of in ovl if of.startswith("NM")]
+            subsNumber = ovl[subsIndex[0]].split(":")
+            oldCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + subsNumber + "\n")
     print("OLD DONE")
     with open(i + "_errorFree_CIGAR.csv","w+") as newCigar:
         newCigar.seek(0)
-        newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \n")
+        newCigar.write("KEY \t GAPS \t MATCHES \t DELETIONS \t INSERTIONS \t SUBSTITUTIONS \n")
         for newPair in pafData_New:
             ovl = newPair.split("\t")
             cigarIndex = [ovl.index(nf) for nf in ovl if nf.startswith("cg")]
             expCigar = getExpandedCigar(ovl[cigarIndex[0]].split(":")[2].strip("\n"))
             gaps = expCigar[0].count("D") + expCigar[0].count("I")
-            newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\n")
+            subsIndex = [ovl.index(nf) for nf in ovl if nf.startswith("NM")]
+            subsNumber = ovl[subsIndex[0]].split(":")
+            newCigar.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(gaps) + "\t" + str(expCigar[0].count("M")) + "\t" + str(expCigar[0].count("D")) + "\t" + str(expCigar[0].count("I")) + "\t" + subsNumber + "\n")
     print("NEW DONE")
     print("PAF STATS SAVED")
 
