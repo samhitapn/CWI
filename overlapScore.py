@@ -306,16 +306,17 @@ for i in gapScoreType:
 
     for key in readPairData:
         #if key == "origSeq_125-origSeq_147":
+            """
             keyElements = key.split("-")
             if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
                 ovlType = "Good Overlap"
             else:
                 ovlType = "Bad Overlap"
-
+            """
             results = getOverlapScore(key, readPairData[key],i)
 
             print(key,str(results[0]),str(results[1]),str(results[2]))
 
             #outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
-            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
+            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + "NA" + "\n")
     outputFile.close()
