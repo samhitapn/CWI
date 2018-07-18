@@ -255,7 +255,7 @@ for overlapPair in pafData:
     subsIndex = [ovl.index(i) for i in ovl if i.startswith("NM")]
     subsNumber = int(ovl[subsIndex[0]].split(":")[2]) - gaps
     statFile.write(str(ovl[0] + "-" + ovl[5]) + "\t" + str(ovl[1]) + "\t" + str(ovl[2]) + "\t" + str(ovl[3]) + "\t" + str(int(ovl[3]) - int(ovl[2])) + "\t" + str(ovl[6]) + "\t" + str(ovl[7]) + "\t" + str(ovl[8]) + "\t" + str(int(ovl[8]) - int(ovl[7])) + "\t" + str(cig.count("M")) + "\t" + str(cig.count("I")) + "\t" + str(cig.count("D")) + "\t" + str(gaps) + "\t" + str(subsNumber) + "\n")
-    readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1], int(ovl[1]), int(ovl[2]), int(ovl[3]), fastqTemp[ovl[5]][0], fastqTemp[ovl[5]][1], int(ovl[6]), int(ovl[7]),int(ovl[8]),ovl[cigarIndex[0]].split(":")[2].strip("\n")]
+    readPairData[ovl[0] + ":" + ovl[5]] = [fastqTemp[ovl[0]][0],fastqTemp[ovl[0]][1], int(ovl[1]), int(ovl[2]), int(ovl[3]), fastqTemp[ovl[5]][0], fastqTemp[ovl[5]][1], int(ovl[6]), int(ovl[7]),int(ovl[8]),ovl[cigarIndex[0]].split(":")[2].strip("\n")]
     #tempData = [list(fastq[ovl[0]].seq), fastq[ovl[0]].letter_annotations["phred_quality"], int(ovl[2]), int(ovl[3]), list(fastq[ovl[5]].seq),fastq[ovl[5]].letter_annotations["phred_quality"],int(ovl[7]), int(ovl[8]),ovl[20].split(":")[2].strip()]
     #readPairData[ovl[0] + "-" + ovl[5]] = [fastqTemp[ovl]]
 statFile.close()
