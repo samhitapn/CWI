@@ -227,7 +227,7 @@ with open(args.fastq) as fastq:
 
 for i in range(0,len(fastqData)):
     if fastqData[i].startswith("@"):
-         fastqTemp[fastqData[i].split(" ")[0].strip("@")] = [fastqData[i+1].rstrip("\n"),fastqData[i+3].rstrip("\n")]
+         fastqTemp[fastqData[i].split(" ")[0].strip("@").rstrip("\n")] = [fastqData[i+1].rstrip("\n"),fastqData[i+3].rstrip("\n")]
     i = i + 1
 
 statFileName = args.output + "_stats.csv"
