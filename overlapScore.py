@@ -83,7 +83,8 @@ def getGapRegionScore (score, lenGap, scoreType):
     #scoreList = []
     #if lenGap > 1:
     convertedScores = [getProbQuality(score[i]) for i in range(0,lenGap)]
-    score = lambda sc : (97/100 * sc) + (3/100 * (1 - sc))
+    #score = lambda sc : (97/100 * sc) + (3/100 * (1 - sc))
+    score = lambda sc : ((3.12/100 * sc) + (96.88/100 * (1 - sc)) + (4.79/100 * sc) + (95.21/100 * (1 - sc)))
     """
     for i in range(0, lenGap):
         #print(score[i])
