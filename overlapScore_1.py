@@ -163,12 +163,12 @@ def getOverlapScore(key, readData):
         prob = prob + np.log(probabilityBase)
         L = L + 1
         cntr = cntr + 1
+
     try:
         overlapScore = (np.exp(prob) ** (1/L)) * newAlpha
         result.append(overlapScore)
     except:
         result.append("ERROR")
-        continue
     #overlapScore = (np.exp(prob) ** (1/L))
     result.append(overlapScore)
     #print(result)
