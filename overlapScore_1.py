@@ -152,6 +152,7 @@ def getOverlapScore(key, readData):
     stopPos = min((r1E-r1S),(r2E-r2S))
     r1 = r1S
     r2 = r2S
+    cntr = 0
     while cntr < stopPos:
         probabilityBase = 0
         r1 = r1 + cntr
