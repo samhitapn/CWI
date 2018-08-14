@@ -348,7 +348,7 @@ for i in gapScoreType:
     for key in readPairData:
         #if key == "origSeq_125-origSeq_147":
 
-            keyElements = key.split("-")
+            keyElements = key.split(":")
             if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
                 ovlType = "Good Overlap"
             else:
