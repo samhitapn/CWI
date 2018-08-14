@@ -354,7 +354,7 @@ for i in gapScoreType:
             else:
                 ovlType = "Bad Overlap"
 
-            results = getOverlapScore(key, readPairData[key],i)
+            results = getOverlapScore(key, readPairData[key])
 
             print(key,str(results[0]),str(results[1]),str(results[2]))
 
