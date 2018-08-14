@@ -173,7 +173,7 @@ def getOverlapScore(key, readData):
     result.append(overlapScore)
     #print(result)
 #result[3:3] = [alpha1,alpha2]
-result[3:3] = [newAlpha]
+result[1:1] = [newAlpha]
 return(result)
 
     """
@@ -344,21 +344,21 @@ for i in gapScoreType:
     scoreFileName = args.output + name + "_scores_NoGaps.csv"
     outputFile = open(scoreFileName,"w+")
     #outputFile.write("KEY \t ALPHA1 \t ALPHA2 \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
-    outputFile.write("KEY \t ALPHA \t GAPS \t MATCHES \t ALL \t OVERLAP_TYPE \n")
+    outputFile.write("KEY \t ALPHA \t ALL \t OVERLAP_TYPE \n")
 
     for key in readPairData:
         #if key == "origSeq_125-origSeq_147":
-            """
+
             keyElements = key.split("-")
             if keyElements[0].split("_")[0] == keyElements[1].split("_")[0]:
                 ovlType = "Good Overlap"
             else:
                 ovlType = "Bad Overlap"
-            """
+
             results = getOverlapScore(key, readPairData[key],i)
 
             print(key,str(results[0]),str(results[1]),str(results[2]))
 
             #outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
-            outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + "NA" + "\n")
+            outputFile.write(key + "\t" + str(results[1]) + "\t" + str(results[0]) + "\t" + ovlType + "\n")
     outputFile.close()
