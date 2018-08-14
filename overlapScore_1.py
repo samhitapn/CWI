@@ -175,8 +175,7 @@ def getOverlapScore(key, readData):
 #result[3:3] = [alpha1,alpha2]
 result[1:1] = [newAlpha]
 return(result)
-
-    """
+"""
     for j in range(0,3):
         #print(j)
         pos1 = readData[3]
