@@ -130,6 +130,7 @@ def getOverlapScore(key, readData):
     probabilityGaps = 0
     probabilityMatches = 0
     prob = 0
+    L = 0
     seq1 = readData[0]
     seq2 = readData[5]
     score1 = readData[1]
