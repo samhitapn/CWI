@@ -154,9 +154,9 @@ def getOverlapScore(key, readData):
     r1 = r1S
     r2 = r2S
     cntr = 0
-    print(stopPos,r1,r2,r1S,r1E,r2S,r2E)
+    #print(stopPos,r1,r2,r1S,r1E,r2S,r2E)
     while L < stopPos:
-        print(cntr,r1,r2)
+        #print(cntr,r1,r2)
         probabilityBase = 0
         r1 = r1 + 1
         r2 = r2 + 1
@@ -361,7 +361,7 @@ for i in gapScoreType:
 
             results = getOverlapScore(key, readPairData[key])
 
-            print(key,str(results[0]),str(results[1]),str(results[2]))
+            print(key,str(results[0]))
 
             #outputFile.write(key + "\t" + str(results[3]) + "\t" + str(results[4]) + "\t" + str(results[0]) + "\t" + str(results[1]) + "\t" + str(results[2]) + "\t" + ovlType + "\n")
             outputFile.write(key + "\t" + str(results[1]) + "\t" + str(results[0]) + "\t" + ovlType + "\n")
