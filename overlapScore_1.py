@@ -158,6 +158,7 @@ def getOverlapScore(key, readData):
         probabilityBase = 0
         r1 = r1 + cntr
         r2 = r2 + cntr
+        print(r1,r2)
         for n in nt:
             sc = (probabilityQ(n,seq1[r1],score1[r1]) * probabilityQ(n,seq2[r2],score2[r2]))
             probabilityBase = probabilityBase + sc
